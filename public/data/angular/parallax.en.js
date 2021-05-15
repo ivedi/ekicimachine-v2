@@ -1,0 +1,1 @@
+﻿var parallaxData = { "list": ["Quick Support", "Regular Customers", "Modern Machines", "High Quality", "Creative & Professional", "Quick Setup"] };

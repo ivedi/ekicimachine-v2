@@ -1,0 +1,1 @@
+﻿var businessHoursData={"title":"Work Hours","OnTime":{"text":"Weekdays: 07:30 am to 06:30 pm","isVisible":true},"OffTime":{"text":"Sunday: closed","isVisible":true}};

@@ -1,0 +1,130 @@
+﻿<div class="portfolioFilter">
+    <ul>
+        <li>
+            <a href="#" data-hover="{{$ctrl.filterTextAll}}" data-filter="*" class="current">{{$ctrl.filterTextAll}}</a>
+        </li>
+        <li ng-repeat="_filter in filter.list">
+            <a href="#" data-hover="{{_filter.text[filter.lang]}}" data-filter="{{_filter.filter}}" ng-class="_filter.cls" class="">{{_filter.text[filter.lang]}}</a>
+        </li>
+        <li ng-show="{{$ctrl.editable}}">
+            <a href="" ng-click="filter.edit.show()"><i class="fa fa-edit"></i> {{$ctrl.filterTextEdit}}</a>
+        </li>
+        <li ng-show="{{$ctrl.editable}}">
+            <a href="" ng-click="filter.add.show()"><i class="fa fa-plus"></i> {{$ctrl.filterTextAdd}}</a>
+        </li>
+        <li ng-show="{{$ctrl.editable}}">
+            <a href="" ng-click="filter.remove.show()"><i class="fa fa-trash-o"></i> {{$ctrl.filterTextRemove}}</a>
+        </li>
+    </ul>
+</div>
+<div class="machine-filter-edit-modal modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="{{$ctrl.closeBtnText}}" ng-disabled="filter.edit.inProgress"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">{{$ctrl.editTitle}}</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-6" ng-repeat="category in filter.edit.list">
+                        <div class="form-group" ng-class="category.cls">
+                            <input class="form-control" type="text" placeholder="{{category.placeholder}}" ng-model="category.value" ng-change="category.change()" ng-disabled="filter.edit.inProgress" />
+                            <p class="text-danger text-block text-small" ng-show="category.msg.isVisible">
+                                <i class="fa fa-warning"></i> {{$ctrl.editMsg}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" ng-disabled="filter.edit.inProgress">{{$ctrl.closeBtnText}}</button>
+                <button type="button" class="btn btn-primary" ng-click="filter.edit.submit()" ng-disabled="filter.edit.inProgress">{{filter.edit.inProgress ? $ctrl.inProgressText: $ctrl.submitBtnText}}</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="machine-filter-add-modal modal modal-sm fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="{{$ctrl.closeBtnText}}" ng-disabled="filter.edit.inProgress"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">{{$ctrl.addTitle}}</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="form-group" ng-class="filter.add.input.tr.cls">
+                            <label>{{$ctrl.textTurkish}}</label>
+                            <input dir="ltr" class="form-control" type="text" placeholder="{{filter.add.input.tr.placeholder}}" ng-model="filter.add.input.tr.value" ng-change="filter.add.input.tr.change()" ng-disabled="filter.add.inProgress" />
+                            <p class="text-danger text-block text-small" ng-show="filter.add.input.tr.msg.isVisible">
+                                <i class="fa fa-warning"></i> {{$ctrl.addMsg}}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group" ng-class="filter.add.input.en.cls">
+                            <label>{{$ctrl.textEnglish}}</label>
+                            <input dir="ltr" class="form-control" type="text" placeholder="{{filter.add.input.en.placeholder}}" ng-model="filter.add.input.en.value" ng-change="filter.add.input.en.change()" ng-disabled="filter.add.inProgress" />
+                            <p class="text-danger text-block text-small" ng-show="filter.add.input.en.msg.isVisible">
+                                <i class="fa fa-warning"></i> {{$ctrl.addMsg}}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group" ng-class="filter.add.input.ru.cls">
+                            <label>{{$ctrl.textRussian}}</label>
+                            <input dir="ltr" class="form-control" type="text" placeholder="{{filter.add.input.ru.placeholder}}" ng-model="filter.add.input.ru.value" ng-change="filter.add.input.ru.change()" ng-disabled="filter.add.inProgress" />
+                            <p class="text-danger text-block text-small" ng-show="filter.add.input.ru.msg.isVisible">
+                                <i class="fa fa-warning"></i> {{$ctrl.addMsg}}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group" ng-class="filter.add.input.ar.cls">
+                            <label>{{$ctrl.textArabic}}</label>
+                            <input dir="rtl" class="form-control" type="text" placeholder="{{filter.add.input.ar.placeholder}}" ng-model="filter.add.input.ar.value" ng-change="filter.add.input.ar.change()" ng-disabled="filter.add.inProgress" />
+                            <p class="text-danger text-block text-small" ng-show="filter.add.input.ar.msg.isVisible">
+                                <i class="fa fa-warning"></i> {{$ctrl.addMsg}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" ng-disabled="filter.add.inProgress">{{$ctrl.closeBtnText}}</button>
+                <button type="button" class="btn btn-primary" ng-click="filter.add.submit()" ng-disabled="filter.add.inProgress">{{filter.add.inProgress ? $ctrl.inProgressText: $ctrl.submitBtnText}}</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="machine-filter-remove-modal modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="{{$ctrl.closeBtnText}}" ng-disabled="filter.remove.inProgress"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">{{$ctrl.removeTitle}}</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-6" ng-repeat="category in filter.remove.list">
+                        <div dir="ltr" class="input-group" ng-class="category.isRemoved ? 'has-error' : ''">
+                            <input class="form-control text-center" type="text" placeholder="{{category.placeholder}}" disabled="disabled" ng-model="category.category.text[filter.lang]" ng-change="category.change()" />
+                            <span class="input-group-btn">
+                                <button class="btn" ng-class="category.isRemoved ? 'btn-default' : 'btn-danger'" ng-click="category.toggle()" ng-disabled="filter.remove.inProgress">
+                                    <i class="fa" ng-class="category.isRemoved ? 'fa-undo' : 'fa-trash-o'"></i>
+                                </button>
+                            </span>
+                        </div>
+                        <p class="text-danger text-block text-small" ng-show="category.isRemoved">
+                            <i class="fa fa-warning"></i> {{$ctrl.removeMsg}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" ng-disabled="filter.remove.inProgress">{{$ctrl.closeBtnText}}</button>
+                <button type="button" class="btn btn-primary" ng-click="filter.remove.submit()" ng-disabled="filter.remove.inProgress">{{filter.remove.inProgress ? $ctrl.inProgressText: $ctrl.submitBtnText}}</button>
+            </div>
+        </div>
+    </div>
+</div>

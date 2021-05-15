@@ -1,0 +1,270 @@
+﻿<div class="welcome_page cont-marg" ng-class="$ctrl.editable && !contactForm.edit.title.isVisible ? 'btn-edit-container' : ''">
+    <button class="btn btn-default bg-white btn-edit" ng-click="contactForm.edit.title.show()" ng-show="{{$ctrl.editable && !$ctrl.editItem.isVisible}}"><i class="fa fa-edit"></i></button>
+    <h3 ng-show="!contactForm.edit.title.isVisible">{{contactForm.title}}</h3>
+    <div dir="ltr" class="input-group" ng-show="contactForm.edit.title.isVisible" ng-class="contactForm.edit.title.title.cls">
+        <span class="input-group-btn">
+            <button class="btn btn-danger" ng-click="contactForm.edit.title.cancel()"><i class="fa fa-times"></i></button>
+        </span>
+        <input type="text" class="form-control text-center" placeholder="{{contactForm.edit.title.title.placeholder}}" ng-model="contactForm.edit.title.title.value" ng-change="contactForm.edit.title.title.change()" />
+        <span class="input-group-btn">
+            <button class="btn btn-success" ng-click="contactForm.edit.title.submit()"><i class="fa fa-check"></i></button>
+        </span>
+    </div>
+    <p class="text-muted text-block text-small" ng-show="contactForm.edit.title.isVisible && contactForm.edit.title.title.msg.isVisible"><i class="fa fa-warning"></i> {{$ctrl.editMsg}}</p>
+</div>
+<div class="" ng-class="$ctrl.editable ? 'btn-edit-container' : ''">
+    <div class="btn-edit">
+        <button class="btn btn-default bg-white" ng-click="contactForm.edit.show()" ng-show="{{$ctrl.editable}}"><i class="fa fa-edit"></i></button>
+        <button class="btn btn-default bg-white" ng-click="mail.settings.show()" ng-show="{{$ctrl.editable}}"><i class="fa fa-cog"></i></button>
+    </div>
+    <p ng-show="contactForm.explanation.isVisible" class="text_cont">{{contactForm.explanation.text}}</p>
+    <form>
+        <div class="row">
+            <div class="col-sm-12 col-md-9">
+                <div class="form-group" ng-class="contactForm.name.cls">
+                    <input type="text" class="form-control" size="40" placeholder="{{contactForm.name.placeholder}}" ng-model="contactForm.name.value" ng-change="contactForm.name.change()" ng-focus="contactForm.name.focus()" ng-disabled="contactForm.isInProgress" />
+                    <p class="text-danger text-block text-small"><i class="fa" ng-class="contactForm.name.msg.iconClass"></i> {{contactForm.name.msg.text}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-9">
+                <div class="form-group" ng-class="contactForm.email.cls">
+                    <input type="text" class="form-control" size="40" placeholder="{{contactForm.email.placeholder}}" ng-model="contactForm.email.value" ng-change="contactForm.email.change()" ng-focus="contactForm.email.focus()" ng-disabled="contactForm.isInProgress" />
+                    <p class="text-danger text-block text-small"><i class="fa" ng-class="contactForm.email.msg.iconClass"></i> {{contactForm.email.msg.text}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-9">
+                <div class="form-group" ng-class="contactForm.subject.cls">
+                    <input type="text" class="form-control" size="40" placeholder="{{contactForm.subject.placeholder}}" ng-model="contactForm.subject.value" ng-change="contactForm.subject.change()" ng-focus="contactForm.subject.focus()" ng-disabled="contactForm.isInProgress" />
+                    <p class="text-danger text-block text-small"><i class="fa" ng-class="contactForm.subject.msg.iconClass"></i> {{contactForm.subject.msg.text}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="form-group" ng-class="contactForm.message.cls">
+            <textarea placeholder="{{contactForm.message.placeholder}}" class="form-control" cols="40" rows="10" ng-model="contactForm.message.value" ng-change="contactForm.message.change()" ng-focus="contactForm.message.focus()" ng-disabled="contactForm.isInProgress"></textarea>
+            <p class="text-danger text-block text-small"><i class="fa" ng-class="contactForm.message.msg.iconClass"></i> {{contactForm.message.msg.text}}</p>
+        </div>
+        <button type="button" class="btn btn-default btn-small" ng-click="contactForm.submit.trigger()" ng-disabled="contactForm.isInProgress"><i class="fa fa-spinner spin" ng-show="contactForm.isInProgress"></i> {{contactForm.isInProgress ? contactForm.submit.text.progress : contactForm.submit.text.idle}}</button>
+    </form>
+</div>
+<div class="contact-form-modal modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="{{$ctrl.closeBtnText}}" ng-disabled="contactForm.edit.inProgress"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">{{$ctrl.editTitle}}</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="form-group" ng-class="contactForm.edit.explanation.text.cls">
+                            <h4 class="" ng-class="contactForm.edit.explanation.isVisible ? '' : 'text-muted'">{{$ctrl.editTitleExplanation}}</h4>
+                            <textarea rows="4" class="form-control" placeholder="{{contactForm.edit.explanation.text.placeholder}}" ng-model="contactForm.edit.explanation.text.value" ng-change="contactForm.edit.explanation.text.change()" ng-disabled="contactForm.edit.inProgress || !contactForm.edit.explanation.isVisible"></textarea>
+                            <p class="text-danger text-block text-small" ng-show="contactForm.edit.explanation.text.msg.isVisible">
+                                <i class="fa fa-warning"></i> {{$ctrl.editMsg}}
+                            </p>
+                        </div>
+                        <button type="button" class="btn pull-right" ng-class="contactForm.edit.explanation.isVisible ? 'btn-success' : 'btn-default'" ng-click="contactForm.edit.explanation.isVisible = !contactForm.edit.explanation.isVisible;"><i class="fa" ng-class="contactForm.edit.explanation.isVisible ? 'fa-eye' : 'fa-eye-slash'"></i> {{contactForm.edit.explanation.isVisible ? $ctrl.visibleInPage : $ctrl.invisibleInPage}}</button>
+                    </div>
+                </div>
+                <hr />
+                <div class="row">
+                    <div class="col-lg-6">
+                        <h4>{{$ctrl.editTitleNames}}</h4>
+                        <div class="form-group" ng-class="contactForm.edit.name.placeholder.cls">
+                            <input class="form-control" type="text" placeholder="{{contactForm.edit.name.placeholder.placeholder}}" ng-model="contactForm.edit.name.placeholder.value" ng-change="contactForm.edit.name.placeholder.change()" ng-disabled="contactForm.edit.inProgress" />
+                            <p class="text-danger text-block text-small" ng-show="contactForm.edit.name.placeholder.msg.isVisible">
+                                <i class="fa fa-warning"></i> {{$ctrl.editMsg}}
+                            </p>
+                        </div>
+                        <div class="form-group" ng-class="contactForm.edit.email.placeholder.cls">
+                            <input class="form-control" type="text" placeholder="{{contactForm.edit.email.placeholder.placeholder}}" ng-model="contactForm.edit.email.placeholder.value" ng-change="contactForm.edit.email.placeholder.change()" ng-disabled="contactForm.edit.inProgress" />
+                            <p class="text-danger text-block text-small" ng-show="contactForm.edit.email.placeholder.msg.isVisible">
+                                <i class="fa fa-warning"></i> {{$ctrl.editMsg}}
+                            </p>
+                        </div>
+                        <div class="form-group" ng-class="contactForm.edit.subject.placeholder.cls">
+                            <input class="form-control" type="text" placeholder="{{contactForm.edit.subject.placeholder.placeholder}}" ng-model="contactForm.edit.subject.placeholder.value" ng-change="contactForm.edit.subject.placeholder.change()" ng-disabled="contactForm.edit.inProgress" />
+                            <p class="text-danger text-block text-small" ng-show="contactForm.edit.subject.placeholder.msg.isVisible">
+                                <i class="fa fa-warning"></i> {{$ctrl.editMsg}}
+                            </p>
+                        </div>
+                        <div class="form-group" ng-class="contactForm.edit.message.placeholder.cls">
+                            <input class="form-control" type="text" placeholder="{{contactForm.edit.message.placeholder.placeholder}}" ng-model="contactForm.edit.message.placeholder.value" ng-change="contactForm.edit.message.placeholder.change()" ng-disabled="contactForm.edit.inProgress" />
+                            <p class="text-danger text-block text-small" ng-show="contactForm.edit.message.placeholder.msg.isVisible">
+                                <i class="fa fa-warning"></i> {{$ctrl.editMsg}}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <h4>{{$ctrl.editTitleMessages}}</h4>
+                        <div class="form-group" ng-class="contactForm.edit.name.message.cls">
+                            <input class="form-control" type="text" placeholder="{{contactForm.edit.name.message.placeholder}}" ng-model="contactForm.edit.name.message.value" ng-change="contactForm.edit.name.message.change()" ng-disabled="contactForm.edit.inProgress" />
+                            <p class="text-danger text-block text-small" ng-show="contactForm.edit.name.message.msg.isVisible">
+                                <i class="fa fa-warning"></i> {{$ctrl.editMsg}}
+                            </p>
+                        </div>
+                        <div class="form-group" ng-class="contactForm.edit.email.message.cls">
+                            <input class="form-control" type="text" placeholder="{{contactForm.edit.email.message.placeholder}}" ng-model="contactForm.edit.email.message.value" ng-change="contactForm.edit.email.message.change()" ng-disabled="contactForm.edit.inProgress" />
+                            <p class="text-danger text-block text-small" ng-show="contactForm.edit.email.message.msg.isVisible">
+                                <i class="fa fa-warning"></i> {{$ctrl.editMsg}}
+                            </p>
+                        </div>
+                        <div class="form-group" ng-class="contactForm.edit.subject.message.cls">
+                            <input class="form-control" type="text" placeholder="{{contactForm.edit.subject.message.placeholder}}" ng-model="contactForm.edit.subject.message.value" ng-change="contactForm.edit.subject.message.change()" ng-disabled="contactForm.edit.inProgress" />
+                            <p class="text-danger text-block text-small" ng-show="contactForm.edit.subject.message.msg.isVisible">
+                                <i class="fa fa-warning"></i> {{$ctrl.editMsg}}
+                            </p>
+                        </div>
+                        <div class="form-group" ng-class="contactForm.edit.message.message.cls">
+                            <input class="form-control" type="text" placeholder="{{contactForm.edit.message.message.placeholder}}" ng-model="contactForm.edit.message.message.value" ng-change="contactForm.edit.message.message.change()" ng-disabled="contactForm.edit.inProgress" />
+                            <p class="text-danger text-block text-small" ng-show="contactForm.edit.message.message.msg.isVisible">
+                                <i class="fa fa-warning"></i> {{$ctrl.editMsg}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <hr />
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="form-group" ng-class="contactForm.edit.submitText.idle.cls">
+                            <h4>{{$ctrl.editTitleSubmitIdle}}</h4>
+                            <input class="form-control" type="text" placeholder="{{contactForm.edit.submitText.idle.placeholder}}" ng-model="contactForm.edit.submitText.idle.value" ng-change="contactForm.edit.submitText.idle.change()" ng-disabled="contactForm.edit.inProgress" />
+                            <p class="text-danger text-block text-small" ng-show="contactForm.edit.submitText.idle.msg.isVisible">
+                                <i class="fa fa-warning"></i> {{$ctrl.editMsg}}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group" ng-class="contactForm.edit.submitText.progress.cls">
+                            <h4>{{$ctrl.editTitleSubmitProgress}}</h4>
+                            <input class="form-control" type="text" placeholder="{{contactForm.edit.submitText.progress.placeholder}}" ng-model="contactForm.edit.submitText.progress.value" ng-change="contactForm.edit.submitText.progress.change()" ng-disabled="contactForm.edit.inProgress" />
+                            <p class="text-danger text-block text-small" ng-show="contactForm.edit.submitText.progress.msg.isVisible">
+                                <i class="fa fa-warning"></i> {{$ctrl.editMsg}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" ng-disabled="contactForm.edit.inProgress">{{$ctrl.closeBtnText}}</button>
+                <button type="button" class="btn btn-primary" ng-click="contactForm.edit.submit()" ng-disabled="contactForm.edit.inProgress">{{contactForm.edit.inProgress ? $ctrl.inProgressText: $ctrl.submitBtnText}}</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="mail-settings-modal modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="{{$ctrl.closeBtnText}}" ng-disabled="mail.settings.inProgress"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">{{$ctrl.mailSettingsTitle}}</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="form-group" ng-class="mail.settings.smtp.address.cls">
+                            <h4>{{$ctrl.mailSettingsSmtpAddressTitle}}</h4>
+                            <input dir="ltr" class="form-control" type="text" placeholder="{{mail.settings.smtp.address.placeholder}}" ng-model="mail.settings.smtp.address.value" ng-change="mail.settings.smtp.address.change()" ng-disabled="mail.settings.inProgress" />
+                            <p class="text-danger text-block text-small" ng-show="mail.settings.smtp.address.msg.isVisible">
+                                <i class="fa fa-warning"></i> {{$ctrl.editMsg}}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group" ng-class="mail.settings.smtp.port.cls">
+                            <h4>{{$ctrl.mailSettingsSmtpPortTitle}}</h4>
+                            <input dir="ltr" class="form-control" type="text" placeholder="{{mail.settings.smtp.port.placeholder}}" ng-model="mail.settings.smtp.port.value" ng-change="mail.settings.smtp.port.change()" ng-disabled="mail.settings.inProgress" />
+                            <p class="text-danger text-block text-small" ng-show="mail.settings.smtp.port.msg.isVisible">
+                                <i class="fa fa-warning"></i> {{$ctrl.editMsg}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="form-group" ng-class="mail.settings.from.address.cls">
+                            <h4>{{$ctrl.mailSettingsFromAddressTitle}}</h4>
+                            <input dir="ltr" class="form-control" type="text" placeholder="{{mail.settings.from.address.placeholder}}" ng-model="mail.settings.from.address.value" ng-change="mail.settings.from.address.change()" ng-disabled="mail.settings.inProgress" />
+                            <p class="text-danger text-block text-small" ng-show="mail.settings.from.address.msg.isVisible">
+                                <i class="fa fa-warning"></i> {{$ctrl.editMsg}}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <h4>{{$ctrl.mailSettingsFromPasswordTitle}}</h4>
+                            <div class="input-group" ng-class="mail.settings.from.password.cls">
+                                <input class="form-control" type="{{mail.settings.from.password.isVisible ? 'text' : 'password'}}" placeholder="{{mail.settings.from.password.placeholder}}" ng-model="mail.settings.from.password.value" ng-change="mail.settings.from.password.change()" ng-disabled="mail.settings.inProgress" />
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-default" ng-click="mail.settings.from.password.isVisible = !mail.settings.from.password.isVisible;" ng-disabled="mail.settings.inProgress"><i class="fa" ng-class="mail.settings.from.password.isVisible ? 'fa-eye' : 'fa-eye-slash'"></i></button>
+                                </span>
+                            </div>
+                            <p class="text-danger text-block text-small" ng-show="mail.settings.from.password.msg.isVisible">
+                                <i class="fa fa-warning"></i> {{$ctrl.editMsg}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="form-group" ng-class="mail.settings.from.name.cls">
+                            <h4>{{$ctrl.mailSettingsFromNameTitle}}</h4>
+                            <input class="form-control" type="text" placeholder="{{mail.settings.from.name.placeholder}}" ng-model="mail.settings.from.name.value" ng-change="mail.settings.from.name.change()" ng-disabled="mail.settings.inProgress" />
+                            <p class="text-danger text-block text-small" ng-show="mail.settings.from.name.msg.isVisible">
+                                <i class="fa fa-warning"></i> {{$ctrl.editMsg}}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group" ng-class="mail.settings.prefix.cls">
+                            <h4>{{$ctrl.mailSettingsSubjectPrefixTitle}}</h4>
+                            <input class="form-control" type="text" placeholder="{{mail.settings.prefix.placeholder}}" ng-model="mail.settings.prefix.value" ng-change="mail.settings.prefix.change()" ng-disabled="mail.settings.inProgress" />
+                            <p class="text-danger text-block text-small" ng-show="mail.settings.prefix.msg.isVisible">
+                                <i class="fa fa-warning"></i> {{$ctrl.editMsg}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-10 col-xs-9">
+                        <h4>{{$ctrl.mailSettingsToTitle}} <small class="text-muted">{{mail.settings.to.minCount}} / {{mail.settings.to.list.length}} / {{mail.settings.to.maxCount}}</small></h4>
+                    </div>
+                    <div class="col-lg-2 col-xs-2 mail-btn-add-container text-center">
+                        <button type="button" class="btn btn-primary" ng-click="mail.settings.to.add()" ng-disabled="mail.settings.inProgress"><i class="fa fa-plus"></i></button>
+                    </div>
+                </div>
+                <div class="row" ng-repeat="to in mail.settings.to.list">
+                    <div class="col-lg-10 col-xs-10 mail-container">
+                        <div class="row">
+                            <div class="col-lg-5 mail-name-container">
+                                <div class="form-group" ng-class="to.name.cls">
+                                    <input class="form-control" type="text" placeholder="{{$ctrl.mailSettingsToNamePlaceholder}}" ng ng-model="to.name.value" ng-change="to.name.change()" ng-disabled="mail.settings.inProgress" />
+                                    <p class="text-danger text-block text-small" ng-show="to.name.msg.isVisible"><i class="fa fa-warning"></i> {{$ctrl.editMsg}}</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-7 mail-address-container">
+                                <div class="form-group" ng-class="to.mail.cls">
+                                    <input dir="ltr" class="form-control" type="text" placeholder="{{$ctrl.mailSettingsToAddressPlaceholder}}" ng-model="to.mail.value" ng-change="to.mail.change()" ng-disabled="mail.settings.inProgress" />
+                                    <p class="text-danger text-block text-small" ng-show="to.mail.msg.isVisible"><i class="fa fa-warning"></i> {{$ctrl.editMsg}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-xs-2 mail-btn-container text-center">
+                        <div class="btn-group btn-justified">
+                            <button class="btn btn-danger" ng-click="mail.settings.to.remove(to)" ng-disabled="mail.settings.inProgress"><i class="fa fa-trash-o"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" ng-disabled="mail.settings.inProgress">{{$ctrl.closeBtnText}}</button>
+                <button type="button" class="btn btn-primary" ng-click="mail.settings.submit()" ng-disabled="mail.settings.inProgress">{{mail.settings.inProgress ? $ctrl.inProgressText: $ctrl.submitBtnText}}</button>
+            </div>
+        </div>
+    </div>
+</div>

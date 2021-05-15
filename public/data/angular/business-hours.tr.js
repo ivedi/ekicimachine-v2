@@ -1,0 +1,1 @@
+﻿var businessHoursData={"title":"Çalışma Saatleri","OnTime":{"text":"Haftaiçi: 07:30 ila 18:30 arası","isVisible":true},"OffTime":{"text":"Pazar günleri kapalı","isVisible":true}};

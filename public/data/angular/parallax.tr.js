@@ -1,0 +1,1 @@
+﻿var parallaxData = { "list": ["Hızlı Destek", "Sürekli Müşteri Anlayışı", "Modern Makinalar", "Yüksek Kalite", "Yaratıcı & Profesyonel", "Hızlı Kurulum"] };

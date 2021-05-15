@@ -1,0 +1,157 @@
+﻿<div class="prl-1 marg100" style="height:450px;">
+    <div class="prlx" style="height:450px;">
+        <div class="container">
+            <div class="row animated-area">
+                <div class="col-lg-12">
+                    <div class="pull-left parall_width">
+                        <div class="parallax_name marg50 marg0 animated" ng-class="$ctrl.editable && !parallax.edit.list[0].isVisible ? 'btn-edit-container' : ''" data-animation-delay="0.3s" data-animation="bounceInDown">
+                            <button class="btn btn-default btn-edit bg-white" ng-click="parallax.edit.list[0].show()" ng-show="{{$ctrl.editable}} && !parallax.edit.list[0].isVisible"><i class="fa fa-edit"></i></button>
+                            <span ng-show="!parallax.edit.list[0].isVisible">{{parallax.list[0]}}</span>
+                            <div class="row parallax-edit">
+                                <div class="col-lg-12">
+                                    <div dir="ltr" class="input-group" ng-show="parallax.edit.list[0].isVisible" ng-class="parallax.edit.list[0].title.cls">
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-danger" ng-click="parallax.edit.list[0].cancel()"><i class="fa fa-times"></i></button>
+                                        </span>
+                                        <input type="text" class="form-control text-center" placeholder="{{parallax.edit.list[0].title.placeholder}}" ng-model="parallax.edit.list[0].title.value" ng-change="parallax.edit.list[0].title.change()" />
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-success" ng-click="parallax.edit.list[0].submit()"><i class="fa fa-check"></i></button>
+                                        </span>
+                                    </div>
+                                    <p class="text-block text-small" ng-show="parallax.edit.list[0].isVisible && parallax.edit.list[0].title.msg.isVisible"><i class="fa fa-warning"></i> {{$ctrl.editMsg}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="parallax_name2 animated marg10" ng-class="$ctrl.editable && !parallax.edit.list[1].isVisible ? 'btn-edit-container' : ''" data-animation-delay="0.6s" data-animation="bounceInDown">
+                            <button class="btn btn-default btn-edit bg-white" ng-click="parallax.edit.list[1].show()" ng-show="{{$ctrl.editable}} && !parallax.edit.list[1].isVisible"><i class="fa fa-edit"></i></button>
+                            <span ng-show="!parallax.edit.list[1].isVisible">{{parallax.list[1]}}</span>
+                            <div class="row parallax-edit">
+                                <div class="col-lg-12">
+                                    <div dir="ltr" class="input-group" ng-show="parallax.edit.list[1].isVisible" ng-class="parallax.edit.list[1].title.cls">
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-danger" ng-click="parallax.edit.list[1].cancel()"><i class="fa fa-times"></i></button>
+                                        </span>
+                                        <input type="text" class="form-control text-center" placeholder="{{parallax.edit.list[1].title.placeholder}}" ng-model="parallax.edit.list[1].title.value" ng-change="parallax.edit.list[1].title.change()" />
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-success" ng-click="parallax.edit.list[1].submit()"><i class="fa fa-check"></i></button>
+                                        </span>
+                                    </div>
+                                    <p class="text-block text-small" ng-show="parallax.edit.list[1].isVisible && parallax.edit.list[1].title.msg.isVisible"><i class="fa fa-warning"></i> {{$ctrl.editMsg}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="parallax_name animated marg10" ng-class="$ctrl.editable && !parallax.edit.list[2].isVisible ? 'btn-edit-container' : ''" data-animation-delay="0.9s" data-animation="bounceInDown">
+                            <button class="btn btn-default btn-edit bg-white" ng-click="parallax.edit.list[2].show()" ng-show="{{$ctrl.editable}} && !parallax.edit.list[2].isVisible"><i class="fa fa-edit"></i></button>
+                            <span ng-show="!parallax.edit.list[2].isVisible">{{parallax.list[2]}}</span>
+                            <div class="row parallax-edit">
+                                <div class="col-lg-12">
+                                    <div dir="ltr" class="input-group" ng-show="parallax.edit.list[2].isVisible" ng-class="parallax.edit.list[2].title.cls">
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-danger" ng-click="parallax.edit.list[2].cancel()"><i class="fa fa-times"></i></button>
+                                        </span>
+                                        <input type="text" class="form-control text-center" placeholder="{{parallax.edit.list[2].title.placeholder}}" ng-model="parallax.edit.list[2].title.value" ng-change="parallax.edit.list[2].title.change()" />
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-success" ng-click="parallax.edit.list[2].submit()"><i class="fa fa-check"></i></button>
+                                        </span>
+                                    </div>
+                                    <p class="text-block text-small" ng-show="parallax.edit.list[2].isVisible && parallax.edit.list[2].title.msg.isVisible"><i class="fa fa-warning"></i> {{$ctrl.editMsg}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="parallax_name2 animated marg10" ng-class="$ctrl.editable && !parallax.edit.list[3].isVisible ? 'btn-edit-container' : ''" data-animation-delay="1.2s" data-animation="bounceInUp">
+                            <button class="btn btn-default btn-edit bg-white" ng-click="parallax.edit.list[3].show()" ng-show="{{$ctrl.editable}} && !parallax.edit.list[3].isVisible"><i class="fa fa-edit"></i></button>
+                            <span ng-show="!parallax.edit.list[3].isVisible">{{parallax.list[3]}}</span>
+                            <div class="row parallax-edit">
+                                <div class="col-lg-12">
+                                    <div dir="ltr" class="input-group" ng-show="parallax.edit.list[3].isVisible" ng-class="parallax.edit.list[3].title.cls">
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-danger" ng-click="parallax.edit.list[3].cancel()"><i class="fa fa-times"></i></button>
+                                        </span>
+                                        <input type="text" class="form-control text-center" placeholder="{{parallax.edit.list[3].title.placeholder}}" ng-model="parallax.edit.list[3].title.value" ng-change="parallax.edit.list[3].title.change()" />
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-success" ng-click="parallax.edit.list[3].submit()"><i class="fa fa-check"></i></button>
+                                        </span>
+                                    </div>
+                                    <p class="text-block text-small" ng-show="parallax.edit.list[3].isVisible && parallax.edit.list[3].title.msg.isVisible"><i class="fa fa-warning"></i> {{$ctrl.editMsg}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="parallax_name animated marg10" ng-class="$ctrl.editable && !parallax.edit.list[4].isVisible ? 'btn-edit-container' : ''" data-animation-delay="1.5s" data-animation="bounceInUp">
+                            <button class="btn btn-default btn-edit bg-white" ng-click="parallax.edit.list[4].show()" ng-show="{{$ctrl.editable}} && !parallax.edit.list[4].isVisible"><i class="fa fa-edit"></i></button>
+                            <span ng-show="!parallax.edit.list[4].isVisible">{{parallax.list[4]}}</span>
+                            <div class="row parallax-edit">
+                                <div class="col-lg-12">
+                                    <div dir="ltr" class="input-group" ng-show="parallax.edit.list[4].isVisible" ng-class="parallax.edit.list[4].title.cls">
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-danger" ng-click="parallax.edit.list[4].cancel()"><i class="fa fa-times"></i></button>
+                                        </span>
+                                        <input type="text" class="form-control text-center" placeholder="{{parallax.edit.list[4].title.placeholder}}" ng-model="parallax.edit.list[4].title.value" ng-change="parallax.edit.list[4].title.change()" />
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-success" ng-click="parallax.edit.list[4].submit()"><i class="fa fa-check"></i></button>
+                                        </span>
+                                    </div>
+                                    <p class="text-block text-small" ng-show="parallax.edit.list[4].isVisible && parallax.edit.list[4].title.msg.isVisible"><i class="fa fa-warning"></i> {{$ctrl.editMsg}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="parallax_name2 animated marg10" ng-class="$ctrl.editable && !parallax.edit.list[5].isVisible ? 'btn-edit-container' : ''" data-animation-delay="1.8s" data-animation="bounceInUp">
+                            <button class="btn btn-default btn-edit bg-white" ng-click="parallax.edit.list[5].show()" ng-show="{{$ctrl.editable}} && !parallax.edit.list[5].isVisible"><i class="fa fa-edit"></i></button>
+                            <span ng-show="!parallax.edit.list[5].isVisible">{{parallax.list[5]}}</span>
+                            <div class="row parallax-edit">
+                                <div class="col-lg-12">
+                                    <div dir="ltr" class="input-group" ng-show="parallax.edit.list[5].isVisible" ng-class="parallax.edit.list[5].title.cls">
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-danger" ng-click="parallax.edit.list[5].cancel()"><i class="fa fa-times"></i></button>
+                                        </span>
+                                        <input type="text" class="form-control text-center" placeholder="{{parallax.edit.list[5].title.placeholder}}" ng-model="parallax.edit.list[5].title.value" ng-change="parallax.edit.list[5].title.change()" />
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-success" ng-click="parallax.edit.list[5].submit()"><i class="fa fa-check"></i></button>
+                                        </span>
+                                    </div>
+                                    <p class="text-block text-small" ng-show="parallax.edit.list[5].isVisible && parallax.edit.list[5].title.msg.isVisible"><i class="fa fa-warning"></i> {{$ctrl.editMsg}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ipad pull-right animated" ng-class="$ctrl.editable ? 'btn-edit-container' : ''" data-animation-delay="2.1s" data-animation="bounceInRight">
+                    <button class="btn btn-default btn-edit bg-white" ng-click="parallax.edit.image.show()" ng-show="{{$ctrl.editable}} && !parallax.edit.image.isVisible"><i class="fa fa-picture-o"></i></button>
+                    <img alt="sandals" ng-src="{{parallax.img.src + '?v=' + parallax.img.version.major + '.' + parallax.img.version.medio + '.' + parallax.img.version.minor}}" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="parallax-modal modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="{{$ctrl.closeBtnText}}" ng-disabled="promoText.edit.inProgress"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">{{$ctrl.editTitle}}</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-12 marg10">
+                        <div class="card">
+                            <div class="card-img-header">
+                                <div class="file-upload">
+                                    <input type="file" accept="image/x-png,image/jpeg" class="upload" ng-click="parallax.edit.image.upload.click()" onchange="app.upload.change(this)" />
+                                    <img ng-src="{{parallax.img.src + '?v=' + parallax.img.version.major + '.' + parallax.img.version.medio + '.' + parallax.img.version.minor}}" />
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div><span>{{$ctrl.editImageMsg}}</span></div>
+                                <div class="pull-left">
+                                    <span class="text-muted text-small"> {{$ctrl.editImageNote + parallax.edit.image.width + ' &times; ' + parallax.edit.image.height}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" ng-disabled="promoText.edit.inProgress">{{$ctrl.closeBtnText}}</button>
+            </div>
+        </div>
+    </div>
+</div>

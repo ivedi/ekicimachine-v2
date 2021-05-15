@@ -1,0 +1,1 @@
+﻿var promoTextData={"texts":["Помимо производителей","Частное производство для ваших нужд","Ekici Makina Sanayi"]};

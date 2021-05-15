@@ -1,0 +1,1 @@
+﻿var promoTextData={"texts":["بجانب المنتجين","إنتاج آلة خاصة لتلبية الاحتياجات الخاصة بك","Ekici Makina Sanayi"]};

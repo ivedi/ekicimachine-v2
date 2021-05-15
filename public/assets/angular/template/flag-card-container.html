@@ -1,0 +1,23 @@
+﻿<div class="container marg50">
+    <div class="row" ng-show="{{$ctrl.editable}}">
+        <div class="col-lg-6">
+            <div class="form-group">
+                <input type="text" class="form-control input-lg" placeholder="{{$ctrl.searchPlaceholder}}" ng-model="flag.search.text" ng-change="flag.search.change()" />
+            </div>
+        </div>
+    </div>
+    <div class="row" ng-repeat="row in flag.rows">
+        <div class="col-lg-3 col-md-6" ng-class="$ctrl.editable ? 'btn-edit-container' : ''" ng-repeat="_flag in row">
+            <button class="btn btn-default bg-white" ng-click="flag.edit.submit(_flag)" ng-show="{{$ctrl.editable}}" ng-class="$ctrl.editable ? 'btn-edit' : ''"><i class="fa" ng-class="_flag.isVisible ? 'fa-eye-slash' : 'fa-eye'"></i></button>
+            <flag-card code="_flag.code"
+                       flag-class="_flag.className"
+                       is-visible="_flag.isVisible"
+                       is-enable="_flag.isEnabled"
+                       title="_flag.name[flag.lang]"
+                       editable="$ctrl.editable"></flag-card>
+        </div>
+    </div>
+    <div class="row" ng-show="!flag.list.length">
+        <h3 class="text-center text-muted">{{$ctrl.noResult}}</h3>
+    </div>
+</div>

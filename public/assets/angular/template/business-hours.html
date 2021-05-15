@@ -1,0 +1,55 @@
+﻿<div class="welcome_page" ng-class="$ctrl.editable && !businessHours.edit.title.isVisible ? 'btn-edit-container' : ''">
+    <button class="btn btn-default bg-white btn-edit" ng-click="businessHours.edit.title.show()" ng-show="{{$ctrl.editable && !businessHours.edit.title.isVisible}}"><i class="fa fa-edit"></i></button>
+    <h3 ng-show="!businessHours.edit.title.isVisible">{{businessHours.title}}</h3>
+    <div dir="ltr" class="input-group" ng-show="businessHours.edit.title.isVisible" ng-class="businessHours.edit.title.title.cls">
+        <span class="input-group-btn">
+            <button class="btn btn-danger" ng-click="businessHours.edit.title.cancel()"><i class="fa fa-times"></i></button>
+        </span>
+        <input type="text" class="form-control text-center" placeholder="{{businessHours.edit.title.title.placeholder}}" ng-model="businessHours.edit.title.title.value" ng-change="businessHours.edit.title.title.change()" />
+        <span class="input-group-btn">
+            <button class="btn btn-success" ng-click="businessHours.edit.title.submit()"><i class="fa fa-check"></i></button>
+        </span>
+    </div>
+    <p class="text-muted text-block text-small" ng-show="businessHours.edit.title.isVisible && businessHours.edit.title.title.msg.isVisible"><i class="fa fa-warning"></i> {{$ctrl.editMsg}}</p>
+</div>
+<div class="" ng-class="$ctrl.editable ? 'btn-edit-container' : ''">
+    <button class="btn btn-default bg-white btn-edit" ng-click="businessHours.edit.show()" ng-show="{{$ctrl.editable}}"><i class="fa fa-edit"></i></button>
+    <p class="adress_cont">
+        <span ng-show="businessHours.OnTime.isVisible"><i class="fa fa-unlock icon_foot"></i> {{businessHours.OnTime.text}}<br /></span>
+        <span ng-show="businessHours.OffTime.isVisible"><i class="fa fa-lock icon_foot"></i> {{businessHours.OffTime.text}}</span>
+    </p>
+</div>
+<div class="business-hours-modal modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="{{$ctrl.closeBtnText}}" ng-disabled="businessHours.edit.inProgress"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">{{$ctrl.editTitle}}</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="form-group" ng-class="businessHours.edit.OnTime.cls">
+                            <input class="form-control" type="text" placeholder="{{businessHours.edit.OnTime.placeholder}}" ng-model="businessHours.edit.OnTime.value" ng-change="businessHours.edit.OnTime.change()" ng-disabled="businessHours.edit.inProgress" />
+                            <p class="text-danger text-block text-small" ng-show="businessHours.edit.OnTime.msg.isVisible">
+                                <i class="fa fa-warning"></i> {{$ctrl.editMsg}}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="form-group" ng-class="businessHours.edit.OffTime.cls">
+                            <input class="form-control" type="text" placeholder="{{businessHours.edit.OffTime.placeholder}}" ng-model="businessHours.edit.OffTime.value" ng-change="businessHours.edit.OffTime.change()" ng-disabled="businessHours.edit.inProgress" />
+                            <p class="text-danger text-block text-small" ng-show="businessHours.edit.OffTime.msg.isVisible">
+                                <i class="fa fa-warning"></i> {{$ctrl.editMsg}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" ng-disabled="businessHours.edit.inProgress">{{$ctrl.closeBtnText}}</button>
+                <button type="button" class="btn btn-primary" ng-click="businessHours.edit.submit()" ng-disabled="businessHours.edit.inProgress">{{header.edit.inProgress ? $ctrl.inProgressText: $ctrl.submitBtnText}}</button>
+            </div>
+        </div>
+    </div>
+</div>

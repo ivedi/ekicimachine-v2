@@ -1,0 +1,52 @@
+﻿<div class="container">
+    <div class="row">
+        <div class="col-lg-6 col-sm-6" ng-class="$ctrl.editable ? 'btn-edit-container' : ''" ng-repeat="_presentation in presentation.list">
+            <button class="btn btn-default btn-edit margin-top-10p" ng-click="presentation.edit.show($index, _presentation)" ng-show="{{$ctrl.editable}}"><i class="fa fa-edit"></i></button>
+            <presentation title="_presentation.title"
+                          icon-class="_presentation.iconClass"
+                          content="_presentation.content"></presentation>
+        </div>
+    </div>
+</div>
+<div class="presentation-edit-modal modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="{{$ctrl.closeBtnText}}" ng-disabled="presentation.edit.inProgress"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">{{$ctrl.editTitle}}</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <presentation title="presentation.edit.title.value"
+                                      icon-class="presentation.edit.iconClass"
+                                      content="presentation.edit.content.value"></presentation>
+                    </div>
+                </div>
+                <hr />
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="form-group" ng-class="presentation.edit.title.cls">
+                            <input class="form-control" type="text" placeholder="{{presentation.edit.title.placeholder}}" ng-model="presentation.edit.title.value" ng-change="presentation.edit.title.change()" ng-disabled="presentation.edit.inProgress" />
+                            <p class="text-danger text-block text-small" ng-show="presentation.edit.title.msg.isVisible">
+                                <i class="fa fa-warning"></i> {{$ctrl.editMsg}}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="form-group" ng-class="presentation.edit.content.cls">
+                            <textarea rows="10" class="form-control" placeholder="{{presentation.edit.content.placeholder}}" ng-model="presentation.edit.content.value" ng-change="presentation.edit.content.change()" ng-disabled="presentation.edit.inProgress"></textarea>
+                            <p class="text-danger text-block text-small" ng-show="presentation.edit.content.msg.isVisible">
+                                <i class="fa fa-warning"></i> {{$ctrl.editMsg}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" ng-disabled="presentation.edit.inProgress">{{$ctrl.closeBtnText}}</button>
+                <button type="button" class="btn btn-primary" ng-click="presentation.edit.submit()" ng-disabled="presentation.edit.inProgress">{{presentation.edit.inProgress ? $ctrl.inProgressText: $ctrl.submitBtnText}}</button>
+            </div>
+        </div>
+    </div>
+</div>

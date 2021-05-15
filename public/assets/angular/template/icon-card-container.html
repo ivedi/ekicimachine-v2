@@ -1,0 +1,50 @@
+﻿<div class="container">
+    <div class="row animated-area">
+        <icon-card ng-repeat="_iconCard in iconCard.list"
+                   animation-delay="_iconCard.animationDelay"
+                   icon-class="_iconCard.iconClass"
+                   header="_iconCard.header"
+                   text="_iconCard.text"
+                   editable="$ctrl.editable"
+                   edit-msg="$ctrl.editMsg"
+                   array-index="$index"
+                   edit-handler="iconCard.edit.click"></icon-card>
+    </div>
+</div>
+<div class="icon-card-container-modal modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="{{$ctrl.closeBtnText}}" ng-disabled="header.edit.inProgress"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">{{$ctrl.editTitle}}</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="icon_ex2 animated" data-animation-delay="{{iconCard.edit.animationDelay}}" data-animation="rotateIn"><i ng-class="iconCard.edit.iconClass" class=""></i></div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="form-group" ng-class="iconCard.edit.header.cls">
+                            <input class="form-control text-large text-center" type="text" placeholder="{{iconCard.edit.header.placeholder}}" ng-model="iconCard.edit.header.value" ng-change="iconCard.edit.header.change()" ng-disabled="iconCard.edit.inProgress" />
+                            <p class="text-danger text-block text-small" ng-show="iconCard.edit.header.msg.isVisible">
+                                <i class="fa fa-warning"></i> {{$ctrl.editMsg}}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="form-group" ng-class="iconCard.edit.text.cls">
+                            <textarea rows="3" class="form-control text-center" placeholder="{{iconCard.edit.text.placeholder}}" ng-model="iconCard.edit.text.value" ng-change="iconCard.edit.text.change()" ng-disabled="iconCard.edit.inProgress"></textarea>
+                            <p class="text-danger text-block text-small" ng-show="iconCard.edit.text.msg.isVisible">
+                                <i class="fa fa-warning"></i> {{$ctrl.editMsg}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" ng-disabled="iconCard.edit.inProgress">{{$ctrl.closeBtnText}}</button>
+                <button type="button" class="btn btn-primary" ng-click="iconCard.edit.submit()" ng-disabled="iconCard.edit.inProgress">{{iconCard.edit.inProgress ? $ctrl.inProgressText: $ctrl.submitBtnText}}</button>
+            </div>
+        </div>
+    </div>
+</div>

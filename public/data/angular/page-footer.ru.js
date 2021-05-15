@@ -1,0 +1,1 @@
+﻿var pageFooterData={"title":{"pages":"страницы","contact":"контакт"}};

@@ -1,0 +1,1 @@
+﻿var businessHoursData={"title":"Рабочие часы","OnTime":{"text":"Будние дни: с 07:30 до 18:30","isVisible":true},"OffTime":{"text":"Воскресенье: закрыто","isVisible":true}};

@@ -1,0 +1,109 @@
+﻿<div id="velcro-header" class="hide-1sec" ng-class="$ctrl.editable ? 'btn-edit-container' : ''">
+    <div class="header-wrapper">
+        <div class="pull-left" style="padding-left:5%"><a ng-href="{{header.urls.home.href}}"><span class="img-responsive logo" alt="logo"></span></a></div>
+        <div class="pull-right menu" style="padding-right:5%">
+            <nav id="responsive-menu">
+                <ul class="super-menu" id="superfish">
+                    <li><a class="" ng-class="header.urls.home.cls" ng-href="{{header.urls.home.href}}">{{header.urls.home.text}}</a></li>
+                    <li><a class="" ng-class="header.urls.machine.cls" ng-href="{{header.urls.machine.href}}">{{header.urls.machine.text}}</a></li>
+                    <li><a class="" ng-class="header.urls.automation.cls" ng-href="{{header.urls.automation.href}}">{{header.urls.automation.text}}</a></li>
+                    <li><a class="" ng-class="header.urls.reference.cls" ng-href="{{header.urls.reference.href}}">{{header.urls.reference.text}}</a></li>
+                    <li><a class="" ng-class="header.urls.news.cls" ng-href="{{header.urls.news.href}}">{{header.urls.news.text}}</a></li>
+                    <li><a class="" ng-class="header.urls.contact.cls" ng-href="{{header.urls.contact.href}}">{{header.urls.contact.text}}</a></li>
+                    <li ng-show="header.logout.isVisible"><a class="" href="" ng-click="header.logout.submit()">{{header.logout.text}} <i class="fa fa-sign-out"></i></a></li>
+                    <li><a href="#">|</a></li>
+                    <li>
+                        <a class="arrow_menu cursor-pointer">{{$ctrl.selectedLanguage}}</a>
+                        <ul>
+                            <li><a href="" ng-click="header.language.change('tr')">Türkçe</a></li>
+                            <li><a href="" ng-click="header.language.change('en')">English</a></li>
+                            <li><a href="" ng-click="header.language.change('ru')">русский</a></li>
+                            <li><a href="" ng-click="header.language.change('ar')">عربى</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <button class="btn btn-default btn-edit" ng-click="header.edit.click()" ng-show="{{$ctrl.editable}}"><i class="fa fa-edit"></i></button>
+    <div class="page-header-modal modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="{{$ctrl.closeBtnText}}" ng-disabled="header.edit.inProgress"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">{{$ctrl.editTitle}}</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group" ng-class="header.edit.urls.home.cls">
+                                <input class="form-control" type="text" placeholder="{{header.edit.urls.home.placeholder}}" ng-model="header.edit.urls.home.value" ng-change="header.edit.urls.home.change()" ng-disabled="header.edit.inProgress" />
+                                <p class="text-danger text-block text-small" ng-show="header.edit.urls.home.msg.isVisible">
+                                    <i class="fa fa-warning"></i> {{$ctrl.editMsg}}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group" ng-class="header.edit.urls.machines.cls">
+                                <input class="form-control" type="text" placeholder="{{header.edit.urls.machines.placeholder}}" ng-model="header.edit.urls.machines.value" ng-change="header.edit.urls.machines.change()" ng-disabled="header.edit.inProgress" />
+                                <p class="text-danger text-block text-small" ng-show="header.edit.urls.machines.msg.isVisible">
+                                    <i class="fa fa-warning"></i> {{$ctrl.editMsg}}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group" ng-class="header.edit.urls.automation.msg.cls">
+                                <input class="form-control" type="text" placeholder="{{header.edit.urls.automation.placeholder}}" ng-model="header.edit.urls.automation.value" ng-change="header.edit.urls.automation.change()" ng-disabled="header.edit.inProgress" />
+                                <p class="text-danger text-block text-small" ng-show="header.edit.urls.automation.msg.isVisible">
+                                    <i class="fa fa-warning"></i> {{$ctrl.editMsg}}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group" ng-class="header.edit.urls.reference.msg.cls">
+                                <input class="form-control" type="text" placeholder="{{header.edit.urls.reference.placeholder}}" ng-model="header.edit.urls.reference.value" ng-change="header.edit.urls.reference.change()" ng-disabled="header.edit.inProgress" />
+                                <p class="text-danger text-block text-small" ng-show="header.edit.urls.reference.msg.isVisible">
+                                    <i class="fa fa-warning"></i> {{$ctrl.editMsg}}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group" ng-class="header.edit.urls.news.msg.cls">
+                                <input class="form-control" type="text" placeholder="{{header.edit.urls.news.placeholder}}" ng-model="header.edit.urls.news.value" ng-change="header.edit.urls.news.change()" ng-disabled="header.edit.inProgress" />
+                                <p class="text-danger text-block text-small" ng-show="header.edit.urls.news.msg.isVisible">
+                                    <i class="fa fa-warning"></i> {{$ctrl.editMsg}}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group" ng-class="header.edit.urls.contact.msg.cls">
+                                <input class="form-control" type="text" placeholder="{{header.edit.urls.contact.placeholder}}" ng-model="header.edit.urls.contact.value" ng-change="header.edit.urls.contact.change()" ng-disabled="header.edit.inProgress" />
+                                <p class="text-danger text-block text-small" ng-show="header.edit.urls.contact.msg.isVisible">
+                                    <i class="fa fa-warning"></i> {{$ctrl.editMsg}}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group" ng-class="header.edit.logout.msg.cls">
+                                <input class="form-control" type="text" placeholder="{{header.edit.logout.placeholder}}" ng-model="header.edit.logout.value" ng-change="header.edit.logout.change()" ng-disabled="header.edit.inProgress" />
+                                <p class="text-danger text-block text-small" ng-show="header.edit.logout.msg.isVisible">
+                                    <i class="fa fa-warning"></i> {{$ctrl.editMsg}}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" ng-disabled="header.edit.inProgress">{{$ctrl.closeBtnText}}</button>
+                    <button type="button" class="btn btn-primary" ng-click="header.edit.submit()" ng-disabled="header.edit.inProgress">{{header.edit.inProgress ? $ctrl.inProgressText: $ctrl.submitBtnText}}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

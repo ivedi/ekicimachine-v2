@@ -1,0 +1,1 @@
+﻿var pageHeaderData={"urls":[{"href":"anasayfa","text":"Anasayfa"},{"href":"makineler","text":"Makinelerimiz"},{"href":"otomasyon","text":"Otomasyon"},{"href":"referanslar","text":"Referanslarımız"},{"href":"haberler","text":"Haberler"},{"href":"iletisim","text":"İletişim"}],"logout":{"text":"Çıkış Yap"}};

@@ -1,0 +1,62 @@
+﻿<div class="footer marg50">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-sm-3"></div>
+            <div class="col-lg-3 col-sm-3">
+                <div class="welcome_footer" ng-class="$ctrl.editable && !footer.edit.pages.isVisible ? 'btn-edit-container' : ''">
+                    <button class="btn btn-default bg-white btn-edit" ng-click="footer.edit.pages.show()" ng-show="{{$ctrl.editable}} && !footer.edit.pages.isVisible"><i class="fa fa-edit"></i></button>
+                    <h3 ng-show="!footer.edit.pages.isVisible">{{footer.title.pages}}</h3>
+                    <div dir="ltr" class="input-group" ng-show="footer.edit.pages.isVisible" ng-class="footer.edit.pages.title.cls">
+                        <span class="input-group-btn">
+                            <button class="btn btn-danger" ng-click="footer.edit.pages.cancel()"><i class="fa fa-times"></i></button>
+                        </span>
+                        <input type="text" class="form-control text-center" placeholder="{{footer.edit.pages.title.placeholder}}" ng-model="footer.edit.pages.title.value" ng-change="footer.edit.pages.title.change()" />
+                        <span class="input-group-btn">
+                            <button class="btn btn-success" ng-click="footer.edit.pages.submit()"><i class="fa fa-check"></i></button>
+                        </span>
+                    </div>
+                    <p class="text-muted text-block text-small" ng-show="footer.edit.pages.isVisible && footer.edit.pages.title.msg.isVisible"><i class="fa fa-warning"></i> {{$ctrl.editMsg}}</p>
+                </div>
+                <div class="cont_footer">
+                    <div class="adress">
+                        <div class="text-center" ng-repeat="url in footer.urls"><a ng-href="{{url.href}}">{{url.text}}</a><br /></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-3">
+                <contact-card editable="$ctrl.editable"
+                              edit-item="footer.edit.contact"
+                              edit-msg="$ctrl.editMsg"
+                              edit-title="$ctrl.contactCardEditTitle"
+                              edit-modal-class="'page-footer'"
+                              close-btn-text="$ctrl.closeBtnText"
+                              in-progress-text="$ctrl.inProgressText"
+                              submit-btn-text="$ctrl.submitBtnText"
+                              email-text-note="$ctrl.contactCardEmailTextNote"
+                              email-value-note="$ctrl.contactCardEmailValueNote"
+                              title-class="'welcome_footer'"
+                              title="footer.title.contact"
+                              contact-container-class="'cont_footer'"
+                              address-container-class="'adress'"
+                              social-network-is-visible="true"
+                              social-network-edit-title="$ctrl.socialNetworkEditTitle"
+                              social-network-edit-class="'page-footer'"></contact-card>
+            </div>
+            <div class="col-lg-3 col-sm-3"></div>
+        </div>
+    </div>
+</div>
+<div class="footer_bottom">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-sm-6 col3-box">
+                <div class="pull-left">
+                    Copyright 2017 <a href="/" target="_blank">Ekici Makina</a><!--. Created by <a href="#" target="_blank">Halil İbrahim İvedi</a>-->
+                </div>
+            </div>
+            <div class="col-lg-6 col-sm-6 col3-box">
+                <a class="pull-right scroll footer_move tooltip_s" data-original-title="Move Up" data-placement="top" href="#"><i class="fa fa-angle-up move"></i></a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,1 @@
+﻿var pageHeaderData = { "urls": [{ "href": "home", "text": "Главная" }, { "href": "machines", "text": "Машины" }, { "href": "automation", "text": "автоматизация" }, { "href": "references", "text": "Рекомендации" }, { "href": "news", "text": "Новости" }, { "href": "contact", "text": "контакт" }], "logout": { "text": "Выйти" } };

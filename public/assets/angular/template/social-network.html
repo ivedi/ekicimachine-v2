@@ -1,0 +1,55 @@
+﻿<div class="welcome_page" ng-show="$ctrl.titleIsVisible" ng-class="$ctrl.editable && !socialNetwork.edit.title.isVisible ? 'btn-edit-container' : ''">
+    <button class="btn btn-default bg-white btn-edit" ng-click="socialNetwork.edit.title.show()" ng-show="{{$ctrl.editable && !$ctrl.editItem.isVisible}}"><i class="fa fa-edit"></i></button>
+    <h3 ng-show="!socialNetwork.edit.title.isVisible">{{socialNetwork.title}}</h3>
+    <div dir="ltr" class="input-group" ng-show="socialNetwork.edit.title.isVisible" ng-class="socialNetwork.edit.title.title.cls">
+        <span class="input-group-btn">
+            <button class="btn btn-danger" ng-click="socialNetwork.edit.title.cancel()"><i class="fa fa-times"></i></button>
+        </span>
+        <input type="text" class="form-control text-center" placeholder="{{socialNetwork.edit.title.title.placeholder}}" ng-model="socialNetwork.edit.title.title.value" ng-change="socialNetwork.edit.title.title.change()" />
+        <span class="input-group-btn">
+            <button class="btn btn-success" ng-click="socialNetwork.edit.title.submit()"><i class="fa fa-check"></i></button>
+        </span>
+    </div>
+    <p class="text-muted text-block text-small" ng-show="socialNetwork.edit.title.isVisible && socialNetwork.edit.title.title.msg.isVisible"><i class="fa fa-warning"></i> {{$ctrl.editMsg}}</p>
+</div>
+<div class="" ng-class="$ctrl.iconContainerClass + ($ctrl.editable ? ' btn-edit-container' : '')">
+    <button class="btn btn-default bg-white btn-edit" ng-click="socialNetwork.edit.click()" ng-show="{{$ctrl.editable}}"><i class="fa fa-edit"></i></button>
+    <ul>
+        <li ng-repeat="link in socialNetwork.links | orderBy: 'order' | filter: {isVisible:true}"><a target="_blank" ng-href="{{link.address}}" class="tooltip_s" data-placement="bottom" data-original-title="{{link.title}}"><i class="fa" ng-class="link.iconClass"></i></a></li>
+    </ul>
+</div>
+<div class="social-network-modal modal fade" ng-class="$ctrl.editModalClass" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="{{$ctrl.closeBtnText}}" ng-disabled="conat.edit.inProgress"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title text-dark">{{$ctrl.editTitle}}</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-12 margin-bottom-15" ng-repeat="link in socialNetwork.edit.links">
+                        <div dir="ltr" class="input-group" ng-class="link.cls">
+                            <span class="input-group-addon text-dark">
+                                <i class="fa" ng-class="link.iconClass"></i>
+                            </span>
+                            <input class="form-control" type="text" placeholder="{{link.placeholder}}" ng-model="link.value" ng-change="link.change()" ng-disabled="socialNetwork.edit.inProgress" />
+                            <span class="input-group-btn">
+                                <button type="button" class="btn" ng-class="link.isVisible ? 'btn-success' : 'btn-danger'" ng-disabled="socialNetwork.edit.inProgress" ng-click="socialNetwork.edit.toggleVisibility(link)"><i class="fa" ng-class="link.isVisible ? 'fa-eye' : 'fa-eye-slash'"></i> {{link.isVisible ? socialNetwork.edit.show.text : socialNetwork.edit.hide.text }}</button>
+                            </span>
+                        </div>
+                        <p class="text-muted text-block text-small" ng-show="!link.msg.isVisible">
+                            <i class="fa fa-asterisk"></i> {{link.explanation}}
+                        </p>
+                        <p class="text-danger text-block text-small" ng-show="link.msg.isVisible">
+                            <i class="fa fa-warning"></i> {{$ctrl.editMsg}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" ng-disabled="socialNetwork.edit.inProgress">{{$ctrl.closeBtnText}}</button>
+                <button type="button" class="btn btn-primary" ng-click="socialNetwork.edit.submit()" ng-disabled="socialNetwork.edit.inProgress">{{socialNetwork.edit.inProgress ? $ctrl.inProgressText: $ctrl.submitBtnText}}</button>
+            </div>
+        </div>
+    </div>
+</div>

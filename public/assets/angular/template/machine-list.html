@@ -1,0 +1,276 @@
+﻿<div class="container" ng-hide="$ctrl.hideTitle">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="welcome" ng-class="$ctrl.editable && !machine.edit.title.isVisible ? 'btn-edit-container' : ''">
+                <button class="btn btn-default bg-white btn-edit" ng-click="machine.edit.title.show()" ng-show="{{$ctrl.editable}} && !machine.edit.title.isVisible"><i class="fa fa-edit"></i></button>
+                <div class="wel_cen marg100" ng-show="!machine.edit.title.isVisible"><h2>{{machine.title[machine.lang]}}</h2></div>
+                <div dir="ltr" class="input-group input-group-lg" ng-show="machine.edit.title.isVisible" ng-class="machine.edit.title.title.cls">
+                    <span class="input-group-btn">
+                        <button class="btn btn-danger" ng-click="machine.edit.title.cancel()"><i class="fa fa-times"></i></button>
+                    </span>
+                    <input type="text" class="form-control text-center" placeholder="{{machine.edit.title.title.placeholder}}" ng-model="machine.edit.title.title.value" ng-change="machine.edit.title.title.change()" />
+                    <span class="input-group-btn">
+                        <button class="btn btn-success" ng-click="machine.edit.title.submit()"><i class="fa fa-check"></i></button>
+                    </span>
+                </div>
+                <p class="text-muted text-block text-small" ng-show="machine.edit.title.isVisible && machine.edit.title.title.msg.isVisible"><i class="fa fa-warning"></i> {{$ctrl.editMsg}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container marg50">
+    <machine-filter text-turkish="$ctrl.textTurkish"
+                    text-english="$ctrl.textEnglish"
+                    text-russian="$ctrl.textRussian"
+                    text-arabic="$ctrl.textArabic"
+                    filter-text-all="$ctrl.filterTextAll"
+                    filter-text-edit="$ctrl.filterTextEdit"
+                    filter-text-add="$ctrl.filterTextAdd"
+                    filter-text-remove="$ctrl.filterTextRemove"
+                    editable="$ctrl.editable"
+                    edit-msg="$ctrl.editMsg"
+                    edit-title="$ctrl.editTitleCategory"
+                    remove-title="$ctrl.removeTitleCategory"
+                    remove-msg="$ctrl.removeMsgCategory"
+                    add-title="$ctrl.addTitleCategory"
+                    add-msg="$ctrl.addMsg"
+                    add-placeholder="$ctrl.addPlaceholderCategory"
+                    close-btn-text="$ctrl.closeBtnText"
+                    submit-btn-text="$ctrl.submitBtnText"
+                    in-progress-text="$ctrl.inProgressText"></machine-filter>
+</div>
+<div ng-class="$ctrl.listContainerClass" class="">
+    <div class="animated-area portfolio marg50">
+        <div ng-repeat="_machine in machine.list" class="port-hover animated" ng-class="_machine.cls + ' ' + $ctrl.machineClass + ($ctrl.editable ? ' btn-edit-container' : '') + (_machine.src.isYoutube ? ' machine-video' : ' machine-image')" data-animation-delay="{{_machine.animationDelay}}" data-animation="fadeIn">
+            <span class="btn-edit">
+                <button class="btn btn-default bg-white" ng-click="machine.remove.show(_machine)" ng-show="{{$ctrl.editable}}"><i class="fa fa-trash-o"></i></button>
+                <button class="btn btn-default bg-white" ng-click="machine.edit.machine.show(_machine)" ng-show="{{$ctrl.editable}}"><i class="fa fa-edit"></i></button>
+            </span>
+            <div ng-show="_machine.src.isYoutube" class="machine" ng-class="_machine.src.isYoutube ? 'catch-resize' : ''">
+                <iframe src="{{_machine.src.isYoutube ? _machine.src.path : ''}}" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <img ng-hide="_machine.src.isYoutube" ng-src="{{_machine.src.isYoutube ? '' : _machine.src.path + '?v=' + _machine.src.version.major + '.' + _machine.src.version.medio + '.' + _machine.src.version.minor}}" alt="machine" />
+            <div class="p-hover"><span><span class="port-plus"></span></span></div>
+            <div class="port-text"><p>{{_machine.text[machine.lang]}}</p><p class="small">{{_machine.categoryText}}</p></div>
+        </div>
+        <div ng-show="{{$ctrl.editable}}" class="port-hover machine-image animated" ng-class="$ctrl.machineClass" data-animation-delay="1.3s" data-animation="fadeIn">
+            <img ng-src="{{machine.add.upload.image.path}}" alt="machine" />
+            <div class="p-hover cursor-pointer" ng-click="machine.add.show()"><span><span class="port-plus"></span></span></div>
+            <div class="port-text"><p>{{$ctrl.textNewMachine}}</p><p class="small">{{$ctrl.textNewMachineComment}}</p></div>
+        </div>
+    </div>
+</div>
+<div class="machine-list-edit-modal modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="{{$ctrl.closeBtnText}}" ng-disabled="machine.edit.inProgress"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">{{$ctrl.editTitleMachine}}</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-12 marg10">
+                        <div class="card block">
+                            <div class="card-img-header" ng-hide="machine.edit.machine.value.src.isYoutube">
+                                <div class="file-upload">
+                                    <input type="file" accept="image/x-png,image/jpeg" class="upload" ng-click="machine.edit.machine.upload.click()" onchange="app.upload.change(this)" ng-disabled="machine.edit.inProgress" />
+                                    <img ng-src="{{machine.edit.machine.value.src.path + '?v=' + machine.edit.machine.value.src.version.major + '.' + machine.edit.machine.value.src.version.medio + '.' + machine.edit.machine.value.src.version.minor}}" ng-show="!machine.edit.machine.upload.isNecessary" />
+                                    <img ng-src="{{machine.edit.machine.upload.data}}" ng-show="machine.edit.machine.upload.isNecessary" />
+                                </div>
+                            </div>
+                            <div class="card-iframe-header" ng-show="machine.edit.machine.value.src.isYoutube">
+                                <iframe src="{{machine.edit.machine.value.src.video.iframeSrc}}" frameborder="0" allowfullscreen></iframe>
+                            </div>
+                            <div class="card-body">
+                                <div ng-hide="machine.edit.machine.value.src.isYoutube"><span>{{$ctrl.editImageMsg}}</span></div>
+                                <div ng-hide="machine.edit.machine.value.src.isYoutube" class="pull-left padding-v-8">
+                                    <span class="text-muted text-small"> {{$ctrl.editImageNote + machine.edit.machine.upload.width + ' &times; ' + machine.edit.machine.upload.height}}</span>
+                                </div>
+                                <br />
+                                <div class="port-text">
+                                    <p>{{machine.edit.machine.title.value}}</p>
+                                    <p class="small">{{machine.edit.machine.value.categoryText}}</p>
+                                </div>
+                                <div ng-show="machine.edit.machine.value.src.isYoutube" class="form-group margin-v-8 marg10" ng-class="machine.edit.machine.value.src.video.cls">
+                                    <input type="text" class="form-control" placeholder="{{$ctrl.textEmbeddedYoutube}}" ng-change="machine.edit.machine.value.src.video.change()" ng-click="machine.edit.machine.value.select($event)" ng-model="machine.edit.machine.value.src.video.value" ng-disabled="machine.edit.inProgress" />
+                                </div>
+                                <p class="text-danger text-block text-small" ng-show="machine.edit.machine.value.src.isYoutube && machine.edit.machine.value.src.video.msg.isVisible">
+                                    <i class="fa fa-warning"></i> {{$ctrl.editMsg}}
+                                </p>
+                            </div>
+                            <div class="card-footer">
+                                <button type="button" class="btn btn-sm pull-right" ng-class="machine.edit.machine.value.src.isYoutube ? 'btn-danger' : 'btn-primary'" ng-click="machine.edit.machine.value.src.toggleType()" ng-disabled="machine.edit.inProgress">
+                                    <i class="fa" ng-class="machine.edit.machine.value.src.isYoutube ? 'fa-youtube-play' : 'fa-picture-o'"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr />
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="input-group-lg padding-v-8" ng-class="machine.edit.machine.title.cls">
+                            <input type="text" class="form-control text-center" placeholder="{{machine.edit.machine.title.placeholder}}" ng-model="machine.edit.machine.title.value" ng-change="machine.edit.machine.title.change()" ng-disabled="machine.edit.inProgress" />
+                        </div>
+                        <p class="text-danger text-block text-small padding-v-8" ng-show="machine.edit.machine.title.msg.isVisible">
+                            <i class="fa fa-warning"></i> {{$ctrl.editMsg}}
+                        </p>
+                    </div>
+                </div>
+                <div class="row marg10">
+                    <div class="col-lg-6 form-group text-center" ng-repeat="category in machine.edit.machine.value.categories">
+                        <button type="button" class="btn" ng-class="category.isSelected ? 'btn-success' : 'btn-default'" ng-click="machine.edit.machine.value.categorySelect(category)" ng-disabled="machine.edit.inProgress">
+                            <i class="fa" ng-class="category.isSelected ? 'fa-check' : 'fa-minus'"></i> {{category.text[machine.lang]}}
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" ng-disabled="machine.edit.inProgress">{{$ctrl.closeBtnText}}</button>
+                <button type="button" class="btn btn-primary" ng-click="machine.edit.submit()" ng-disabled="machine.edit.inProgress">{{machine.edit.inProgress ? $ctrl.inProgressText: $ctrl.submitBtnText}}</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="machine-list-add-modal modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="{{$ctrl.closeBtnText}}" ng-disabled="machine.add.inProgress"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">{{$ctrl.addTitleMachine}}</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-12 marg10">
+                        <div class="card block">
+                            <div class="card-img-header" ng-hide="machine.add.value.src.isYoutube">
+                                <div class="file-upload">
+                                    <input type="file" accept="image/x-png,image/jpeg" class="upload" ng-click="machine.add.upload.click()" onchange="app.upload.change(this)" ng-disabled="machine.add.inProgress" />
+                                    <img ng-src="{{machine.add.value.src.path + '?v=' + machine.add.value.src.version.major + '.' + machine.add.value.src.version.medio + '.' + machine.add.value.src.version.minor}}" ng-show="!machine.add.upload.isNecessary" />
+                                    <img ng-src="{{machine.add.upload.data}}" ng-show="machine.add.upload.isNecessary" />
+                                </div>
+                            </div>
+                            <div class="card-iframe-header" ng-show="machine.add.value.src.isYoutube">
+                                <iframe src="{{machine.add.value.src.video.iframeSrc}}" frameborder="0" allowfullscreen></iframe>
+                            </div>
+                            <div class="card-body">
+                                <div ng-hide="machine.add.value.src.isYoutube"><span>{{$ctrl.editImageMsg}}</span></div>
+                                <div ng-hide="machine.add.value.src.isYoutube" class="pull-left padding-v-8">
+                                    <span class="text-muted text-small"> {{$ctrl.editImageNote + machine.add.upload.width + ' &times; ' + machine.add.upload.height}}</span>
+                                </div>
+                                <br />
+                                <div class="port-text">
+                                    <p>{{machine.add.value.text[machine.lang].value}}</p>
+                                    <p class="small">{{machine.add.value.categoryText}}</p>
+                                </div>
+                                <div ng-show="machine.add.value.src.isYoutube" class="form-group margin-v-8 marg10" ng-class="machine.add.value.src.video.cls">
+                                    <input type="text" class="form-control" placeholder="{{$ctrl.textEmbeddedYoutube}}" ng-change="machine.add.value.src.video.change()" ng-click="machine.add.value.select($event)" ng-model="machine.add.value.src.video.value" ng-disabled="machine.add.inProgress" />
+                                </div>
+                                <p class="text-danger text-block text-small" ng-show="machine.add.value.src.isYoutube && machine.add.value.src.video.msg.isVisible">
+                                    <i class="fa fa-warning"></i> {{$ctrl.addMsg}}
+                                </p>
+                            </div>
+                            <div class="card-footer">
+                                <button type="button" class="btn btn-sm pull-right" ng-class="machine.add.value.src.isYoutube ? 'btn-danger' : 'btn-primary'" ng-click="machine.add.value.src.toggleType()" ng-disabled="machine.add.inProgress">
+                                    <i class="fa" ng-class="machine.add.value.src.isYoutube ? 'fa-youtube-play' : 'fa-picture-o'"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr />
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="form-group padding-v-8" ng-class="machine.add.value.text.tr.cls">
+                            <label>{{$ctrl.textTurkish}}</label>
+                            <input dir="ltr" class="form-control" type="text" placeholder="{{machine.add.value.text.tr.placeholder}}" ng-model="machine.add.value.text.tr.value" ng-change="machine.add.value.text.tr.change()" ng-disabled="machine.add.inProgress" />
+                            <p class="text-danger text-block text-small" ng-show="machine.add.value.text.tr.msg.isVisible">
+                                <i class="fa fa-warning"></i> {{$ctrl.addMsg}}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="form-group padding-v-8" ng-class="machine.add.value.text.en.cls">
+                            <label>{{$ctrl.textEnglish}}</label>
+                            <input dir="ltr" class="form-control" type="text" placeholder="{{machine.add.value.text.en.placeholder}}" ng-model="machine.add.value.text.en.value" ng-change="machine.add.value.text.en.change()" ng-disabled="machine.add.inProgress" />
+                            <p class="text-danger text-block text-small" ng-show="machine.add.value.text.en.msg.isVisible">
+                                <i class="fa fa-warning"></i> {{$ctrl.addMsg}}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="form-group padding-v-8" ng-class="machine.add.value.text.ru.cls">
+                            <label>{{$ctrl.textRussian}}</label>
+                            <input dir="ltr" class="form-control" type="text" placeholder="{{machine.add.value.text.ru.placeholder}}" ng-model="machine.add.value.text.ru.value" ng-change="machine.add.value.text.ru.change()" ng-disabled="machine.add.inProgress" />
+                            <p class="text-danger text-block text-small" ng-show="machine.add.value.text.ru.msg.isVisible">
+                                <i class="fa fa-warning"></i> {{$ctrl.addMsg}}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="form-group padding-v-8" ng-class="machine.add.value.text.ar.cls">
+                            <label>{{$ctrl.textArabic}}</label>
+                            <input dir="rtl" class="form-control" type="text" placeholder="{{machine.add.value.text.ar.placeholder}}" ng-model="machine.add.value.text.ar.value" ng-change="machine.add.value.text.ar.change()" ng-disabled="machine.add.inProgress" />
+                            <p class="text-danger text-block text-small" ng-show="machine.add.value.text.ar.msg.isVisible">
+                                <i class="fa fa-warning"></i> {{$ctrl.addMsg}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row marg10">
+                    <div class="col-lg-6 form-group text-center" ng-repeat="category in machine.add.value.categories">
+                        <button type="button" class="btn" ng-class="category.isSelected ? 'btn-success' : 'btn-default'" ng-click="machine.add.value.categorySelect(category)" ng-disabled="machine.add.inProgress">
+                            <i class="fa" ng-class="category.isSelected ? 'fa-check' : 'fa-minus'"></i> {{category.text[machine.lang]}}
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" ng-disabled="machine.add.inProgress">{{$ctrl.closeBtnText}}</button>
+                <button type="button" class="btn btn-primary" ng-click="machine.add.submit()" ng-disabled="machine.add.inProgress">{{machine.add.inProgress ? $ctrl.inProgressText: $ctrl.submitBtnText}}</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="machine-list-remove-modal modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="{{$ctrl.closeBtnText}}" ng-disabled="machine.remove.inProgress"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">{{$ctrl.removeTitleMachine}}</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-12 marg10">
+                        <div class="card">
+                            <div class="card-img-header" ng-hide="machine.remove.machine.src.isYoutube">
+                                <div class="file-upload">
+                                    <img ng-src="{{machine.remove.machine.src.path + '?v=' + machine.remove.machine.src.version.major + '.' + machine.remove.machine.src.version.medio + '.' + machine.remove.machine.src.version.minor}}" />
+                                </div>
+                            </div>
+                            <div class="card-iframe-header" ng-show="machine.remove.machine.src.isYoutube">
+                                <iframe src="{{machine.remove.machine.src.video.iframeSrc}}" frameborder="0" allowfullscreen></iframe>
+                            </div>
+                            <div class="card-body">
+                                <div class="port-text">
+                                    <p>{{machine.remove.machine.text[machine.lang]}}</p>
+                                    <p class="small">{{machine.remove.machine.categoryText}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr />
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <p class="text-large"><i class="fa fa-warning text-danger"></i> {{$ctrl.removeMsgMachine}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" ng-disabled="machine.remove.inProgress">{{$ctrl.closeBtnText}}</button>
+                <button type="button" class="btn btn-danger" ng-click="machine.remove.submit()" ng-disabled="machine.remove.inProgress">{{machine.remove.inProgress ? $ctrl.inProgressRemoveText: $ctrl.submitRemoveBtnText}}</button>
+            </div>
+        </div>
+    </div>
+</div>

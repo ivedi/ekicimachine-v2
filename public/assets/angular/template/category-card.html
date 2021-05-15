@@ -1,0 +1,29 @@
+﻿<div class="welcome_page" ng-class="$ctrl.editable ? 'btn-edit-container' : ''">
+    <button class="btn btn-default bg-white" ng-class="!$ctrl.editable || $ctrl.editHeader.isVisible ? 'hide' : 'btn-edit'" ng-click="$ctrl.editHeader.show()" ng-show="{{$ctrl.editable && !$ctrl.editHeader.isVisible}}"><i class="fa fa-edit"></i></button>
+    <h3 ng-show="!$ctrl.editHeader.isVisible">{{$ctrl.header}}</h3>
+    <div dir="ltr" class="input-group input-group-lg" ng-show="$ctrl.editHeader.isVisible" ng-class="$ctrl.editHeader.title.cls">
+        <span class="input-group-btn">
+            <button class="btn btn-danger" ng-click="$ctrl.editHeader.cancel()" ng-disabled="$ctrl.editHeader.inProgress"><i class="fa fa-times"></i></button>
+        </span>
+        <input type="text" class="form-control text-center" placeholder="{{$ctrl.editHeader.title.placeholder}}" ng-model="$ctrl.editHeader.title.value" ng-change="$ctrl.editHeader.title.change()" ng-disabled="$ctrl.editHeader.inProgress" />
+        <span class="input-group-btn">
+            <button class="btn btn-success" ng-click="$ctrl.editHeader.submit()" ng-disabled="$ctrl.editHeader.inProgress"><i class="fa fa-check"></i></button>
+        </span>
+    </div>
+    <p class="text-danger text-block text-small" ng-show="$ctrl.editHeader.isVisible && $ctrl.editHeader.title.msg.isVisible"><i class="fa fa-warning"></i> {{$ctrl.editMsg}}</p>
+</div>
+<ul class="categories">
+    <li ng-repeat="cat in category.list">
+        <a class="cursor-pointer" href="javascript:(function(){return false;})()" ng-click="category.select(cat)">
+            <i class="fa fa-check" ng-show="cat.id === category.selected.id"></i> {{cat.text[$ctrl.lang]}}
+            <div class="pull-right">({{cat.itemCount}})</div>
+        </a>
+    </li>
+    <li class="text-center" ng-show="{{$ctrl.editable}}">
+        <div class="btn-group">
+            <button class="btn btn-default bg-white" type="button" ng-click="$ctrl.showEdit()"><i class="fa fa-edit"></i></button>
+            <button class="btn btn-default bg-white" type="button" ng-click="$ctrl.showAdd()"><i class="fa fa-plus"></i></button>
+            <button class="btn btn-default bg-white" type="button" ng-click="$ctrl.showRemove()"><i class="fa fa-trash-o"></i></button>
+        </div>
+    </li>
+</ul>

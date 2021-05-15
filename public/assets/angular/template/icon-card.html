@@ -1,0 +1,8 @@
+﻿<div class="col-lg-3 col-sm-6" ng-class="$ctrl.editable ? 'btn-edit-container' : ''">
+    <div class="marg50">
+        <button class="btn btn-default btn-edit" ng-click="$ctrl.editHandler($ctrl.arrayIndex)" ng-show="{{$ctrl.editable}}"><i class="fa fa-edit"></i></button>
+        <div class="icon_ex2 animated" data-animation-delay="{{$ctrl.animationDelay}}" data-animation="rotateIn"><i ng-class="$ctrl.iconClass" class=""></i></div>
+        <h4 class="name_serv">{{$ctrl.header}}</h4>
+        <p class="text_serv">{{$ctrl.text}}</p>
+    </div>
+</div>

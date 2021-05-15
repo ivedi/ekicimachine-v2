@@ -1,0 +1,276 @@
+﻿<div class="container" ng-hide="$ctrl.hideTitle">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="welcome" ng-class="$ctrl.editable ? 'btn-edit-container' : ''">
+                <button class="btn btn-default bg-white btn-edit" ng-click="automation.edit.title.show()" ng-show="{{$ctrl.editable}} && !automation.edit.title.isVisible"><i class="fa fa-edit"></i></button>
+                <div class="wel_cen marg100" ng-show="!automation.edit.title.isVisible"><h2>{{automation.title[automation.lang]}}</h2></div>
+                <div class="input-group input-group-lg" ng-show="automation.edit.title.isVisible" ng-class="automation.edit.title.title.cls">
+                    <span class="input-group-btn">
+                        <button class="btn btn-danger" ng-click="automation.edit.title.cancel()"><i class="fa fa-times"></i></button>
+                    </span>
+                    <input type="text" class="form-control text-center" placeholder="{{automation.edit.title.title.placeholder}}" ng-model="automation.edit.title.title.value" ng-change="automation.edit.title.title.change()" />
+                    <span class="input-group-btn">
+                        <button class="btn btn-success" ng-click="automation.edit.title.submit()"><i class="fa fa-check"></i></button>
+                    </span>
+                </div>
+                <p class="text-muted text-block text-small" ng-show="automation.edit.title.isVisible && automation.edit.title.title.msg.isVisible"><i class="fa fa-warning"></i> {{$ctrl.editMsg}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container marg50">
+    <automation-filter text-turkish="$ctrl.textTurkish"
+                    text-english="$ctrl.textEnglish"
+                    text-russian="$ctrl.textRussian"
+                    text-arabic="$ctrl.textArabic"
+                    filter-text-all="$ctrl.filterTextAll"
+                    filter-text-edit="$ctrl.filterTextEdit"
+                    filter-text-add="$ctrl.filterTextAdd"
+                    filter-text-remove="$ctrl.filterTextRemove"
+                    editable="$ctrl.editable"
+                    edit-msg="$ctrl.editMsg"
+                    edit-title="$ctrl.editTitleCategory"
+                    remove-title="$ctrl.removeTitleCategory"
+                    remove-msg="$ctrl.removeMsgCategory"
+                    add-title="$ctrl.addTitleCategory"
+                    add-msg="$ctrl.addMsg"
+                    add-placeholder="$ctrl.addPlaceholderCategory"
+                    close-btn-text="$ctrl.closeBtnText"
+                    submit-btn-text="$ctrl.submitBtnText"
+                    in-progress-text="$ctrl.inProgressText"></automation-filter>
+</div>
+<div ng-class="$ctrl.listContainerClass" class="">
+    <div class="animated-area portfolio marg50">
+        <div ng-repeat="_automation in automation.list" class="port-hover animated" ng-class="_automation.cls + ' ' + $ctrl.automationClass + ($ctrl.editable ? ' btn-edit-container' : '') + (_automation.src.isYoutube ? ' automation-video' : ' automation-image')" data-animation-delay="{{_automation.animationDelay}}" data-animation="fadeIn">
+            <span class="btn-edit">
+                <button class="btn btn-default bg-white" ng-click="automation.remove.show(_automation)" ng-show="{{$ctrl.editable}}"><i class="fa fa-trash-o"></i></button>
+                <button class="btn btn-default bg-white" ng-click="automation.edit.automation.show(_automation)" ng-show="{{$ctrl.editable}}"><i class="fa fa-edit"></i></button>
+            </span>
+            <div ng-show="_automation.src.isYoutube" class="automation" ng-class="_automation.src.isYoutube ? 'catch-resize' : ''">
+                <iframe src="{{_automation.src.isYoutube ? _automation.src.path : ''}}" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <img ng-hide="_automation.src.isYoutube" ng-src="{{_automation.src.path + '?v=' + _automation.src.version.major + '.' + _automation.src.version.medio + '.' + _automation.src.version.minor}}" alt="automation" />
+            <div class="p-hover"><span><span class="port-plus"></span></span></div>
+            <div class="port-text"><p>{{_automation.text[automation.lang]}}</p><p class="small">{{_automation.categoryText}}</p></div>
+        </div>
+        <div ng-show="{{$ctrl.editable}}" class="port-hover automation-image animated" ng-class="$ctrl.automationClass" data-animation-delay="1.3s" data-animation="fadeIn">
+            <img ng-src="{{automation.add.upload.image.path}}" alt="automation" />
+            <div class="p-hover cursor-pointer" ng-click="automation.add.show()"><span><span class="port-plus"></span></span></div>
+            <div class="port-text"><p>{{$ctrl.textNewAutomation}}</p><p class="small">{{$ctrl.textNewAutomationComment}}</p></div>
+        </div>
+    </div>
+</div>
+<div class="automation-list-edit-modal modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="{{$ctrl.closeBtnText}}" ng-disabled="automation.edit.inProgress"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">{{$ctrl.editTitleAutomation}}</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-12 marg10">
+                        <div class="card block">
+                            <div class="card-img-header" ng-hide="automation.edit.automation.value.src.isYoutube">
+                                <div class="file-upload">
+                                    <input type="file" accept="image/x-png,image/jpeg" class="upload" ng-click="automation.edit.automation.upload.click()" onchange="app.upload.change(this)" ng-disabled="automation.edit.inProgress" />
+                                    <img ng-src="{{automation.edit.automation.value.src.path + '?v=' + automation.edit.automation.value.src.version.major + '.' + automation.edit.automation.value.src.version.medio + '.' + automation.edit.automation.value.src.version.minor}}" ng-show="!automation.edit.automation.upload.isNecessary" />
+                                    <img ng-src="{{automation.edit.automation.upload.data}}" ng-show="automation.edit.automation.upload.isNecessary" />
+                                </div>
+                            </div>
+                            <div class="card-iframe-header" ng-show="automation.edit.automation.value.src.isYoutube">
+                                <iframe src="{{automation.edit.automation.value.src.video.iframeSrc}}" frameborder="0" allowfullscreen></iframe>
+                            </div>
+                            <div class="card-body">
+                                <div ng-hide="automation.edit.automation.value.src.isYoutube"><span>{{$ctrl.editImageMsg}}</span></div>
+                                <div ng-hide="automation.edit.automation.value.src.isYoutube" class="pull-left padding-v-8">
+                                    <span class="text-muted text-small"> {{$ctrl.editImageNote + automation.edit.automation.upload.width + ' &times; ' + automation.edit.automation.upload.height}}</span>
+                                </div>
+                                <br />
+                                <div class="port-text">
+                                    <p>{{automation.edit.automation.title.value}}</p>
+                                    <p class="small">{{automation.edit.automation.value.categoryText}}</p>
+                                </div>
+                                <div ng-show="automation.edit.automation.value.src.isYoutube" class="form-group margin-v-8 marg10" ng-class="automation.edit.automation.value.src.video.cls">
+                                    <input type="text" class="form-control" placeholder="{{$ctrl.textEmbeddedYoutube}}" ng-change="automation.edit.automation.value.src.video.change()" ng-click="automation.edit.automation.value.select($event)" ng-model="automation.edit.automation.value.src.video.value" ng-disabled="automation.edit.inProgress" />
+                                </div>
+                                <p class="text-danger text-block text-small" ng-show="automation.edit.automation.value.src.isYoutube && automation.edit.automation.value.src.video.msg.isVisible">
+                                    <i class="fa fa-warning"></i> {{$ctrl.editMsg}}
+                                </p>
+                            </div>
+                            <div class="card-footer">
+                                <button type="button" class="btn btn-sm pull-right" ng-class="automation.edit.automation.value.src.isYoutube ? 'btn-danger' : 'btn-primary'" ng-click="automation.edit.automation.value.src.toggleType()" ng-disabled="automation.edit.inProgress">
+                                    <i class="fa" ng-class="automation.edit.automation.value.src.isYoutube ? 'fa-youtube-play' : 'fa-picture-o'"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr />
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="input-group-lg padding-v-8" ng-class="automation.edit.automation.title.cls">
+                            <input type="text" class="form-control text-center" placeholder="{{automation.edit.automation.title.placeholder}}" ng-model="automation.edit.automation.title.value" ng-change="automation.edit.automation.title.change()" ng-disabled="automation.edit.inProgress" />
+                        </div>
+                        <p class="text-danger text-block text-small padding-v-8" ng-show="automation.edit.automation.title.msg.isVisible">
+                            <i class="fa fa-warning"></i> {{$ctrl.editMsg}}
+                        </p>
+                    </div>
+                </div>
+                <div class="row marg10">
+                    <div class="col-lg-6 form-group text-center" ng-repeat="category in automation.edit.automation.value.categories">
+                        <button type="button" class="btn" ng-class="category.isSelected ? 'btn-success' : 'btn-default'" ng-click="automation.edit.automation.value.categorySelect(category)" ng-disabled="automation.edit.inProgress">
+                            <i class="fa" ng-class="category.isSelected ? 'fa-check' : 'fa-minus'"></i> {{category.text[automation.lang]}}
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" ng-disabled="automation.edit.inProgress">{{$ctrl.closeBtnText}}</button>
+                <button type="button" class="btn btn-primary" ng-click="automation.edit.submit()" ng-disabled="automation.edit.inProgress">{{automation.edit.inProgress ? $ctrl.inProgressText: $ctrl.submitBtnText}}</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="automation-list-add-modal modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="{{$ctrl.closeBtnText}}" ng-disabled="automation.add.inProgress"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">{{$ctrl.addTitleAutomation}}</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-12 marg10">
+                        <div class="card block">
+                            <div class="card-img-header" ng-hide="automation.add.value.src.isYoutube">
+                                <div class="file-upload">
+                                    <input type="file" accept="image/x-png,image/jpeg" class="upload" ng-click="automation.add.upload.click()" onchange="app.upload.change(this)" ng-disabled="automation.add.inProgress" />
+                                    <img ng-src="{{automation.add.value.src.path + '?v=' + automation.add.value.src.version.major + '.' + automation.add.value.src.version.medio + '.' + automation.add.value.src.version.minor}}" ng-show="!automation.add.upload.isNecessary" />
+                                    <img ng-src="{{automation.add.upload.data}}" ng-show="automation.add.upload.isNecessary" />
+                                </div>
+                            </div>
+                            <div class="card-iframe-header" ng-show="automation.add.value.src.isYoutube">
+                                <iframe src="{{automation.add.value.src.video.iframeSrc}}" frameborder="0" allowfullscreen></iframe>
+                            </div>
+                            <div class="card-body">
+                                <div ng-hide="automation.add.value.src.isYoutube"><span>{{$ctrl.editImageMsg}}</span></div>
+                                <div ng-hide="automation.add.value.src.isYoutube" class="pull-left padding-v-8">
+                                    <span class="text-muted text-small"> {{$ctrl.editImageNote + automation.add.upload.width + ' &times; ' + automation.add.upload.height}}</span>
+                                </div>
+                                <br />
+                                <div class="port-text">
+                                    <p>{{automation.add.value.text[automation.lang].value}}</p>
+                                    <p class="small">{{automation.add.value.categoryText}}</p>
+                                </div>
+                                <div ng-show="automation.add.value.src.isYoutube" class="form-group margin-v-8 marg10" ng-class="automation.add.value.src.video.cls">
+                                    <input type="text" class="form-control" placeholder="{{$ctrl.textEmbeddedYoutube}}" ng-change="automation.add.value.src.video.change()" ng-click="automation.add.value.select($event)" ng-model="automation.add.value.src.video.value" ng-disabled="automation.add.inProgress" />
+                                </div>
+                                <p class="text-danger text-block text-small" ng-show="automation.add.value.src.isYoutube && automation.add.value.src.video.msg.isVisible">
+                                    <i class="fa fa-warning"></i> {{$ctrl.addMsg}}
+                                </p>
+                            </div>
+                            <div class="card-footer">
+                                <button type="button" class="btn btn-sm pull-right" ng-class="automation.add.value.src.isYoutube ? 'btn-danger' : 'btn-primary'" ng-click="automation.add.value.src.toggleType()" ng-disabled="automation.add.inProgress">
+                                    <i class="fa" ng-class="automation.add.value.src.isYoutube ? 'fa-youtube-play' : 'fa-picture-o'"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr />
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="form-group padding-v-8" ng-class="automation.add.value.text.tr.cls">
+                            <label>{{$ctrl.textTurkish}}</label>
+                            <input dir="ltr" class="form-control" type="text" placeholder="{{automation.add.value.text.tr.placeholder}}" ng-model="automation.add.value.text.tr.value" ng-change="automation.add.value.text.tr.change()" ng-disabled="automation.add.inProgress" />
+                            <p class="text-danger text-block text-small" ng-show="automation.add.value.text.tr.msg.isVisible">
+                                <i class="fa fa-warning"></i> {{$ctrl.addMsg}}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="form-group padding-v-8" ng-class="automation.add.value.text.en.cls">
+                            <label>{{$ctrl.textEnglish}}</label>
+                            <input dir="ltr" class="form-control" type="text" placeholder="{{automation.add.value.text.en.placeholder}}" ng-model="automation.add.value.text.en.value" ng-change="automation.add.value.text.en.change()" ng-disabled="automation.add.inProgress" />
+                            <p class="text-danger text-block text-small" ng-show="automation.add.value.text.en.msg.isVisible">
+                                <i class="fa fa-warning"></i> {{$ctrl.addMsg}}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="form-group padding-v-8" ng-class="automation.add.value.text.ru.cls">
+                            <label>{{$ctrl.textRussian}}</label>
+                            <input dir="ltr" class="form-control" type="text" placeholder="{{automation.add.value.text.ru.placeholder}}" ng-model="automation.add.value.text.ru.value" ng-change="automation.add.value.text.ru.change()" ng-disabled="automation.add.inProgress" />
+                            <p class="text-danger text-block text-small" ng-show="automation.add.value.text.ru.msg.isVisible">
+                                <i class="fa fa-warning"></i> {{$ctrl.addMsg}}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="form-group padding-v-8" ng-class="automation.add.value.text.ar.cls">
+                            <label>{{$ctrl.textArabic}}</label>
+                            <input dir="rtl" class="form-control" type="text" placeholder="{{automation.add.value.text.ar.placeholder}}" ng-model="automation.add.value.text.ar.value" ng-change="automation.add.value.text.ar.change()" ng-disabled="automation.add.inProgress" />
+                            <p class="text-danger text-block text-small" ng-show="automation.add.value.text.ar.msg.isVisible">
+                                <i class="fa fa-warning"></i> {{$ctrl.addMsg}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row marg10">
+                    <div class="col-lg-6 form-group text-center" ng-repeat="category in automation.add.value.categories">
+                        <button type="button" class="btn" ng-class="category.isSelected ? 'btn-success' : 'btn-default'" ng-click="automation.add.value.categorySelect(category)" ng-disabled="automation.add.inProgress">
+                            <i class="fa" ng-class="category.isSelected ? 'fa-check' : 'fa-minus'"></i> {{category.text[automation.lang]}}
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" ng-disabled="automation.add.inProgress">{{$ctrl.closeBtnText}}</button>
+                <button type="button" class="btn btn-primary" ng-click="automation.add.submit()" ng-disabled="automation.add.inProgress">{{automation.add.inProgress ? $ctrl.inProgressText: $ctrl.submitBtnText}}</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="automation-list-remove-modal modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="{{$ctrl.closeBtnText}}" ng-disabled="automation.remove.inProgress"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">{{$ctrl.removeTitleAutomation}}</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-12 marg10">
+                        <div class="card">
+                            <div class="card-img-header" ng-hide="automation.remove.automation.src.isYoutube">
+                                <div class="file-upload">
+                                    <img ng-src="{{automation.remove.automation.src.path + '?v=' + automation.remove.automation.src.version.major + '.' + automation.remove.automation.src.version.medio + '.' + automation.remove.automation.src.version.minor}}" />
+                                </div>
+                            </div>
+                            <div class="card-iframe-header" ng-show="automation.remove.automation.src.isYoutube">
+                                <iframe src="{{automation.remove.automation.src.video.iframeSrc}}" frameborder="0" allowfullscreen></iframe>
+                            </div>
+                            <div class="card-body">
+                                <div class="port-text">
+                                    <p>{{automation.remove.automation.text[automation.lang]}}</p>
+                                    <p class="small">{{automation.remove.automation.categoryText}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr />
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <p class="text-large"><i class="fa fa-warning text-danger"></i> {{$ctrl.removeMsgAutomation}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" ng-disabled="automation.remove.inProgress">{{$ctrl.closeBtnText}}</button>
+                <button type="button" class="btn btn-danger" ng-click="automation.remove.submit()" ng-disabled="automation.remove.inProgress">{{automation.remove.inProgress ? $ctrl.inProgressRemoveText: $ctrl.submitRemoveBtnText}}</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,70 @@
+﻿<div class="promotext clearfix" ng-class="$ctrl.editable ? 'btn-edit-container' : ''" style="height: 1080px;">
+    <div class="container promo-slide">
+        <div class="promo">
+            <h1 class="promo-text"><span class="rotate">{{promoText.value}}</span></h1>
+        </div>
+    </div>
+    <div class="btn-edit">
+        <button class="btn btn-default bg-white" ng-click="promoText.edit.texts.click()" ng-show="{{$ctrl.editable}}"><i class="fa fa-edit"></i></button>
+        <button class="btn btn-default bg-white" ng-click="promoText.edit.images.click()" ng-show="{{$ctrl.editable}}"><i class="fa fa-picture-o"></i></button>
+    </div>
+</div>
+<div class="promo-text-texts-modal modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="{{$ctrl.closeBtnText}}" ng-disabled="promoText.edit.inProgress"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">{{$ctrl.editTextsTitle}}</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-12" ng-repeat="slideText in promoText.edit.texts.list">
+                        <div class="form-group" ng-class="slideText.cls">
+                            <input class="form-control" type="text" placeholder="{{slideText.placeholder}}" ng-model="slideText.value" ng-change="slideText.change()" ng-disabled="promoText.edit.inProgress" />
+                            <p class="text-danger text-block text-small" ng-show="slideText.msg.isVisible">
+                                <i class="fa fa-warning"></i> {{$ctrl.editMsg}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" ng-disabled="promoText.edit.inProgress">{{$ctrl.closeBtnText}}</button>
+                <button type="button" class="btn btn-primary" ng-click="promoText.edit.texts.submit()" ng-disabled="promoText.edit.inProgress">{{promoText.edit.inProgress ? $ctrl.inProgressText: $ctrl.submitBtnText}}</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="promo-text-images-modal modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="{{$ctrl.closeBtnText}}" ng-disabled="promoText.edit.inProgress"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">{{$ctrl.editImagesTitle}}</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-12 marg10" ng-repeat="slideImage in promoText.edit.images.list">
+                        <div class="card">
+                            <div class="card-img-header">
+                                <div class="file-upload">
+                                    <input type="file" accept="image/x-png,image/jpeg" class="upload" ng-click="promoText.edit.images.upload.click($index)" onchange="app.upload.change(this)" />
+                                    <img ng-src="{{slideImage.src + '?v=' + slideImage.version.major + '.' + slideImage.version.medio + '.' + slideImage.version.minor}}" />
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div><span>{{$ctrl.editImageMsg}}</span></div>
+                                <div class="pull-left">
+                                    <span class="text-muted text-small"> {{$ctrl.editImageNote + promoText.edit.images.width + ' &times; ' + promoText.edit.images.height}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" ng-disabled="promoText.edit.inProgress">{{$ctrl.closeBtnText}}</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,5 @@
+﻿<div dir="ltr" class="pride_pg marg50">
+    <span class="" ng-class="pagination.prevBtnCls" ng-show="pagination.isPrevBtnVisible"><a class="page-numbers noselect" ng-click="pagination.pagePrev()">&nbsp;<i class="fa fa-arrow-left"></i>&nbsp;</a></span>&nbsp;
+    <span ng-repeat="pageBtn in pagination.list"><a class="page-numbers noselect" ng-class="pageBtn.cls" ng-click="pageBtn.onClick()">{{pageBtn.text}}</a>&nbsp;</span>
+    <span class="" ng-class="pagination.nextBtnCls" ng-show="pagination.isNextBtnVisible"><a class="page-numbers noselect" ng-click="pagination.pageNext()">&nbsp;<i class="fa fa-arrow-right"></i>&nbsp;</a></span>
+</div>

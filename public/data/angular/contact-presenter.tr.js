@@ -1,0 +1,1 @@
+﻿var contactPresenterData={"title":{"contactCard":"Bize Ulaşın"}};

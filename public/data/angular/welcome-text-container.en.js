@@ -1,0 +1,1 @@
+﻿var welcomeTextContainerData={"list":["Research always for better quality production!","Proud to have customers all aorund the world!"]};

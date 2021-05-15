@@ -1,0 +1,23 @@
+﻿{
+    "currentID": 2,
+    "list": [
+        {
+            "id": 1,
+            "username": "admin",
+            "password": "OrlplkFbPb4K6SitOhKnFg==",
+            "rightCreate": true,
+            "rightRead": true,
+            "rightUpdate": true,
+            "rightDelete": true
+        },
+        {
+            "id": 2,
+            "username": "ekici",
+            "password": "H5k2fN+7krg=",
+            "rightCreate": true,
+            "rightRead": true,
+            "rightUpdate": true,
+            "rightDelete": true
+        }
+    ]
+}

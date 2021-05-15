@@ -1,0 +1,22 @@
+﻿<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="welcome">
+                <div class="wel_cen" ng-class="$ctrl.editable && !welcomeText.edit.list[$index].isVisible ? 'btn-edit-container' : ''" ng-repeat="welcomeTxt in welcomeText.list">
+                    <button class="btn btn-default btn-edit" ng-click="welcomeText.edit.list[$index].show()" ng-show="{{$ctrl.editable}} && !welcomeText.edit.list[$index].isVisible"><i class="fa fa-edit"></i></button>
+                    <h2 ng-show="!welcomeText.edit.list[$index].isVisible">{{welcomeTxt}}</h2>
+                    <div dir="ltr" class="input-group input-group-lg" ng-show="welcomeText.edit.list[$index].isVisible" ng-class="welcomeText.edit.list[$index].title.cls">
+                        <span class="input-group-btn">
+                            <button class="btn btn-danger" ng-click="welcomeText.edit.list[$index].cancel()"><i class="fa fa-times"></i></button>
+                        </span>
+                        <input type="text" class="form-control text-center" placeholder="{{welcomeText.edit.list[$index].title.placeholder}}" ng-model="welcomeText.edit.list[$index].title.value" ng-change="welcomeText.edit.list[$index].title.change()" />
+                        <span class="input-group-btn">
+                            <button class="btn btn-success" ng-click="welcomeText.edit.list[$index].submit()"><i class="fa fa-check"></i></button>
+                        </span>
+                    </div>
+                    <p class="text-danger text-block text-large" ng-show="welcomeText.edit.list[$index].isVisible && welcomeText.edit.list[$index].title.msg.isVisible"><i class="fa fa-warning"></i> {{$ctrl.editMsg}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

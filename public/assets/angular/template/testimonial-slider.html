@@ -1,0 +1,181 @@
+﻿<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="welcome" ng-class="$ctrl.editable && !testimonial.edit.title.isVisible ? 'btn-edit-container' : ''">
+                <button class="btn btn-default btn-edit" ng-click="testimonial.edit.title.show()" ng-show="{{$ctrl.editable}} && !testimonial.edit.title.isVisible"><i class="fa fa-edit"></i></button>
+                <div class="wel_cen marg100" ng-show="!testimonial.edit.title.isVisible"><h2>{{testimonial.title[testimonial.lang]}}</h2></div>
+                <div dir="ltr" class="input-group input-group-lg" ng-show="testimonial.edit.title.isVisible" ng-class="testimonial.edit.title.title.cls">
+                    <span class="input-group-btn">
+                        <button class="btn btn-danger" ng-click="testimonial.edit.title.cancel()"><i class="fa fa-times"></i></button>
+                    </span>
+                    <input type="text" class="form-control text-center" placeholder="{{testimonial.edit.title.title.placeholder}}" ng-model="testimonial.edit.title.title.value" ng-change="testimonial.edit.title.title.change()" />
+                    <span class="input-group-btn">
+                        <button class="btn btn-success" ng-click="testimonial.edit.title.submit()"><i class="fa fa-check"></i></button>
+                    </span>
+                </div>
+                <p class="text-muted text-block text-small" ng-show="testimonial.edit.title.isVisible && testimonial.edit.title.title.msg.isVisible"><i class="fa fa-warning"></i> {{$ctrl.editMsg}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="prl-2 marg50 animated-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="flexslider testi-slider animated" data-animation-delay="0.5s" data-animation="bounceInUp">
+                    <ul class="slides">
+                        <li class="" ng-class="$ctrl.editable ? 'btn-edit-container' : ''" ng-repeat="_testimonial in testimonial.list">
+                            <div class="btn-edit btn-group">
+                                <button class="btn btn-default bg-white btn-edit" ng-click="testimonial.remove.show(_testimonial)" ng-show="{{$ctrl.editable}}"><i class="fa fa-trash-o"></i></button>
+                                <button class="btn btn-default bg-white btn-edit" ng-click="testimonial.edit.testimonial.show(_testimonial)" ng-show="{{$ctrl.editable}}"><i class="fa fa-edit"></i></button>
+                                <button class="btn btn-default bg-white btn-edit" ng-click="testimonial.add.show()" ng-show="{{$ctrl.editable}}"><i class="fa fa-plus"></i></button>
+                            </div>
+                            <testimonial testimonial="_testimonial.testimonial[testimonial.lang]" annotation="_testimonial.annotation[testimonial.lang]"></testimonial>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="testimonial-edit-modal modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="{{$ctrl.closeBtnText}}" ng-disabled="testimonial.edit.inProgress"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">{{$ctrl.editTitle}}</h4>
+            </div>
+            <div class="modal-body">
+                <testimonial testimonial="testimonial.edit.testimonial.testimonial.value" annotation="testimonial.edit.testimonial.annotation.value"></testimonial>
+                <hr />
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="form-group" ng-class="testimonial.edit.testimonial.testimonial.cls">
+                            <textarea rows="3" class="form-control" placeholder="{{testimonial.edit.testimonial.testimonial.placeholder}}" ng-model="testimonial.edit.testimonial.testimonial.value" ng-change="testimonial.edit.testimonial.testimonial.change()" ng-disabled="testimonial.edit.inProgress"></textarea>
+                            <p class="text-danger" ng-show="testimonial.edit.testimonial.testimonial.msg.isVisible"><i class="fa fa-warning"></i> {{$ctrl.editMsg}}</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="form-group" ng-class="testimonial.edit.testimonial.annotation.cls">
+                            <input type="text" class="form-control" placeholder="{{testimonial.edit.testimonial.annotation.placeholder}}" ng-model="testimonial.edit.testimonial.annotation.value" ng-change="testimonial.edit.testimonial.annotation.change()" ng-disabled="testimonial.edit.inProgress" />
+                            <p class="text-danger" ng-show="testimonial.edit.testimonial.annotation.msg.isVisible"><i class="fa fa-warning"></i> {{$ctrl.editMsg}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" ng-disabled="testimonial.edit.inProgress">{{$ctrl.closeBtnText}}</button>
+                <button type="button" class="btn btn-primary" ng-click="testimonial.edit.testimonial.submit()" ng-disabled="testimonial.edit.inProgress">{{testimonial.edit.inProgress ? $ctrl.inProgressText: $ctrl.submitBtnText}}</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="testimonial-add-modal modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="{{$ctrl.closeBtnText}}" ng-disabled="testimonial.add.inProgress"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">{{$ctrl.addTitle}}</h4>
+            </div>
+            <div class="modal-body">
+                <testimonial testimonial="testimonial.add.testimonial[testimonial.lang].value" annotation="testimonial.add.annotation[testimonial.lang].value"></testimonial>
+                <hr />
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h4 class="text-center">{{$ctrl.textTurkish}}</h4>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="form-group" ng-class="testimonial.add.testimonial.tr.cls">
+                            <textarea rows="3" class="form-control" placeholder="{{testimonial.add.testimonial.tr.placeholder}}" ng-model="testimonial.add.testimonial.tr.value" ng-change="testimonial.add.testimonial.tr.change()" ng-disabled="testimonial.add.inProgress"></textarea>
+                            <p class="text-danger" ng-show="testimonial.add.testimonial.tr.msg.isVisible"><i class="fa fa-warning"></i> {{$ctrl.addMsg}}</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="form-group" ng-class="testimonial.add.annotation.tr.cls">
+                            <input type="text" class="form-control" placeholder="{{testimonial.add.annotation.tr.placeholder}}" ng-model="testimonial.add.annotation.tr.value" ng-change="testimonial.add.annotation.tr.change()" ng-disabled="testimonial.add.inProgress" />
+                            <p class="text-danger" ng-show="testimonial.add.annotation.tr.msg.isVisible"><i class="fa fa-warning"></i> {{$ctrl.addMsg}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h4 class="text-center">{{$ctrl.textEnglish}}</h4>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="form-group" ng-class="testimonial.add.testimonial.en.cls">
+                            <textarea rows="3" class="form-control" placeholder="{{testimonial.add.testimonial.en.placeholder}}" ng-model="testimonial.add.testimonial.en.value" ng-change="testimonial.add.testimonial.en.change()" ng-disabled="testimonial.add.inProgress"></textarea>
+                            <p class="text-danger" ng-show="testimonial.add.testimonial.en.msg.isVisible"><i class="fa fa-warning"></i> {{$ctrl.addMsg}}</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="form-group" ng-class="testimonial.add.annotation.en.cls">
+                            <input type="text" class="form-control" placeholder="{{testimonial.add.annotation.en.placeholder}}" ng-model="testimonial.add.annotation.en.value" ng-change="testimonial.add.annotation.en.change()" ng-disabled="testimonial.add.inProgress" />
+                            <p class="text-danger" ng-show="testimonial.add.annotation.en.msg.isVisible"><i class="fa fa-warning"></i> {{$ctrl.addMsg}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h4 class="text-center">{{$ctrl.textRussian}}</h4>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="form-group" ng-class="testimonial.add.testimonial.ru.cls">
+                            <textarea rows="3" class="form-control" placeholder="{{testimonial.add.testimonial.ru.placeholder}}" ng-model="testimonial.add.testimonial.ru.value" ng-change="testimonial.add.testimonial.ru.change()" ng-disabled="testimonial.add.inProgress"></textarea>
+                            <p class="text-danger" ng-show="testimonial.add.testimonial.ru.msg.isVisible"><i class="fa fa-warning"></i> {{$ctrl.addMsg}}</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="form-group" ng-class="testimonial.add.annotation.ru.cls">
+                            <input type="text" class="form-control" placeholder="{{testimonial.add.annotation.ru.placeholder}}" ng-model="testimonial.add.annotation.ru.value" ng-change="testimonial.add.annotation.ru.change()" ng-disabled="testimonial.add.inProgress" />
+                            <p class="text-danger" ng-show="testimonial.add.annotation.ru.msg.isVisible"><i class="fa fa-warning"></i> {{$ctrl.addMsg}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h4 class="text-center">{{$ctrl.textArabic}}</h4>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="form-group" ng-class="testimonial.add.testimonial.ar.cls">
+                            <textarea rows="3" class="form-control" placeholder="{{testimonial.add.testimonial.ar.placeholder}}" ng-model="testimonial.add.testimonial.ar.value" ng-change="testimonial.add.testimonial.ar.change()" ng-disabled="testimonial.add.inProgress"></textarea>
+                            <p class="text-danger" ng-show="testimonial.add.testimonial.ar.msg.isVisible"><i class="fa fa-warning"></i> {{$ctrl.addMsg}}</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="form-group" ng-class="testimonial.add.annotation.ar.cls">
+                            <input type="text" class="form-control" placeholder="{{testimonial.add.annotation.ar.placeholder}}" ng-model="testimonial.add.annotation.ar.value" ng-change="testimonial.add.annotation.ar.change()" ng-disabled="testimonial.add.inProgress" />
+                            <p class="text-danger" ng-show="testimonial.add.annotation.ar.msg.isVisible"><i class="fa fa-warning"></i> {{$ctrl.addMsg}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" ng-disabled="testimonial.add.inProgress">{{$ctrl.closeBtnText}}</button>
+                <button type="button" class="btn btn-primary" ng-click="testimonial.add.submit()" ng-disabled="testimonial.add.inProgress">{{testimonial.add.inProgress ? $ctrl.inProgressText: $ctrl.submitBtnText}}</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="testimonial-remove-modal modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="{{$ctrl.closeBtnText}}" ng-disabled="testimonial.remove.inProgress"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">{{$ctrl.removeTitle}}</h4>
+            </div>
+            <div class="modal-body">
+                <testimonial testimonial="testimonial.remove.testimonial[testimonial.lang]" annotation="testimonial.remove.annotation[testimonial.lang]"></testimonial>
+                <hr />
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h4 class="text-center"><i class="fa fa-warning text-danger"></i> {{$ctrl.removeMsg}}</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" ng-disabled="testimonial.remove.inProgress">{{$ctrl.closeBtnText}}</button>
+                <button type="button" class="btn btn-danger" ng-click="testimonial.remove.submit()" ng-disabled="testimonial.remove.inProgress">{{testimonial.remove.inProgress ? $ctrl.inProgressRemoveText: $ctrl.submitRemoveBtnText}}</button>
+            </div>
+        </div>
+    </div>
+</div>

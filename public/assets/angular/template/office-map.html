@@ -1,0 +1,33 @@
+﻿<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="welcome">
+                <div class="wel_cen marg50" ng-class="$ctrl.editable ? 'btn-edit-container' : ''">
+                    <button class="btn btn-default bg-white" ng-class="!$ctrl.editable || map.edit.title.isVisible ? 'hide' : 'btn-edit'" ng-click="map.edit.title.show()" ng-show="{{$ctrl.editable && !$ctrl.map.edit.title.isVisible}}"><i class="fa fa-edit"></i></button>
+                    <h2 ng-show="!map.edit.title.isVisible">{{map.title[map.lang]}}</h2>
+                    <div dir="ltr" class="input-group input-group-lg" ng-show="map.edit.title.isVisible" ng-class="map.edit.title.title.cls">
+                        <span class="input-group-btn">
+                            <button class="btn btn-danger" ng-click="map.edit.title.cancel()" ng-disabled="map.edit.title.inProgress"><i class="fa fa-times"></i></button>
+                        </span>
+                        <input type="text" class="form-control text-center" placeholder="{{map.edit.title.title.placeholder}}" ng-model="map.edit.title.title.value" ng-change="map.edit.title.title.change()" ng-disabled="map.edit.inProgress" />
+                        <span class="input-group-btn">
+                            <button class="btn btn-success" ng-click="map.edit.title.submit()" ng-disabled="map.edit.inProgress"><i class="fa fa-check"></i></button>
+                        </span>
+                    </div>
+                    <p class="text-danger text-block text-small" ng-show="map.edit.title.isVisible && map.edit.title.title.msg.isVisible"><i class="fa fa-warning"></i> {{$ctrl.editMsg}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="marg50">
+    <div class="officeLocationMap"></div>
+    <div class="row" ng-show="$ctrl.editable">
+        <div class="col-lg-12 text-center">
+            <div class="btn-group">
+                <button type="button" class="btn btn-primary" ng-click="map.edit.map.submit()" ng-disabled="map.edit.inProgress"><i class="fa fa-check"></i> {{ map.edit.inProgress ? $ctrl.inProgressText : $ctrl.submitBtnText }}</button>
+                <button type="button" class="btn btn-default" ng-click="map.edit.map.cancel()" ng-disabled="map.edit.inProgress"><i class="fa fa-times"></i> {{ $ctrl.cancelBtnText }}</button>
+            </div>
+        </div>
+    </div>
+</div>

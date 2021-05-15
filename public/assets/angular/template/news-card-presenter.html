@@ -1,0 +1,373 @@
+﻿<div class="row">
+    <div class="col-lg-9">
+        <div class="row">
+            <div class="col-lg-12" ng-show="$ctrl.editable">
+                <div class="form-group text-right">
+                    <button class="btn btn-default btn-lg" ng-click="news.add.show()"><i class="fa fa-plus"></i></button>
+                </div>
+            </div>
+            <div class="" ng-class="news.firstColumnCls">
+                <news-card ng-show="news.items.first.isExist"
+                           img-is-exist="news.items.first.value.img.isExist"
+                           img-url="news.items.first.value.img.url + '?v=' + news.items.first.value.img.version.major + '.' + news.items.first.value.img.version.medio + '.' + news.items.first.value.img.version.minor"
+                           header="news.items.first.value.header[news.lang]"
+                           text="news.items.first.value.text[news.lang]"
+                           date="news.items.first.value.date.text"
+                           selected-category-ids="news.items.first.value.categories"
+                           category-list="news.category.list"
+                           editable="$ctrl.editable"
+                           show-edit="news.edit.show"
+                           show-remove="news.remove.show"
+                           news-item="news.items.first"></news-card>
+                <news-card ng-show="news.items.second.isExist"
+                           img-is-exist="news.items.second.value.img.isExist"
+                           img-url="news.items.second.value.img.url + '?v=' + news.items.second.value.img.version.major + '.' + news.items.second.value.img.version.medio + '.' + news.items.second.value.img.version.minor"
+                           header="news.items.second.value.header[news.lang]"
+                           text="news.items.second.value.text[news.lang]"
+                           date="news.items.second.value.date.text"
+                           selected-category-ids="news.items.second.value.categories"
+                           category-list="news.category.list"
+                           editable="$ctrl.editable"
+                           show-edit="news.edit.show"
+                           show-remove="news.remove.show"
+                           news-item="news.items.second"></news-card>
+            </div>
+            <div class="col-lg-6">
+                <news-card ng-show="news.items.third.isExist"
+                           img-is-exist="news.items.third.value.img.isExist"
+                           img-url="news.items.third.value.img.url + '?v=' + news.items.third.value.img.version.major + '.' + news.items.third.value.img.version.medio + '.' + news.items.third.value.img.version.minor"
+                           header="news.items.third.value.header[news.lang]"
+                           text="news.items.third.value.text[news.lang]"
+                           date="news.items.third.value.date.text"
+                           selected-category-ids="news.items.third.value.categories"
+                           category-list="news.category.list"
+                           editable="$ctrl.editable"
+                           show-edit="news.edit.show"
+                           show-remove="news.remove.show"
+                           news-item="news.items.third"></news-card>
+                <news-card ng-show="news.items.last.isExist"
+                           img-is-exist="news.items.last.value.img.isExist"
+                           img-url="news.items.last.value.img.url + '?v=' + news.items.last.value.img.version.major + '.' + news.items.last.value.img.version.medio + '.' + news.items.last.value.img.version.minor"
+                           header="news.items.last.value.header[news.lang]"
+                           text="news.items.last.value.text[news.lang]"
+                           date="news.items.last.value.date.text"
+                           selected-category-ids="news.items.last.value.categories"
+                           category-list="news.category.list"
+                           editable="$ctrl.editable"
+                           show-edit="news.edit.show"
+                           show-remove="news.remove.show"
+                           news-item="news.items.last"></news-card>
+            </div>
+            <div class="col-lg-12" ng-hide="news.list.length">
+                <h4 class="text-center text-muted">{{news.nonews.first}}</h4>
+                <h4 class="text-center text-muted"><i class="fa fa-bullhorn"></i> {{news.nonews.last}}</h4>
+            </div>
+        </div>
+        <div class="row" ng-show="news.page.totalCount > 1">
+            <div class="col-lg-12">
+                <pagination init-pagination="news.page.init"
+                            total-page-count="news.page.totalCount"
+                            start-index="news.page.index.start"
+                            selected-index="news.page.index.selected"
+                            is-prev-btn-visible="news.page.btn.isPrevVisible"
+                            is-next-btn-visible="news.page.btn.isNextVisible"
+                            max-btn-count="news.page.btn.maxCount"
+                            on-page-change="news.page.change"></pagination>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <search-card header="news.search.header" on-value-changed="news.search.change" editable="$ctrl.editable" edit-header="news.search.edit.title" edit-msg="$ctrl.editMsg"></search-card>
+        <category-card header="news.category.header"
+                       list="news.category.list"
+                       on-category-selected="news.category.select"
+                       lang="news.lang"
+                       editable="$ctrl.editable"
+                       edit-header="news.category.edit.title"
+                       edit-msg="$ctrl.editMsg"
+                       show-edit="news.category.edit.show"
+                       show-add="news.category.add.show"
+                       show-remove="news.category.remove.show"></category-card>
+    </div>
+</div>
+<div class="news-category-edit-modal modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="{{$ctrl.closeBtnText}}" ng-disabled="news.category.edit.inProgress"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">{{$ctrl.editTitleCategory}}</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-6" ng-repeat="category in news.category.edit.list">
+                        <div class="form-group" ng-class="category.cls">
+                            <input class="form-control" type="text" placeholder="{{category.placeholder}}" ng-model="category.value" ng-change="category.change()" ng-disabled="news.category.edit.inProgress" />
+                            <p class="text-danger text-block text-small" ng-show="category.msg.isVisible"><i class="fa fa-warning"></i> {{$ctrl.editMsg}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" ng-disabled="news.category.edit.inProgress">{{$ctrl.closeBtnText}}</button>
+                <button type="button" class="btn btn-primary" ng-click="news.category.edit.submit()" ng-disabled="news.category.edit.inProgress">{{news.category.edit.inProgress ? $ctrl.inProgressText: $ctrl.submitBtnText}}</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="news-category-add-modal modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="{{$ctrl.closeBtnText}}" ng-disabled="header.edit.inProgress"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">{{$ctrl.addTitleCategory}}</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="form-group" ng-class="news.category.add.tr.cls">
+                            <label>{{$ctrl.textTurkish}}</label>
+                            <input dir="ltr" class="form-control" type="text" placeholder="{{$ctrl.addPlaceholderCategory}}" ng-model="news.category.add.tr.value" ng-change="news.category.add.tr.change()" ng-disabled="news.category.add.inProgress" />
+                            <p class="text-danger text-block text-small" ng-show="news.category.add.tr.msg.isVisible"><i class="fa fa-warning"></i> {{$ctrl.editMsg}}</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group" ng-class="news.category.add.en.cls">
+                            <label>{{$ctrl.textEnglish}}</label>
+                            <input dir="ltr" class="form-control" type="text" placeholder="{{$ctrl.addPlaceholderCategory}}" ng-model="news.category.add.en.value" ng-change="news.category.add.en.change()" ng-disabled="news.category.add.inProgress" />
+                            <p class="text-danger text-block text-small" ng-show="news.category.add.en.msg.isVisible"><i class="fa fa-warning"></i> {{$ctrl.editMsg}}</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group" ng-class="news.category.add.ru.cls">
+                            <label>{{$ctrl.textRussian}}</label>
+                            <input dir="ltr" class="form-control" type="text" placeholder="{{$ctrl.addPlaceholderCategory}}" ng-model="news.category.add.ru.value" ng-change="news.category.add.ru.change()" ng-disabled="news.category.add.inProgress" />
+                            <p class="text-danger text-block text-small" ng-show="news.category.add.ru.msg.isVisible"><i class="fa fa-warning"></i> {{$ctrl.editMsg}}</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group" ng-class="news.category.add.ar.cls">
+                            <label>{{$ctrl.textArabic}}</label>
+                            <input dir="rtl" class="form-control" type="text" placeholder="{{$ctrl.addPlaceholderCategory}}" ng-model="news.category.add.ar.value" ng-change="news.category.add.ar.change()" ng-disabled="news.category.add.inProgress" />
+                            <p class="text-danger text-block text-small" ng-show="news.category.add.ar.msg.isVisible"><i class="fa fa-warning"></i> {{$ctrl.editMsg}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" ng-disabled="news.category.add.inProgress">{{$ctrl.closeBtnText}}</button>
+                <button type="button" class="btn btn-primary" ng-click="news.category.add.submit()" ng-disabled="news.category.add.inProgress">{{news.category.add.inProgress ? $ctrl.inProgressText : $ctrl.submitBtnText}}</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="news-category-remove-modal modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="{{$ctrl.closeBtnText}}" ng-disabled="news.category.remove.inProgress"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">{{$ctrl.removeTitleCategory}}</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-6" ng-repeat="category in news.category.remove.list">
+                        <div dir="ltr" class="input-group" ng-class="category.isRemoved ? 'has-error' : ''">
+                            <input class="form-control text-center" type="text" ng-model="category.text[news.lang]" disabled="disabled" />
+                            <span class="input-group-btn">
+                                <button type="button" class="btn" ng-class="category.isRemoved ? 'btn-default' : 'btn-danger'" ng-click="category.toggle()" ng-disabled="news.category.remove.inProgress">
+                                    <i class="fa" ng-class="category.isRemoved ? 'fa-undo' : 'fa-trash-o'"></i>
+                                </button>
+                            </span>
+                        </div>
+                        <p class="text-danger text-block text-small" ng-show="category.isRemoved"><i class="fa fa-warning"></i> {{$ctrl.removeMsgCategory}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" ng-disabled="news.category.remove.inProgress">{{$ctrl.closeBtnText}}</button>
+                <button type="button" class="btn btn-primary" ng-click="news.category.remove.submit()" ng-disabled="news.category.remove.inProgress">{{news.category.remove.inProgress ? $ctrl.inProgressText: $ctrl.submitBtnText}}</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="news-edit-modal modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="{{$ctrl.closeBtnText}}" ng-disabled="news.edit.inProgress"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">{{$ctrl.editTitleNews}}</h4>
+            </div>
+            <div class="modal-body">
+                <div class="blog">
+                    <div class="card">
+                        <div class="card-img-header">
+                            <div class="post-img file-upload">
+                                <input type="file" accept="image/x-png,image/jpeg" class="upload" ng-click="news.edit.upload.click()" onchange="app.upload.change(this)" ng-disabled="news.edit.inProgress" />
+                                <img ng-class="news.edit.img.isExist ? '' : 'gray-filter'" ng-src="{{news.edit.img.url + '?v=' + news.edit.img.version.major + '.' + news.edit.img.version.medio + '.' + news.edit.img.version.minor}}" alt="" ng-show="!news.edit.upload.isNecessary" />
+                                <img ng-class="news.edit.img.isExist ? '' : 'gray-filter'" ng-src="{{news.edit.upload.data}}" ng-show="news.edit.upload.isNecessary" />
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div>
+                                <span>{{$ctrl.editImgMsg}}</span>
+                            </div>
+                            <div class="pull-left padding-v-8">
+                                <span class="text-muted text-small"> {{$ctrl.editImgNote + news.edit.upload.width + ' &times; ' + news.edit.upload.height}}</span>
+                            </div>
+                            <div class="pull-right">
+                                <button type="button" class="btn btn-sm" ng-class="news.edit.img.isExist ? 'btn-success' : 'btn-default'" ng-click="news.edit.toggle()" ng-disabled="news.add.inProgress"><i class="fa" ng-class="news.edit.img.isExist ? 'fa-eye' : 'fa-eye-slash'"></i> {{news.edit.img.isExist ? $ctrl.editImgBtnTxtVisible : $ctrl.editImgBtnTxtInvisible}}</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="meta-blog">
+                        <div class="form-group" ng-class="news.edit.header.cls">
+                            <input type="text" class="form-control input-lg" placeholder="{{news.edit.header.placeholder}}" ng-model="news.edit.header.value" ng-change="news.edit.header.change()" ng-disabled="news.edit.inProgress" />
+                            <p class="text-block text-danger" ng-show="news.edit.header.msg.isVisible"><i class="fa fa-warning"></i> {{$ctrl.editMsg}}</p>
+                        </div>
+                    </div>
+                    <div class="form-group" ng-class="news.edit.text.cls">
+                        <textarea rows="8" class="form-control text_cont" placeholder="{{news.edit.text.placeholder}}" ng-model="news.edit.text.value" ng-change="news.edit.text.change()" ng-disabled="news.edit.inProgress"></textarea>
+                        <p class="text-block text-danger text-small" ng-show="news.edit.text.msg.isVisible"><i class="fa fa-warning"></i> {{$ctrl.editMsg}}</p>
+                    </div>
+                    <div class="line_blog">
+                        <span class="text-muted"><i class="fa fa-clock-o"></i> {{news.edit.date}}</span>
+                        <span class="text-muted"><i class="fa fa-tags"></i> <span>{{news.edit.category.text}}</span></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6 form-group text-center" ng-repeat="category in news.edit.category.list">
+                        <button type="button" class="btn" ng-class="category.isSelected ? 'btn-success' : 'btn-default'" ng-click="category.toggle()">
+                            <i class="fa" ng-class="category.isSelected ? 'fa-check' : 'fa-minus'"></i> {{category.text}}
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" ng-disabled="news.edit.inProgress">{{$ctrl.closeBtnText}}</button>
+                <button type="button" class="btn btn-primary" ng-click="news.edit.submit()" ng-disabled="news.edit.inProgress">{{news.edit.inProgress ? $ctrl.inProgressText: $ctrl.submitBtnText}}</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="news-add-modal modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="{{$ctrl.closeBtnText}}" ng-disabled="news.add.inProgress"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">{{$ctrl.addTitleNews}}</h4>
+            </div>
+            <div class="modal-body">
+                <div class="blog">
+                    <div class="card">
+                        <div class="card-img-header">
+                            <div class="post-img file-upload">
+                                <input type="file" accept="image/x-png,image/jpeg" class="upload" ng-click="news.add.upload.click()" onchange="app.upload.change(this)" ng-disabled="news.add.inProgress" />
+                                <img ng-class="news.add.img.isExist ? '' : 'gray-filter'" ng-src="{{news.add.img.url + '?v=' + news.add.img.version.major + '.' + news.add.img.version.medio + '.' + news.add.img.version.minor}}" alt="" ng-show="!news.add.upload.isNecessary" />
+                                <img ng-class="news.add.img.isExist ? '' : 'gray-filter'" ng-src="{{news.add.upload.data}}" ng-show="news.add.upload.isNecessary" />
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div>
+                                <span>{{$ctrl.editImgMsg}}</span>
+                            </div>
+                            <div class="pull-left padding-v-8">
+                                <span class="text-muted text-small"> {{$ctrl.editImgNote + news.add.upload.width + ' &times; ' + news.add.upload.height}}</span>
+                            </div>
+                            <div class="pull-right">
+                                <button type="button" class="btn btn-sm" ng-class="news.add.img.isExist ? 'btn-success' : 'btn-default'" ng-click="news.add.toggle()" ng-disabled="news.add.inProgress"><i class="fa" ng-class="news.add.img.isExist ? 'fa-eye' : 'fa-eye-slash'"></i> {{news.add.img.isExist ? $ctrl.editImgBtnTxtVisible : $ctrl.editImgBtnTxtInvisible}}</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="meta-blog">
+                        <div class="form-group" ng-class="news.add.header.tr.cls">
+                            <label>{{$ctrl.textTurkish}}</label>
+                            <input dir="ltr" type="text" class="form-control input-lg" placeholder="{{$ctrl.addPlaceholderNewsHeader}}" ng-model="news.add.header.tr.value" ng-change="news.add.header.tr.change()" ng-disabled="news.add.inProgress" />
+                            <p class="text-block text-danger" ng-show="news.add.header.tr.msg.isVisible"><i class="fa fa-warning"></i> {{$ctrl.editMsg}}</p>
+                        </div>
+                    </div>
+                    <div class="form-group" ng-class="news.add.text.tr.cls">
+                        <textarea dir="ltr" rows="8" class="form-control text_cont" placeholder="{{$ctrl.addPlaceholderNewsText}}" ng-model="news.add.text.tr.value" ng-change="news.add.text.tr.change()" ng-disabled="news.add.inProgress"></textarea>
+                        <p class="text-block text-danger text-small" ng-show="news.add.text.tr.msg.isVisible"><i class="fa fa-warning"></i> {{$ctrl.editMsg}}</p>
+                    </div>
+                    <div class="meta-blog">
+                        <div class="form-group" ng-class="news.add.header.en.cls">
+                            <label>{{$ctrl.textEnglish}}</label>
+                            <input dir="ltr" type="text" class="form-control input-lg" placeholder="{{$ctrl.addPlaceholderNewsHeader}}" ng-model="news.add.header.en.value" ng-change="news.add.header.en.change()" ng-disabled="news.add.inProgress" />
+                            <p class="text-block text-danger" ng-show="news.add.header.en.msg.isVisible"><i class="fa fa-warning"></i> {{$ctrl.editMsg}}</p>
+                        </div>
+                    </div>
+                    <div class="form-group" ng-class="news.add.text.en.cls">
+                        <textarea dir="ltr" rows="8" class="form-control text_cont" placeholder="{{$ctrl.addPlaceholderNewsText}}" ng-model="news.add.text.en.value" ng-change="news.add.text.en.change()" ng-disabled="news.add.inProgress"></textarea>
+                        <p class="text-block text-danger text-small" ng-show="news.add.text.en.msg.isVisible"><i class="fa fa-warning"></i> {{$ctrl.editMsg}}</p>
+                    </div>
+                    <div class="meta-blog">
+                        <div class="form-group" ng-class="news.add.header.ru.cls">
+                            <label>{{$ctrl.textRussian}}</label>
+                            <input dir="ltr" type="text" class="form-control input-lg" placeholder="{{$ctrl.addPlaceholderNewsHeader}}" ng-model="news.add.header.ru.value" ng-change="news.add.header.ru.change()" ng-disabled="news.add.inProgress" />
+                            <p class="text-block text-danger" ng-show="news.add.header.ru.msg.isVisible"><i class="fa fa-warning"></i> {{$ctrl.editMsg}}</p>
+                        </div>
+                    </div>
+                    <div class="form-group" ng-class="news.add.text.ru.cls">
+                        <textarea dir="ltr" rows="8" class="form-control text_cont" placeholder="{{$ctrl.addPlaceholderNewsText}}" ng-model="news.add.text.ru.value" ng-change="news.add.text.ru.change()" ng-disabled="news.add.inProgress"></textarea>
+                        <p class="text-block text-danger text-small" ng-show="news.add.text.ru.msg.isVisible"><i class="fa fa-warning"></i> {{$ctrl.editMsg}}</p>
+                    </div>
+                    <div class="meta-blog">
+                        <div class="form-group" ng-class="news.add.header.ar.cls">
+                            <label>{{$ctrl.textArabic}}</label>
+                            <input dir="rtl" type="text" class="form-control input-lg" placeholder="{{$ctrl.addPlaceholderNewsHeader}}" ng-model="news.add.header.ar.value" ng-change="news.add.header.ar.change()" ng-disabled="news.add.inProgress" />
+                            <p class="text-block text-danger" ng-show="news.add.header.ar.msg.isVisible"><i class="fa fa-warning"></i> {{$ctrl.editMsg}}</p>
+                        </div>
+                    </div>
+                    <div class="form-group" ng-class="news.add.text.ar.cls">
+                        <textarea dir="rtl" rows="8" class="form-control text_cont" placeholder="{{$ctrl.addPlaceholderNewsText}}" ng-model="news.add.text.ar.value" ng-change="news.add.text.ar.change()" ng-disabled="news.add.inProgress"></textarea>
+                        <p class="text-block text-danger text-small" ng-show="news.add.text.ar.msg.isVisible"><i class="fa fa-warning"></i> {{$ctrl.editMsg}}</p>
+                    </div>
+                    <div class="line_blog">
+                        <span class="text-muted"><i class="fa fa-clock-o"></i> {{news.add.date.text}}</span>
+                        <span class="text-muted"><i class="fa fa-tags"></i> <span>{{news.add.category.text}}</span></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6 form-group text-center" ng-repeat="category in news.add.category.list">
+                        <button type="button" class="btn" ng-class="category.isSelected ? 'btn-success' : 'btn-default'" ng-click="category.toggle()">
+                            <i class="fa" ng-class="category.isSelected ? 'fa-check' : 'fa-minus'"></i> {{category.text}}
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" ng-disabled="news.add.inProgress">{{$ctrl.closeBtnText}}</button>
+                <button type="button" class="btn btn-primary" ng-click="news.add.submit()" ng-disabled="news.add.inProgress">{{news.add.inProgress ? $ctrl.inProgressText: $ctrl.submitBtnText}}</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="news-remove-modal modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="{{$ctrl.closeBtnText}}" ng-disabled="news.remove.inProgress"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">{{$ctrl.removeTitleNews}}</h4>
+            </div>
+            <div class="modal-body">
+                <news-card ng-show="true"
+                           img-is-exist="news.remove.news.img.isExist"
+                           img-url="news.remove.news.img.url"
+                           header="news.remove.news.header[news.lang]"
+                           text="news.remove.news.text[news.lang]"
+                           date="news.remove.news.date.text"
+                           selected-category-ids="news.remove.news.categories"
+                           category-list="news.category.list"
+                           category-prepare="news.remove.categoryPrepare"></news-card>
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <p class="text-large"><i class="fa fa-warning text-danger"></i> {{$ctrl.removeMsgNews}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" ng-disabled="news.remove.inProgress">{{$ctrl.closeBtnText}}</button>
+                <button type="button" class="btn btn-danger" ng-click="news.remove.submit()" ng-disabled="news.remove.inProgress">{{news.remove.inProgress ? $ctrl.inProgressTextRemove: $ctrl.submitBtnTextRemove}}</button>
+            </div>
+        </div>
+    </div>
+</div>

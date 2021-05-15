@@ -1,0 +1,1 @@
+﻿var officeMapUniData = { "title": { "tr": "Ofisimiz", "en": "Our office", "ru": "Наш офис", "ar": "مكتبنا" }, "properties": { "latitude": 37.0838500, "longitude": 37.4330000, "zoom": 16 } };

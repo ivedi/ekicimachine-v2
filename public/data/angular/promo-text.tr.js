@@ -1,0 +1,1 @@
+﻿var promoTextData={"texts":["Üretenlerin yanındayız!","İhtiyaçlarınıza özel makine üretimi!","Ekici Makina Sanayi"]};

@@ -1,0 +1,33 @@
+﻿<div class="login-card" dir="{{login.lang.value !== 'ar' ? 'ltr' : 'rtl'}}">
+    <img class="login-logo" ng-src="{{login.logo.src + '?v=' + login.logo.version.major + '.' + login.logo.version.medio + '.' + login.logo.version.minor }}" />
+    <div class="form-group">
+        <div class="input-group" ng-class="login.username.cls">
+            <span class="input-group-addon bg-white">
+                <i class="fa fa-user"></i>
+            </span>
+            <input type="text" class="form-control" placeholder="{{login.username.placeholder}}" ng-model="login.username.value" ng-change="login.username.change()" ng-enter="login.submit()" ng-disabled="login.inProgress" />
+        </div>
+        <p class="text-danger text-small text-block" ng-show="login.username.msg.isVisible"><i class="fa fa-warning"></i> {{login.username.msg.text}}</p>
+    </div>
+    <div class="form-group">
+        <div class="input-group" ng-class="login.password.cls">
+            <span class="input-group-addon bg-white">
+                <i class="fa fa-key"></i>
+            </span>
+            <input type="password" class="form-control" placeholder="{{login.password.placeholder}}" ng-model="login.password.value" ng-change="login.password.change()" ng-enter="login.submit()" ng-disabled="login.inProgress" />
+        </div>
+        <p class="text-danger text-small text-block" ng-show="login.password.msg.isVisible"><i class="fa fa-warning"></i> {{login.password.msg.text}}</p>
+    </div>
+    <div class="text-center">
+        <div class="btn-group">
+            <button type="button" class="btn" ng-class="login.lang.value === 'tr' ? 'btn-primary' : 'btn-default'" ng-click="login.lang.change('tr')" ng-enter="login.submit()"><i class="fa" ng-class="login.lang.value === 'tr' ? 'fa-check' : ''"></i> Türkçe</button>
+            <button type="button" class="btn" ng-class="login.lang.value === 'en' ? 'btn-primary' : 'btn-default'" ng-click="login.lang.change('en')" ng-enter="login.submit()"><i class="fa" ng-class="login.lang.value === 'en' ? 'fa-check' : ''"></i> English</button>
+            <button type="button" class="btn" ng-class="login.lang.value === 'ru' ? 'btn-primary' : 'btn-default'" ng-click="login.lang.change('ru')" ng-enter="login.submit()"><i class="fa" ng-class="login.lang.value === 'ru' ? 'fa-check' : ''"></i> русский</button>
+            <button type="button" class="btn" ng-class="login.lang.value === 'ar' ? 'btn-primary' : 'btn-default'" ng-click="login.lang.change('ar')" ng-enter="login.submit()"><i class="fa" ng-class="login.lang.value === 'ar' ? 'fa-check' : ''"></i> عربى</button>
+        </div>
+    </div>
+    <hr />
+    <div class="form-group">
+        <button type="button" class="btn btn-success btn-block" ng-click="login.submit()" ng-enter="login.submit()" ng-disabled="login.inProgress">{{login.text}} <i class="fa" ng-class="login.lang.value !== 'ar' ? 'fa-arrow-right' : 'fa-arrow-left'"></i></button>
+    </div>
+</div>

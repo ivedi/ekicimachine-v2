@@ -1,0 +1,98 @@
+﻿<div class="" ng-class="$ctrl.titleClass + ($ctrl.editable ? ' btn-edit-container' : '')">
+    <button class="btn btn-default bg-white" ng-class="!$ctrl.editable || $ctrl.editItem.isVisible ? 'hide' : 'btn-edit'" ng-click="$ctrl.editItem.show()" ng-show="{{$ctrl.editable && !$ctrl.editItem.isVisible}}"><i class="fa fa-edit"></i></button>
+    <h3 ng-show="!$ctrl.editItem.isVisible">{{$ctrl.title}}</h3>
+    <div dir="ltr" class="input-group" ng-show="$ctrl.editItem.isVisible" ng-class="$ctrl.editItem.title.cls">
+        <span class="input-group-btn">
+            <button class="btn btn-danger" ng-click="$ctrl.editItem.cancel()"><i class="fa fa-times"></i></button>
+        </span>
+        <input type="text" class="form-control text-center" placeholder="{{$ctrl.editItem.title.placeholder}}" ng-model="$ctrl.editItem.title.value" ng-change="$ctrl.editItem.title.change()" />
+        <span class="input-group-btn">
+            <button class="btn btn-success" ng-click="$ctrl.editItem.submit()"><i class="fa fa-check"></i></button>
+        </span>
+    </div>
+    <p class="text-muted text-block text-small" ng-show="$ctrl.editItem.isVisible && $ctrl.editItem.title.msg.isVisible"><i class="fa fa-warning"></i> {{$ctrl.editMsg}}</p>
+</div>
+<div class="" ng-class="$ctrl.contactContainerClass">
+    <div class="" ng-class="$ctrl.addressContainerClass + ($ctrl.editable ? ' btn-edit-container' : '')">
+        <button class="btn btn-default bg-white btn-edit" ng-click="contactCard.edit.click()"><i class="fa fa-edit"></i></button>
+        <i class="fa icon_foot" ng-class="contactCard.address.iconClass"></i> <span>{{contactCard.address.text}}</span><br />
+        <i class="fa icon_foot" ng-class="contactCard.phone.iconClass"></i> <span dir="ltr">{{contactCard.phone.text}}</span><br />
+        <i class="fa icon_foot" ng-class="contactCard.fax.iconClass"></i> <span dir="ltr">{{contactCard.fax.text}}</span><br />
+        <i class="fa icon_foot" ng-class="contactCard.email.iconClass"></i> <span><a ng-href="mailto:{{contactCard.email.address}}" target="_blank">{{contactCard.email.text}}</a></span><br />
+    </div>
+    <social-network editable="$ctrl.editable"
+                    edit-msg="$ctrl.editMsg"
+                    edit-title="$ctrl.socialNetworkEditTitle"
+                    edit-modal-class="$ctrl.socialNetworkEditClass"
+                    close-btn-text="$ctrl.closeBtnText"
+                    in-progress-text="$ctrl.inProgressText"
+                    submit-btn-text="$ctrl.submitBtnText"
+                    ng-show="$ctrl.socialNetworkIsVisible"
+                    icon-container-class="'soc'"></social-network>
+</div>
+<div class="contact-card-modal modal fade" ng-class="$ctrl.editModalClass" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="{{$ctrl.closeBtnText}}" ng-disabled="conat.edit.inProgress"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title text-dark">{{$ctrl.editTitle}}</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="form-group" ng-class="contactCard.edit.address.cls">
+                            <input class="form-control" type="text" placeholder="{{contactCard.edit.address.placeholder}}" ng-model="contactCard.edit.address.value" ng-change="contactCard.edit.address.change()" ng-disabled="contactCard.edit.inProgress" />
+                        </div>
+                        <p class="text-danger text-block text-small" ng-show="contactCard.edit.address.msg.isVisible">
+                            <i class="fa fa-warning"></i> {{$ctrl.editMsg}}
+                        </p>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group" ng-class="contactCard.edit.phone.cls">
+                            <input dir="ltr" class="form-control" type="text" placeholder="{{contactCard.edit.phone.placeholder}}" ng-model="contactCard.edit.phone.value" ng-change="contactCard.edit.phone.change()" ng-disabled="contactCard.edit.inProgress" />
+                            <p class="text-danger text-block text-small" ng-show="contactCard.edit.phone.msg.isVisible">
+                                <i class="fa fa-warning"></i> {{$ctrl.editMsg}}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group" ng-class="contactCard.edit.fax.msg.cls">
+                            <input dir="ltr" class="form-control" type="text" placeholder="{{contactCard.edit.fax.placeholder}}" ng-model="contactCard.edit.fax.value" ng-change="contactCard.edit.fax.change()" ng-disabled="contactCard.edit.inProgress" />
+                            <p class="text-danger text-block text-small" ng-show="contactCard.edit.fax.msg.isVisible">
+                                <i class="fa fa-warning"></i> {{$ctrl.editMsg}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="form-group" ng-class="contactCard.edit.email.text.msg.cls">
+                            <input class="form-control" type="text" placeholder="{{contactCard.edit.email.text.placeholder}}" ng-model="contactCard.edit.email.text.value" ng-change="contactCard.edit.email.text.change()" ng-disabled="contactCard.edit.inProgress" />
+                            <p class="text-danger text-block text-small" ng-show="contactCard.edit.email.text.msg.isVisible">
+                                <i class="fa fa-warning"></i> {{$ctrl.editMsg}}
+                            </p>
+                            <p class="text-muted text-block text-small" ng-show="!contactCard.edit.email.text.msg.isVisible">
+                                <i class="fa fa-asterisk"></i> {{$ctrl.emailTextNote}}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="form-group" ng-class="contactCard.edit.email.address.msg.cls">
+                            <input dir="ltr" class="form-control" type="text" placeholder="{{contactCard.edit.email.address.placeholder}}" ng-model="contactCard.edit.email.address.value" ng-change="contactCard.edit.email.address.change()" ng-disabled="contactCard.edit.inProgress" />
+                            <p class="text-danger text-block text-small" ng-show="contactCard.edit.email.address.msg.isVisible">
+                                <i class="fa fa-warning"></i> {{$ctrl.editMsg}}
+                            </p>
+                            <p class="text-muted text-block text-small" ng-show="!contactCard.edit.email.address.msg.isVisible">
+                                <i class="fa fa-asterisk"></i> {{$ctrl.emailValueNote}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" ng-disabled="contactCard.edit.inProgress">{{$ctrl.closeBtnText}}</button>
+                <button type="button" class="btn btn-primary" ng-click="contactCard.edit.submit()" ng-disabled="contactCard.edit.inProgress">{{contactCard.edit.inProgress ? $ctrl.inProgressText: $ctrl.submitBtnText}}</button>
+            </div>
+        </div>
+    </div>
+</div>

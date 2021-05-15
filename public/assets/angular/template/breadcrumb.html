@@ -1,0 +1,72 @@
+﻿<div class="page-in">
+    <div class="page_in" ng-class="$ctrl.editable ? 'btn-edit-container' : ''">
+        <button class="btn btn-default bg-white btn-edit" ng-click="breadcrumb.edit.show()" ng-show="{{$ctrl.editable}}"><i class="fa fa-edit"></i></button>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h3 class="pull-left"><span class="colored">{{breadcrumb.header}}</span></h3>
+                    <div class="wel_mag pull-right">
+                        <div class="bbread">
+                            <a class="subpage_block" ng-href="{{breadcrumb.main.url}}">{{breadcrumb.main.text}}</a><div class="subpage_breadcrumbs_dv"></div><div class="subpage_block">{{breadcrumb.sub.text}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="breadcrumb-edit-modal modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="{{$ctrl.closeBtnText}}" ng-disabled="breadcrumb.edit.inProgress"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">{{$ctrl.editTitle}}</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="page-in">
+                            <div class="page_in">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <h3 class="pull-left"><span class="colored">{{breadcrumb.edit.header.value}}</span></h3>
+                                            <div class="wel_mag pull-right">
+                                                <div class="bbread">
+                                                    <a class="subpage_block" ng-href="{{!breadcrumb.edit.inProgress ? breadcrumb.main.url : '#'}}">{{breadcrumb.main.text}}</a><div class="subpage_breadcrumbs_dv"></div><div class="subpage_block">{{breadcrumb.edit.sub.value}}</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr />
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="form-group" ng-class="breadcrumb.edit.header.cls">
+                            <input class="form-control" type="text" placeholder="{{breadcrumb.edit.header.placeholder}}" ng-model="breadcrumb.edit.header.value" ng-change="breadcrumb.edit.header.change()" ng-disabled="breadcrumb.edit.inProgress" />
+                            <p class="text-danger text-block text-small" ng-show="breadcrumb.edit.header.msg.isVisible">
+                                <i class="fa fa-warning"></i> {{$ctrl.editMsg}}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="form-group" ng-class="breadcrumb.edit.sub.cls">
+                            <input class="form-control" type="text" placeholder="{{breadcrumb.edit.sub.placeholder}}" ng-model="breadcrumb.edit.sub.value" ng-change="breadcrumb.edit.sub.change()" ng-disabled="breadcrumb.edit.inProgress" />
+                            <p class="text-danger text-block text-small" ng-show="breadcrumb.edit.sub.msg.isVisible">
+                                <i class="fa fa-warning"></i> {{$ctrl.editMsg}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" ng-disabled="breadcrumb.edit.inProgress">{{$ctrl.closeBtnText}}</button>
+                <button type="button" class="btn btn-primary" ng-click="breadcrumb.edit.submit()" ng-disabled="breadcrumb.edit.inProgress">{{breadcrumb.edit.inProgress ? $ctrl.inProgressText: $ctrl.submitBtnText}}</button>
+            </div>
+        </div>
+    </div>
+</div>
