@@ -4,10 +4,10 @@ class Client {
     }
 
     getLanguage() {
-        if (!this.req.cookie || !this.req.cookie['lang']) {
+        if (!this.req.cookies || !this.req.cookies['lang']) {
             return 'en';
         }
-        return this.req.cookie['lang'];
+        return this.req.cookies['lang'];
     }
 }
 
