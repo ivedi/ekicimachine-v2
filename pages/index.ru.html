@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+
+<html ng-app="ekiciMachine" lang="ru">
+<head>
+    <title>Ekici Makine Sanayi</title>
+    <meta charset="utf-8" />
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+    <meta content="Машинное производство тапочек и сандалий" name="description" />
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport" />
+
+    <!--Icon-->
+    <link rel="apple-touch-icon" sizes="57x57" href="assets/icon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="assets/icon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="assets/icon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="assets/icon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="assets/icon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="assets/icon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="assets/icon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="assets/icon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/icon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="assets/icon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/icon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="assets/icon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/icon/favicon-16x16.png">
+    <link rel="manifest" href="assets/icon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="assets/icon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <!--/.icon-->
+
+    <!-- CSS FILES -->
+    <link href="assets/css/style.css?v=0.1.1" media="screen" rel="stylesheet" type="text/css" />
+    <link href="assets/css/responsive.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="assets/css/fullwidth.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="assets/css/textrotator.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="assets/css/plugins/sweetalert.css" media="screen" rel="stylesheet" type="text/css" />
+    <!-- JS FILES -->
+    <script type="text/javascript" src="assets/js/jquery-1.20.2.min.js"></script>
+    <script type="text/javascript" src="assets/js/plugins/blockui.min.js"></script>
+    <script type="text/javascript" src="assets/js/plugins/sweetalert.min.js"></script>
+    <script type="text/javascript" src="assets/js/plugins/cookie.min.js"></script>
+    <script type="text/javascript" src="assets/js/angular/angular.min.js"></script>
+    <script type="text/javascript" src="assets/js/master.js?v=0.0.1"></script>
+
+    <!--Angular Data-->
+    <script type="text/javascript" src="data/angular/page-header.ru.js?v=1.0.0"></script>
+    <script type="text/javascript" src="data/angular/social-network.ru.js?v=1.0.0"></script>
+    <script type="text/javascript" src="data/angular/contact-card.ru.js?v=1.0.0"></script>
+    <script type="text/javascript" src="data/angular/page-footer.ru.js?v=1.0.0"></script>
+    <!--/.angular Data-->
+
+    <!--Angular Components-->
+    <script type="text/javascript" src="assets/js/angular/components/page-header.js?v=0.1.2"></script>
+    <script type="text/javascript" src="assets/js/angular/components/social-network.js?v=0.1.4"></script>
+    <script type="text/javascript" src="assets/js/angular/components/contact-card.js?v=0.1.4"></script>
+    <script type="text/javascript" src="assets/js/angular/components/page-footer.js?v=0.1.4"></script>
+    <!--./angular Components-->
+    
+    <!--#region head-->
+    <!--Angular Data-->
+    <script type="text/javascript" src="data/angular/promo-text.uni.js?v=1.0.0"></script>
+    <script type="text/javascript" src="data/angular/promo-text.ru.js?v=1.0.0"></script>
+    <script type="text/javascript" src="data/angular/welcome-text-container.ru.js?v=1.0.0"></script>
+    <script type="text/javascript" src="data/angular/icon-card-container.ru.js?v=1.0.0"></script>
+    <script type="text/javascript" src="data/angular/parallax.uni.js?v=1.0.0"></script>
+    <script type="text/javascript" src="data/angular/parallax.ru.js?v=1.0.0"></script>
+    <script type="text/javascript" src="data/angular/machine-list.uni.js?v=1.0.0"></script>
+    <script type="text/javascript" src="data/angular/testimonial-slider.uni.js?v=1.0.0"></script>
+    <script type="text/javascript" src="data/angular/presentation-container.ru.js?v=1.0.0"></script>
+    <!--/.angular Data-->
+
+    <!--Angular Components-->
+    <script type="text/javascript" src="assets/js/angular/components/promo-text.js?v=1.0.0"></script>
+    <script type="text/javascript" src="assets/js/angular/components/welcome-text-container.js?v=1.0.0"></script>
+    <script type="text/javascript" src="assets/js/angular/components/icon-card.js?v=1.0.0"></script>
+    <script type="text/javascript" src="assets/js/angular/components/icon-card-container.js?v=1.0.0"></script>
+    <script type="text/javascript" src="assets/js/angular/components/parallax.js?v=1.0.0"></script>
+    <script type="text/javascript" src="assets/js/angular/components/machine-filter.js?v=1.0.0"></script>
+    <script type="text/javascript" src="assets/js/angular/components/machine-list.js?v=1.0.0"></script>
+    <script type="text/javascript" src="assets/js/angular/components/testimonial.js?v=1.0.0"></script>
+    <script type="text/javascript" src="assets/js/angular/components/testimonial-slider.js?v=1.0.0"></script>
+    <script type="text/javascript" src="assets/js/angular/components/presentation.js?v=1.0.0"></script>
+    <script type="text/javascript" src="assets/js/angular/components/presentation-container.js?v=1.0.0"></script>
+    <!--./angular Components-->
+    <!--#endregion head-->
+</head>
+<body>
+    <!--#region ContentPlaceHolder1-->
+    <promo-text
+        editable="false"
+        edit-msg="'Инвалид'"
+        edit-texts-title="'Редактировать текст'"
+        edit-images-title="'Редактирование слайдера'"
+        edit-image-msg="'Нажмите на изображение, чтобы обновить его.'"
+        edit-image-note="'Рекомендуемый размер: '"
+        close-btn-text="'Закрыть'"
+        submit-btn-text="'Сохранить изменения'"
+        in-progress-text="'Сохранение ...'"></promo-text>
+    <!--#endregion ContentPlaceHolder1-->
+    <div id="wrapper">
+        <header>
+            <page-header
+                selected-language="'русский'"
+                editable="false"
+                edit-msg="'Инвалид'"
+                edit-title="'Редактирование меню'"
+                user-logged-in="false"
+                close-btn-text="'Закрыть'"
+                submit-btn-text="'Сохранить изменения'"
+                in-progress-text="'Сохранение ...'"></page-header>
+        </header>
+        <!--#region ContentPlaceHolder2-->
+        <welcome-text-container
+            editable="false"
+            edit-msg="'Инвалид'"></welcome-text-container>
+        <icon-card-container
+            editable="false"
+            edit-msg="'Инвалид'"
+            edit-title="'Значок карты редактировать'"
+            close-btn-text="'Закрыть'"
+            submit-btn-text="'Сохранить изменения'"
+            in-progress-text="'Сохранение ...'"></icon-card-container>
+        <parallax
+            editable="false"
+            edit-msg="'Инвалид'"
+            edit-title="'Редактировать изображение'"
+            edit-image-msg="'Нажмите на изображение, чтобы обновить его.'"
+            edit-image-note="'Рекомендуемый размер: '"
+            close-btn-text="'Закрыть'"
+            submit-btn-text="'Сохранить изменения'"
+            in-progress-text="'Сохранение ...'"></parallax>
+        <machine-list
+            text-turkish="'турецкий'"
+            text-english="'английский'"
+            text-russian="'русский'"
+            text-arabic="'арабский'"
+            text-embedded-youtube="'Встроенный код Youtube'"
+            text-new-machine="'Новая машина'"
+            text-new-machine-comment="'Нажмите, чтобы добавить новую машину.'"
+            filter-text-all="'Все'"
+            filter-text-edit="'Редактировать'"
+            filter-text-add="'Добавить'"
+            filter-text-remove="'Удалить'"
+            editable="false"
+            edit-msg="'Инвалид'"
+            edit-title-category="'Значок карты редактировать'"
+            edit-title-machine="'Редактирование машины'"
+            edit-image-msg="'Нажмите на изображение, чтобы обновить его.'"
+            edit-image-note="'Рекомендуемый размер: '"
+            remove-title-category="'Категория Удалить'"
+            remove-title-machine="'Удалить машину'"
+            remove-msg-category="'Эта категория будет удалена!'"
+            remove-msg-machine="'Эта машина будет удалена!'"
+            add-title-category="'Добавление категории'"
+            add-title-machine="'Добавление машины'"
+            add-msg="'Инвалид'"
+            add-placeholder-category="'Введите название категории'"
+            add-placeholder-machine="'Введите имя машины'"
+            close-btn-text="'Закрыть'"
+            submit-btn-text="'Сохранить изменения'"
+            submit-remove-btn-text="'Удалить'"
+            in-progress-text="'Сохранение ...'"
+            in-progress-remove-text="'Удаление ...'"></machine-list>
+        <testimonial-slider
+            editable="false"
+            edit-msg="'Инвалид'"
+            edit-title="'Редактирование отзыва клиента'"
+            add-title="'Добавление отзыва клиента'"
+            add-msg="'Инвалид'"
+            add-placeholder-testimonial="'Введите отзыв клиента'"
+            add-placeholder-annotation="'Введите информацию о клиенте'"
+            remove-title="'Отзывы клиентов'"
+            remove-msg="'Этот отзыв будет удален!'"
+            text-turkish="'турецкий'"
+            text-english="'английский'"
+            text-russian="'русский'"
+            text-arabic="'арабский'"
+            close-btn-text="'Закрыть'"
+            submit-btn-text="'Сохранить изменения'"
+            submit-remove-btn-text="'Удалить'"
+            in-progress-text="'Сохранение ...'"
+            in-progress-remove-text="'Удаление ...'"></testimonial-slider>
+        <presentation-container
+            editable="false"
+            edit-msg="'Инвалид'"
+            edit-title="'Редактирование презентации'"
+            close-btn-text="'Закрыть'"
+            submit-btn-text="'Сохранить изменения'"
+            in-progress-text="'Сохранение ...'"></presentation-container>
+        <!--#endregion ContentPlaceHolder2-->
+        <page-footer
+            editable="false"
+            edit-msg="'Инвалид'"
+            contact-card-edit-title="'Контактная информация Редактировать'"
+            social-network-edit-title="'Редактирование социальной сети'"
+            close-btn-text="'Закрыть'"
+            submit-btn-text="'Сохранить изменения'"
+            in-progress-text="'Сохранение ...'"
+            contact-card-email-text-note="'Видимая часть адреса электронной почты'"
+            contact-card-email-value-note="'Адрес электронной почты'"></page-footer>
+    </div>
+    <asp:ContentPlaceHolder ID="AttachmentHolder" runat="server"></asp:ContentPlaceHolder>
+    <!--#region AttachmentHolder-->
+    <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="assets/js/jquery.hoverdir.js"></script>
+    <script type="text/javascript" src="assets/js/jquery.isotope.min.js"></script>
+    <script type="text/javascript" src="assets/js/jquery.text-rotator.min.js"></script>
+    <script type="text/javascript" src="assets/js/jquery.royal-preloader.min.js"></script>
+    <script type="text/javascript" src="assets/js/jquery.flexslider-min.js"></script>
+    <script type="text/javascript" src="assets/js/superfish.min.js"></script>
+    <script type="text/javascript" src="assets/js/responsive-nav.min.js"></script>
+    <script type="text/javascript" src="assets/js/vegas.min.js"></script>
+    <script type="text/javascript" src="assets/js/main.js?v=0.0.1"></script>
+    <!--#endregion AttachmentHolder-->
+</body>
+</html>

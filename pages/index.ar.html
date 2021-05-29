@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 
-<html ng-app="ekiciMachine" lang="tr">
-<head runat="server">
+<html ng-app="ekiciMachine" lang="ar" dir="rtl">
+<head>
     <title>Ekici Makine Sanayi</title>
     <meta charset="utf-8" />
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
-    <meta content="Terlik ve sandalet makine üretimi" name="description" />
+    <meta content="إنتاج آلة من النعال وصندل" name="description" />
     <meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport" />
 
     <!--Icon-->
@@ -43,10 +43,10 @@
     <script type="text/javascript" src="assets/js/master.js?v=0.0.1"></script>
 
     <!--Angular Data-->
-    <script type="text/javascript" src="data/angular/page-header.tr.js?v=1.0.0"></script>
-    <script type="text/javascript" src="data/angular/social-network.tr.js?v=1.0.0"></script>
-    <script type="text/javascript" src="data/angular/contact-card.tr.js?v=1.0.0"></script>
-    <script type="text/javascript" src="data/angular/page-footer.tr.js?v=1.0.0"></script>
+    <script type="text/javascript" src="data/angular/page-header.ar.js?v=1.0.0"></script>
+    <script type="text/javascript" src="data/angular/social-network.ar.js?v=1.0.0"></script>
+    <script type="text/javascript" src="data/angular/contact-card.ar.js?v=1.0.0"></script>
+    <script type="text/javascript" src="data/angular/page-footer.ar.js?v=1.0.0"></script>
     <!--/.angular Data-->
 
     <!--Angular Components-->
@@ -55,18 +55,20 @@
     <script type="text/javascript" src="assets/js/angular/components/contact-card.js?v=1.0.0"></script>
     <script type="text/javascript" src="assets/js/angular/components/page-footer.js?v=1.0.0"></script>
     <!--./angular Components-->
-    
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+
     <!--#region head-->
     <!--Angular Data-->
     <script type="text/javascript" src="data/angular/promo-text.uni.js?v=1.0.0"></script>
-    <script type="text/javascript" src="data/angular/promo-text.tr.js?v=1.0.0"></script>
-    <script type="text/javascript" src="data/angular/welcome-text-container.tr.js?v=1.0.0"></script>
-    <script type="text/javascript" src="data/angular/icon-card-container.tr.js?v=1.0.0"></script>
+    <script type="text/javascript" src="data/angular/promo-text.ar.js?v=1.0.0"></script>
+    <script type="text/javascript" src="data/angular/welcome-text-container.ar.js?v=1.0.0"></script>
+    <script type="text/javascript" src="data/angular/icon-card-container.ar.js?v=1.0.0"></script>
     <script type="text/javascript" src="data/angular/parallax.uni.js?v=1.0.0"></script>
-    <script type="text/javascript" src="data/angular/parallax.tr.js?v=1.0.0"></script>
+    <script type="text/javascript" src="data/angular/parallax.ar.js?v=1.0.0"></script>
     <script type="text/javascript" src="data/angular/machine-list.uni.js?v=1.0.0"></script>
     <script type="text/javascript" src="data/angular/testimonial-slider.uni.js?v=1.0.0"></script>
-    <script type="text/javascript" src="data/angular/presentation-container.tr.js?v=1.0.0"></script>
+    <script type="text/javascript" src="data/angular/presentation-container.ar.js?v=1.0.0"></script>
     <!--/.angular Data-->
 
     <!--Angular Components-->
@@ -88,118 +90,118 @@
     <!--#region ContentPlaceHolder1-->
     <promo-text
         editable="false"
-        edit-msg="'Geçersiz'"
-        edit-texts-title="'Kayan Yazı Düzenleme'"
-        edit-images-title="'Kayan Resim Düzenleme'"
-        edit-image-msg="'Değiştirmek için resmin üzerine tıklayın.'"
-        edit-image-note="'Tavsiye edilen boyut: '"
-        close-btn-text="'Kapat'"
-        submit-btn-text="'Değişiklikleri Kaydet'"
-        in-progress-text="'Kaydediliyor...'"></promo-text>
+        edit-msg="'غير صالحة'"
+        edit-texts-title="'تعديل نص الوجه'"
+        edit-images-title="'تعديل صورة المنزلق'"
+        edit-image-msg="'انقر على الصورة للتحديث'"
+        edit-image-note="'الحجم الموصى به: '"
+        close-btn-text="'قريب'"
+        submit-btn-text="'حفظ التغييرات'"
+        in-progress-text="'إنقاذ...'"></promo-text>
     <!--#endregion ContentPlaceHolder1-->
     <div id="wrapper">
         <header>
             <page-header
-                selected-language="'Türkçe'"
+                selected-language="'عربى'"
                 editable="false"
-                edit-msg="'Geçersiz'"
-                edit-title="'Menü Düzenleme'"
+                edit-msg="'غير صالحة'"
+                edit-title="'القائمة تحرير'"
                 user-logged-in="false"
-                close-btn-text="'Kapat'"
-                submit-btn-text="'Değişiklikleri Kaydet'"
-                in-progress-text="'Kaydediliyor...'"></page-header>
+                close-btn-text="'قريب'"
+                submit-btn-text="'حفظ التغييرات'"
+                in-progress-text="'إنقاذ...'"></page-header>
         </header>
-        <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server"></asp:ContentPlaceHolder>
         <!--#region ContentPlaceHolder2-->
         <welcome-text-container
             editable="false"
-            edit-msg="'Geçersiz'"></welcome-text-container>
+            edit-msg="'غير صالحة'"></welcome-text-container>
         <icon-card-container
             editable="false"
-            edit-msg="'Geçersiz'"
-            edit-title="'İkon Kartı Düzenleme'"
-            close-btn-text="'Kapat'"
-            submit-btn-text="'Değişiklikleri Kaydet'"
-            in-progress-text="'Kaydediliyor...'"></icon-card-container>
+            edit-msg="'غير صالحة'"
+            edit-title="'رمز بطاقة تحرير'"
+            close-btn-text="'قريب'"
+            submit-btn-text="'حفظ التغييرات'"
+            in-progress-text="'إنقاذ...'"></icon-card-container>
         <parallax
             editable="false"
-            edit-msg="'Geçersiz'"
-            edit-title="'Resim Düzenleme'"
-            edit-image-msg="'Değiştirmek için resmin üzerine tıklayın.'"
-            edit-image-note="'Tavsiye edilen boyut: '"
-            close-btn-text="'Kapat'"
-            submit-btn-text="'Değişiklikleri Kaydet'"
-            in-progress-text="'Kaydediliyor...'"></parallax>
+            edit-msg="'غير صالحة'"
+            edit-title="'تعديل الصورة'"
+            edit-image-msg="'انقر على الصورة للتحديث'"
+            edit-image-note="'الحجم الموصى به: '"
+            close-btn-text="'قريب'"
+            submit-btn-text="'حفظ التغييرات'"
+            in-progress-text="'إنقاذ...'"></parallax>
         <machine-list
-            text-turkish="'Türkçe'"
-            text-english="'İngilizce'"
-            text-russian="'Rusça'"
-            text-arabic="'Arapça'"
-            text-embedded-youtube="'Youtube gömülü kodu'"
-            text-new-machine="'Yeni Makine'"
-            text-new-machine-comment="'Yeni Makine eklemek için tıklayın.'"
-            filter-text-all="'Hepsi'"
-            filter-text-edit="'Düzenle'"
-            filter-text-add="'Ekle'"
-            filter-text-remove="'Çıkar'"
+            text-turkish="'اللغة التركية'"
+            text-english="'الإنجليزية'"
+            text-russian="'الروسية'"
+            text-arabic="'عربى'"
+            text-embedded-youtube="'يوتيوب رمز جزءا لا يتجزأ'"
+            text-new-machine="'آلة جديدة'"
+            text-new-machine-comment="'انقر لإضافة جهاز جديد.'"
+            filter-text-all="'الكل'"
+            filter-text-edit="'تصحيح'"
+            filter-text-add="'إضافة'"
+            filter-text-remove="'إزالة'"
             editable="false"
-            edit-msg="'Geçersiz'"
-            edit-title-category="'Kategori Düzenleme'"
-            edit-title-machine="'Makine Düzenleme'"
-            edit-image-msg="'Değiştirmek için resmin üzerine tıklayın.'"
-            edit-image-note="'Tavsiye edilen boyut: '"
-            remove-title-category="'Kategori Çıkarma'"
-            remove-title-machine="'Makine Çıkarma'"
-            remove-msg-category="'Bu kategori silinecek!'"
-            remove-msg-machine="'Bu makine silinecek!'"
-            add-title-category="'Kategori Ekleme'"
-            add-title-machine="'Makine Ekleme'"
-            add-msg="'Geçersiz'"
-            add-placeholder-category="'Kategori adı giriniz'"
-            add-placeholder-machine="'Makine adı giriniz'"
-            close-btn-text="'Kapat'"
-            submit-btn-text="'Değişiklikleri Kaydet'"
-            submit-remove-btn-text="'Sil'"
-            in-progress-text="'Kaydediliyor...'"
-            in-progress-remove-text="'Siliniyor...'"></machine-list>
+            edit-msg="'غير صالحة'"
+            edit-title-category="'رمز بطاقة تحرير'"
+            edit-title-machine="'تحرير الجهاز'"
+            edit-image-msg="'انقر على الصورة للتحديث'"
+            edit-image-note="'الحجم الموصى به: '"
+            remove-title-category="'الفئة إزالة'"
+            remove-title-machine="'إزالة آلة'"
+            remove-msg-category="'ستتم إزالة هذه الفئة!'"
+            remove-msg-machine="'سيتم إزالة هذا الجهاز!'"
+            add-title-category="'الفئة إضافة'"
+            add-title-machine="'إضافة آلة'"
+            add-msg="'غير صالحة'"
+            add-placeholder-category="'أدخل اسم الفئة'"
+            add-placeholder-machine="'أدخل اسم الجهاز'"
+            close-btn-text="'قريب'"
+            submit-btn-text="'حفظ التغييرات'"
+            submit-remove-btn-text="'إزالة'"
+            in-progress-text="'إنقاذ...'"
+            in-progress-remove-text="'إزالة ...'"></machine-list>
         <testimonial-slider
             editable="false"
-            edit-msg="'Geçersiz'"
-            edit-title="'Müşteri Görüşü Düzenleme'"
-            add-title="'Müşteri Görüşü Ekleme'"
-            add-msg="'Geçersiz'"
-            add-placeholder-testimonial="'Müşteri görüşünü giriniz'"
-            add-placeholder-annotation="'Müşteri bilgisini giriniz'"
-            remove-title="'Müşteri Görüşü Çıkarma'"
-            remove-msg="'Bu müşteri görüşü silinecek!'"
-            text-turkish="'Türkçe'"
-            text-english="'İngilizce'"
-            text-russian="'Rusça'"
-            text-arabic="'Arapça'"
-            close-btn-text="'Kapat'"
-            submit-btn-text="'Değişiklikleri Kaydet'"
-            submit-remove-btn-text="'Sil'"
-            in-progress-text="'Kaydediliyor...'"
-            in-progress-remove-text="'Siliniyor...'"></testimonial-slider>
+            edit-msg="'غير صالحة'"
+            edit-title="'العملاء تستمونيال تحرير'"
+            add-title="'العملاء تستمونيال إضافة'"
+            add-msg="'غير صالحة'"
+            add-placeholder-testimonial="'أدخل شهادة العملاء'"
+            add-placeholder-annotation="'أدخل معلومات العملاء'"
+            remove-title="'العملاء تستمونيال إزالة'"
+            remove-msg="'سيتم إزالة هذا العميل شهادة!'"
+            text-turkish="'اللغة التركية'"
+            text-english="'الإنجليزية'"
+            text-russian="'الروسية'"
+            text-arabic="'عربى'"
+            close-btn-text="'قريب'"
+            submit-btn-text="'حفظ التغييرات'"
+            submit-remove-btn-text="'إزالة'"
+            in-progress-text="'إنقاذ...'"
+            in-progress-remove-text="'إزالة ...'"></testimonial-slider>
         <presentation-container
             editable="false"
-            edit-msg="'Geçersiz'"
-            edit-title="'Sunum Düzenleme'"
-            close-btn-text="'Kapat'"
-            submit-btn-text="'Değişiklikleri Kaydet'"
-            in-progress-text="'Kaydediliyor...'"></presentation-container>
+            edit-msg="'غير صالحة'"
+            edit-title="'تحرير العرض التقديمي'"
+            close-btn-text="'قريب'"
+            submit-btn-text="'حفظ التغييرات'"
+            in-progress-text="'إنقاذ...'"></presentation-container>
         <!--#endregion ContentPlaceHolder2-->
         <page-footer
             editable="false"
-            edit-msg="'Geçersiz'"
-            contact-card-edit-title="'İletişim Bilgileri Düzenleme'"
-            social-network-edit-title="'Sosyal Ağ Düzenleme'"
-            close-btn-text="'Kapat'"
-            submit-btn-text="'Değişiklikleri Kaydet'"
-            in-progress-text="'Kaydediliyor...'"
-            contact-card-email-text-note="'Eposta adresinin sayfada görünen kısmı'"
-            contact-card-email-value-note="'Epostanın gönderileceği adres'"></page-footer>
+            edit-msg="'غير صالحة'"
+            contact-card-edit-title="'معلومات الاتصال تحرير'"
+            social-network-edit-title="'تعديل الشبكة الاجتماعية'"
+            close-btn-text="'قريب'"
+            submit-btn-text="'حفظ التغييرات'"
+            in-progress-text="'إنقاذ...'"
+            contact-card-email-text-note="'جزء مرئي من عنوان البريد الإلكتروني'"
+            contact-card-email-value-note="'عنوان إرسال البريد الإلكتروني'"></page-footer>
     </div>
+    <asp:ContentPlaceHolder ID="AttachmentHolder" runat="server"></asp:ContentPlaceHolder>
     <!--#region AttachmentHolder-->
     <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="assets/js/jquery.hoverdir.js"></script>

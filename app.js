@@ -20,28 +20,15 @@ app.get('/', (req, res) => {
 app.get('/home', (req, res) => {
   const client = new Client(req);
   const language = client.getLanguage();
-  const filePath = getPageLocalPath(language, 'index.html');
+  const filePath = `${__dirname}/pages/index.${language}.html`;
   res.sendFile(filePath);
 });
 
-app.get('/anasayfa', (req, res) => {
-  const filePath = getPageLocalPath('tr', 'index.html');
+app.get('/anasayfa', (_, res) => {
+  const filePath = `${__dirname}/pages/index.tr.html`;
   res.sendFile(filePath);
 });
 
 app.listen(port, () => {
   console.log(`The party is at http://localhost:${port}`);
 });
-
-function getPageLocalPath(language, filename) {
-  if (language === 'tr') {
-    return __dirname + '/pages/tr/' + filename;
-  }
-  if (language === 'ru') {
-    return __dirname + '/pages/ru/' + filename;
-  }
-  if (language === 'ar') {
-    return __dirname + '/pages/ar/' + filename;
-  }
-  return __dirname + '/pages/en/' + filename;
-}
