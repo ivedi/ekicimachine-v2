@@ -25,9 +25,7 @@ app.get('/home', (req, res) => {
 });
 
 app.get('/anasayfa', (req, res) => {
-  const client = new Client(req);
-  const language = client.getLanguage();
-  const filePath = getPageLocalPath(language, 'index.html');
+  const filePath = getPageLocalPath('tr', 'index.html');
   res.sendFile(filePath);
 });
 
