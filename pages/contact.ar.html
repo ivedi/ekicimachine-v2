@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+
+<html ng-app="ekiciMachine" lang="ar" dir="rtl">
+<head>
+    <title>Ekici Makine Sanayi</title>
+    <meta charset="utf-8" />
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+    <meta content="إنتاج آلة من النعال وصندل" name="description" />
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport" />
+
+    <!--Icon-->
+    <link rel="apple-touch-icon" sizes="57x57" href="assets/icon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="assets/icon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="assets/icon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="assets/icon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="assets/icon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="assets/icon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="assets/icon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="assets/icon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/icon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="assets/icon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/icon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="assets/icon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/icon/favicon-16x16.png">
+    <link rel="manifest" href="assets/icon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="assets/icon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <!--/.icon-->
+
+    <!-- CSS FILES -->
+    <link href="assets/css/style.css?v=1.0.0" media="screen" rel="stylesheet" type="text/css" />
+    <link href="assets/css/responsive.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="assets/css/fullwidth.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="assets/css/textrotator.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="assets/css/plugins/sweetalert.css" media="screen" rel="stylesheet" type="text/css" />
+    <!-- JS FILES -->
+    <script type="text/javascript" src="assets/js/jquery-1.20.2.min.js"></script>
+    <script type="text/javascript" src="assets/js/plugins/blockui.min.js"></script>
+    <script type="text/javascript" src="assets/js/plugins/sweetalert.min.js"></script>
+    <script type="text/javascript" src="assets/js/plugins/cookie.min.js"></script>
+    <script type="text/javascript" src="assets/js/angular/angular.min.js"></script>
+    <script type="text/javascript" src="assets/js/master.js?v=1.0.0"></script>
+
+    <!--Angular Data-->
+    <script type="text/javascript" src="data/angular/page-header.ar.js?v=1.0.0"></script>
+    <script type="text/javascript" src="data/angular/social-network.ar.js?v=1.0.0"></script>
+    <script type="text/javascript" src="data/angular/contact-card.ar.js?v=1.0.0"></script>
+    <script type="text/javascript" src="data/angular/page-footer.ar.js?v=1.0.0"></script>
+    <!--/.angular Data-->
+
+    <!--Angular Components-->
+    <script type="text/javascript" src="assets/js/angular/components/page-header.js?v=1.0.0"></script>
+    <script type="text/javascript" src="assets/js/angular/components/social-network.js?v=1.0.0"></script>
+    <script type="text/javascript" src="assets/js/angular/components/contact-card.js?v=1.0.0"></script>
+    <script type="text/javascript" src="assets/js/angular/components/page-footer.js?v=1.0.0"></script>
+    <!--./angular Components-->
+
+    <!--#region head-->
+    <!--Angular Data-->
+    <script type="text/javascript" src="data/angular/breadcrumb.ar.js?v=1.0.0"></script>
+    <script type="text/javascript" src="data/angular/office-map.uni.js?v=1.0.0"></script>
+    <script type="text/javascript" src="data/angular/contact-presenter.ar.js?v=1.0.0"></script>
+    <script type="text/javascript" src="data/angular/business-hours.ar.js?v=1.0.0"></script>
+    <script type="text/javascript" src="data/angular/contact-form.ar.js?v=1.0.0"></script>
+    <!--/.angular Data-->
+    <!--Angular Components-->
+    <script type="text/javascript" src="assets/js/angular/components/breadcrumb.js?v=1.0.0"></script>
+    <script type="text/javascript" src="assets/js/angular/components/office-map.js?v=1.0.0"></script>
+    <script type="text/javascript" src="assets/js/angular/components/contact-presenter.js?v=1.0.0"></script>
+    <script type="text/javascript" src="assets/js/angular/components/business-hours.js?v=1.0.0"></script>
+    <script type="text/javascript" src="assets/js/angular/components/contact-form.js?v=1.0.0"></script>
+    <!--./angular Components-->
+    <!--#endregion head-->
+</head>
+<body>
+    <!--#region ContentPlaceHolder1--><!--#endregion ContentPlaceHolder1-->
+    <div id="wrapper">
+        <header>
+            <page-header
+                selected-language="'عربى'"
+                editable="false"
+                edit-msg="'غير صالحة'"
+                edit-title="'القائمة تحرير'"
+                user-logged-in="false"
+                close-btn-text="'قريب'"
+                submit-btn-text="'حفظ التغييرات'"
+                in-progress-text="'إنقاذ...'"></page-header>
+        </header>
+        <!--#region ContentPlaceHolder2-->
+        <breadcrumb page="'contact'"
+            editable="false"
+            edit-msg="'غير صالحة'"
+            edit-title="'تعديل رأس الصفحة'"
+            close-btn-text="'قريب'"
+            submit-btn-text="'حفظ التغييرات'"
+            in-progress-text="'إنقاذ...'"></breadcrumb>
+        <office-map
+            editable="false"
+            edit-msg="'غير صالحة'"
+            cancel-btn-text="'إلغاء'"
+            submit-btn-text="'حفظ التغييرات'"
+            in-progress-text="'إنقاذ...'"></office-map>
+        <contact-presenter
+            editable="false"
+            edit-msg="'غير صالحة'"
+            edit-title-contact-card="'معلومات الاتصال تحرير'"
+            edit-title-business-hours="'تحرير ساعات العمل'"
+            edit-title-social-network="'تعديل الشبكة الاجتماعية'"
+            edit-title-contact-form="'نموذج الاتصال تحرير'"
+            edit-title-contact-form-explanation="'تفسير'"
+            edit-title-contact-form-names="'أسماء الحقول'"
+            edit-title-contact-form-messages="'رسائل خاطئة'"
+            edit-title-contact-form-submit-idle="'زر الإرسال (الخمول)'"
+            edit-title-contact-form-submit-progress="'زر الإرسال (قيد التقدم)'"
+            mail-settings-title="'إعدادات البريد الإلكتروني'"
+            mail-settings-smtp-address-title="'عنوان سمتب'"
+            mail-settings-smtp-port-title="'منفذ سمتب'"
+            mail-settings-from-address-title="'عنوان البريد الإلكتروني للمرسل'"
+            mail-settings-from-name-title="'اسم المرسل'"
+            mail-settings-from-password-title="'البريد الإلكتروني للمرسل كلمة المرور'"
+            mail-settings-to-title="'عناوين البريد الإلكتروني للمستقبل'"
+            mail-settings-to-address-placeholder="'عنوان البريد الإلكتروني للمستلم'"
+            mail-settings-to-name-placeholder="'اسم المستلم'"
+            mail-settings-subject-prefix-title="'بادئة الموضوع'"
+            visible-in-page="'مرئي في الصفحة'"
+            invisible-in-page="'غير مرئية في الصفحة'"
+            email-text-note="'جزء مرئي من عنوان البريد الإلكتروني'"
+            email-value-note="'عنوان إرسال البريد الإلكتروني'"
+            close-btn-text="'قريب'"
+            submit-btn-text="'حفظ التغييرات'"
+            in-progress-text="'إنقاذ...'"></contact-presenter>
+        <!--#endregion ContentPlaceHolder2-->
+        <page-footer
+            editable="false"
+            edit-msg="'غير صالحة'"
+            contact-card-edit-title="'معلومات الاتصال تحرير'"
+            social-network-edit-title="'تعديل الشبكة الاجتماعية'"
+            close-btn-text="'قريب'"
+            submit-btn-text="'حفظ التغييرات'"
+            in-progress-text="'إنقاذ...'"
+            contact-card-email-text-note="'جزء مرئي من عنوان البريد الإلكتروني'"
+            contact-card-email-value-note="'عنوان إرسال البريد الإلكتروني'"></page-footer>
+    </div>
+    <!--#region AttachmentHolder-->
+    <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="assets/js/superfish.min.js"></script>
+    <script type="text/javascript" src="assets/js/responsive-nav.min.js"></script>
+    <script type="text/javascript" src="assets/js/pages/contact.js?v=1.0.0"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDSKCAa2Ju2YD_h3B37kPVb6rTIRdAT3sc&callback=page.map.google.init"></script>
+    <!--#endregion AttachmentHolder-->
+</body>
+</html>

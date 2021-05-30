@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+
+<html ng-app="ekiciMachine" lang="ru">
+<head>
+    <title>Ekici Makine Sanayi</title>
+    <meta charset="utf-8" />
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+    <meta content="Машинное производство тапочек и сандалий" name="description" />
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport" />
+
+    <!--Icon-->
+    <link rel="apple-touch-icon" sizes="57x57" href="assets/icon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="assets/icon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="assets/icon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="assets/icon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="assets/icon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="assets/icon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="assets/icon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="assets/icon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/icon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="assets/icon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/icon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="assets/icon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/icon/favicon-16x16.png">
+    <link rel="manifest" href="assets/icon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="assets/icon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <!--/.icon-->
+
+    <!-- CSS FILES -->
+    <link href="assets/css/style.css?v=1.0.0" media="screen" rel="stylesheet" type="text/css" />
+    <link href="assets/css/responsive.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="assets/css/fullwidth.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="assets/css/textrotator.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="assets/css/plugins/sweetalert.css" media="screen" rel="stylesheet" type="text/css" />
+    <!-- JS FILES -->
+    <script type="text/javascript" src="assets/js/jquery-1.20.2.min.js"></script>
+    <script type="text/javascript" src="assets/js/plugins/blockui.min.js"></script>
+    <script type="text/javascript" src="assets/js/plugins/sweetalert.min.js"></script>
+    <script type="text/javascript" src="assets/js/plugins/cookie.min.js"></script>
+    <script type="text/javascript" src="assets/js/angular/angular.min.js"></script>
+    <script type="text/javascript" src="assets/js/master.js?v=1.0.0"></script>
+
+    <!--Angular Data-->
+    <script type="text/javascript" src="data/angular/page-header.ru.js?v=1.0.0"></script>
+    <script type="text/javascript" src="data/angular/social-network.ru.js?v=1.0.0"></script>
+    <script type="text/javascript" src="data/angular/contact-card.ru.js?v=1.0.0"></script>
+    <script type="text/javascript" src="data/angular/page-footer.ru.js?v=1.0.0"></script>
+    <!--/.angular Data-->
+
+    <!--Angular Components-->
+    <script type="text/javascript" src="assets/js/angular/components/page-header.js?v=1.0.0"></script>
+    <script type="text/javascript" src="assets/js/angular/components/social-network.js?v=1.0.0"></script>
+    <script type="text/javascript" src="assets/js/angular/components/contact-card.js?v=1.0.0"></script>
+    <script type="text/javascript" src="assets/js/angular/components/page-footer.js?v=1.0.0"></script>
+    <!--./angular Components-->
+
+    <!--#region head-->
+    <!--Angular Data-->
+    <script type="text/javascript" src="data/angular/breadcrumb.ru.js?v=1.0.0"></script>
+    <script type="text/javascript" src="data/angular/office-map.uni.js?v=1.0.0"></script>
+    <script type="text/javascript" src="data/angular/contact-presenter.ru.js?v=1.0.0"></script>
+    <script type="text/javascript" src="data/angular/business-hours.ru.js?v=1.0.0"></script>
+    <script type="text/javascript" src="data/angular/contact-form.ru.js?v=1.0.0"></script>
+    <!--/.angular Data-->
+    <!--Angular Components-->
+    <script type="text/javascript" src="assets/js/angular/components/breadcrumb.js?v=1.0.0"></script>
+    <script type="text/javascript" src="assets/js/angular/components/office-map.js?v=1.0.0"></script>
+    <script type="text/javascript" src="assets/js/angular/components/contact-presenter.js?v=1.0.0"></script>
+    <script type="text/javascript" src="assets/js/angular/components/business-hours.js?v=1.0.0"></script>
+    <script type="text/javascript" src="assets/js/angular/components/contact-form.js?v=1.0.0"></script>
+    <!--./angular Components-->
+    <!--#endregion head-->
+</head>
+<body>
+    <!--#region ContentPlaceHolder1--><!--#endregion ContentPlaceHolder1-->
+    <div id="wrapper">
+        <header>
+            <page-header
+                selected-language="'русский'"
+                editable="false"
+                edit-msg="'Инвалид'"
+                edit-title="'Редактирование меню'"
+                user-logged-in="false"
+                close-btn-text="'Закрыть'"
+                submit-btn-text="'Сохранить изменения'"
+                in-progress-text="'Сохранение ...'"></page-header>
+        </header>
+        <!--#region ContentPlaceHolder2-->
+        <breadcrumb page="'contact'"
+            editable="false"
+            edit-msg="'Инвалид'"
+            edit-title="'Редактирование заголовка страницы'"
+            close-btn-text="'Закрыть'"
+            submit-btn-text="'Сохранить изменения'"
+            in-progress-text="'Сохранение ...'"></breadcrumb>
+        <office-map
+            editable="false"
+            edit-msg="'Инвалид'"
+            cancel-btn-text="'Отмена'"
+            submit-btn-text="'Сохранить изменения'"
+            in-progress-text="'Сохранение ...'"></office-map>
+        <contact-presenter
+            editable="false"
+            edit-msg="'Инвалид'"
+            edit-title-contact-card="'Контактная информация Редактировать'"
+            edit-title-business-hours="'Редактирование рабочих часов'"
+            edit-title-social-network="'Редактирование социальной сети'"
+            edit-title-contact-form="'Контактная форма Редактировать'"
+            edit-title-contact-form-explanation="'объяснение'"
+            edit-title-contact-form-names="'Имена полей'"
+            edit-title-contact-form-messages="'Сообщения об ошибках'"
+            edit-title-contact-form-submit-idle="'Кнопка отправки (вхолостую)'"
+            edit-title-contact-form-submit-progress="'Кнопка отправки (в процессе)'"
+            mail-settings-title="'Настройки электронной почты'"
+            mail-settings-smtp-address-title="'Адрес SMTP'"
+            mail-settings-smtp-port-title="'Порт SMTP'"
+            mail-settings-from-address-title="'Эл. адрес отправителя'"
+            mail-settings-from-name-title="'Имя отправителя'"
+            mail-settings-from-password-title="'Отправитель Эл. адрес Пароль'"
+            mail-settings-to-title="'Адреса электронной почты получателя'"
+            mail-settings-to-address-placeholder="'Адрес электронной почты получателя'"
+            mail-settings-to-name-placeholder="'Имя получателя'"
+            mail-settings-subject-prefix-title="'Префикс субъекта'"
+            visible-in-page="'Видимый на странице'"
+            invisible-in-page="'Невидимый на странице'"
+            email-text-note="'Видимая часть адреса электронной почты'"
+            email-value-note="'Адрес электронной почты'"
+            close-btn-text="'Закрыть'"
+            submit-btn-text="'Сохранить изменения'"
+            in-progress-text="'Сохранение ...'"></contact-presenter>
+        <!--#endregion ContentPlaceHolder2-->
+        <page-footer
+            editable="false"
+            edit-msg="'Инвалид'"
+            contact-card-edit-title="'Контактная информация Редактировать'"
+            social-network-edit-title="'Редактирование социальной сети'"
+            close-btn-text="'Закрыть'"
+            submit-btn-text="'Сохранить изменения'"
+            in-progress-text="'Сохранение ...'"
+            contact-card-email-text-note="'Видимая часть адреса электронной почты'"
+            contact-card-email-value-note="'Адрес электронной почты'"></page-footer>
+    </div>
+    <!--#region AttachmentHolder-->
+    <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="assets/js/superfish.min.js"></script>
+    <script type="text/javascript" src="assets/js/responsive-nav.min.js"></script>
+    <script type="text/javascript" src="assets/js/pages/contact.js?v=1.0.0"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDSKCAa2Ju2YD_h3B37kPVb6rTIRdAT3sc&callback=page.map.google.init"></script>
+    <!--#endregion AttachmentHolder-->
+</body>
+</html>

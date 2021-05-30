@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+
+<html ng-app="ekiciMachine" lang="en">
+<head>
+    <title>Ekici Makine Sanayi</title>
+    <meta charset="utf-8" />
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+    <meta content="Machine production of slippers and sandal" name="description" />
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport" />
+
+    <!--Icon-->
+    <link rel="apple-touch-icon" sizes="57x57" href="assets/icon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="assets/icon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="assets/icon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="assets/icon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="assets/icon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="assets/icon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="assets/icon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="assets/icon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/icon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="assets/icon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/icon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="assets/icon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/icon/favicon-16x16.png">
+    <link rel="manifest" href="assets/icon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="assets/icon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <!--/.icon-->
+
+    <!-- CSS FILES -->
+    <link href="assets/css/style.css?v=1.0.0" media="screen" rel="stylesheet" type="text/css" />
+    <link href="assets/css/responsive.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="assets/css/fullwidth.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="assets/css/textrotator.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="assets/css/plugins/sweetalert.css" media="screen" rel="stylesheet" type="text/css" />
+    <!-- JS FILES -->
+    <script type="text/javascript" src="assets/js/jquery-1.20.2.min.js"></script>
+    <script type="text/javascript" src="assets/js/plugins/blockui.min.js"></script>
+    <script type="text/javascript" src="assets/js/plugins/sweetalert.min.js"></script>
+    <script type="text/javascript" src="assets/js/plugins/cookie.min.js"></script>
+    <script type="text/javascript" src="assets/js/angular/angular.min.js"></script>
+    <script type="text/javascript" src="assets/js/master.js?v=1.0.0"></script>
+
+    <!--Angular Data-->
+    <script type="text/javascript" src="data/angular/page-header.en.js?v=1.0.0"></script>
+    <script type="text/javascript" src="data/angular/social-network.en.js?v=1.0.0"></script>
+    <script type="text/javascript" src="data/angular/contact-card.en.js?v=1.0.0"></script>
+    <script type="text/javascript" src="data/angular/page-footer.en.js?v=1.0.0"></script>
+    <!--/.angular Data-->
+
+    <!--Angular Components-->
+    <script type="text/javascript" src="assets/js/angular/components/page-header.js?v=1.0.0"></script>
+    <script type="text/javascript" src="assets/js/angular/components/social-network.js?v=1.0.0"></script>
+    <script type="text/javascript" src="assets/js/angular/components/contact-card.js?v=1.0.0"></script>
+    <script type="text/javascript" src="assets/js/angular/components/page-footer.js?v=1.0.0"></script>
+    <!--./angular Components-->
+
+    <!--#region head-->
+    <!--Angular Data-->
+    <script type="text/javascript" src="data/angular/breadcrumb.en.js?v=1.0.0"></script>
+    <script type="text/javascript" src="data/angular/office-map.uni.js?v=1.0.0"></script>
+    <script type="text/javascript" src="data/angular/contact-presenter.en.js?v=1.0.0"></script>
+    <script type="text/javascript" src="data/angular/business-hours.en.js?v=1.0.0"></script>
+    <script type="text/javascript" src="data/angular/contact-form.en.js?v=1.0.0"></script>
+    <!--/.angular Data-->
+    <!--Angular Components-->
+    <script type="text/javascript" src="assets/js/angular/components/breadcrumb.js?v=1.0.0"></script>
+    <script type="text/javascript" src="assets/js/angular/components/office-map.js?v=1.0.0"></script>
+    <script type="text/javascript" src="assets/js/angular/components/contact-presenter.js?v=1.0.0"></script>
+    <script type="text/javascript" src="assets/js/angular/components/business-hours.js?v=1.0.0"></script>
+    <script type="text/javascript" src="assets/js/angular/components/contact-form.js?v=1.0.0"></script>
+    <!--./angular Components-->
+    <!--#endregion head-->
+</head>
+<body>
+    <!--#region ContentPlaceHolder1--><!--#endregion ContentPlaceHolder1-->
+    <div id="wrapper">
+        <header>
+            <page-header
+                selected-language="'English'"
+                editable="false"
+                edit-msg="'Invalid'"
+                edit-title="'Menu Edit'"
+                user-logged-in="false"
+                close-btn-text="'Close'"
+                submit-btn-text="'Save Changes'"
+                in-progress-text="'Saving...'"></page-header>
+        </header>
+        <!--#region ContentPlaceHolder2-->
+        <breadcrumb page="'contact'"
+            editable="false"
+            edit-msg="'Invalid'"
+            edit-title="'Page Header Edit'"
+            close-btn-text="'Close'"
+            submit-btn-text="'Save Changes'"
+            in-progress-text="'Saving...'"></breadcrumb>
+        <office-map
+            editable="false"
+            edit-msg="'Invalid'"
+            cancel-btn-text="'Cancel'"
+            submit-btn-text="'Save Changes'"
+            in-progress-text="'Saving...'"></office-map>
+        <contact-presenter
+            editable="false"
+            edit-msg="'Invalid'"
+            edit-title-contact-card="'Contact Info Edit'"
+            edit-title-business-hours="'Work Hours Edit'"
+            edit-title-social-network="'Social Network Edit'"
+            edit-title-contact-form="'Contact Form Edit'"
+            edit-title-contact-form-explanation="'Explanation'"
+            edit-title-contact-form-names="'Field Names'"
+            edit-title-contact-form-messages="'Error Messages'"
+            edit-title-contact-form-submit-idle="'Submit Button (Idle)'"
+            edit-title-contact-form-submit-progress="'Submit Button (In Progress)'"
+            mail-settings-title="'Email Settings'"
+            mail-settings-smtp-address-title="'SMTP address'"
+            mail-settings-smtp-port-title="'SMTP port'"
+            mail-settings-from-address-title="'Sender Email Address'"
+            mail-settings-from-name-title="'Sender Name'"
+            mail-settings-from-password-title="'Sender Email Password'"
+            mail-settings-to-title="'Receiver Email Addresses'"
+            mail-settings-to-address-placeholder="'Receiver Email Address'"
+            mail-settings-to-name-placeholder="'Receiver Name'"
+            mail-settings-subject-prefix-title="'Subject Prefix'"
+            visible-in-page="'Visible in page'"
+            invisible-in-page="'Invisible in page'"
+            email-text-note="'Visible part of email address'"
+            email-value-note="'Email sending address'"
+            close-btn-text="'Close'"
+            submit-btn-text="'Save Changes'"
+            in-progress-text="'Saving...'"></contact-presenter>
+        <!--#endregion ContentPlaceHolder2-->
+        <page-footer
+            editable="false"
+            edit-msg="'Invalid'"
+            contact-card-edit-title="'Contact Info Edit'"
+            social-network-edit-title="'Social Network Edit'"
+            close-btn-text="'Close'"
+            submit-btn-text="'Save Changes'"
+            in-progress-text="'Saving...'"
+            contact-card-email-text-note="'Visible part of email address'"
+            contact-card-email-value-note="'Email sending address'"></page-footer>
+    </div>
+    <!--#region AttachmentHolder-->
+    <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="assets/js/superfish.min.js"></script>
+    <script type="text/javascript" src="assets/js/responsive-nav.min.js"></script>
+    <script type="text/javascript" src="assets/js/pages/contact.js?v=1.0.0"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDSKCAa2Ju2YD_h3B37kPVb6rTIRdAT3sc&callback=page.map.google.init"></script>
+    <!--#endregion AttachmentHolder-->
+</body>
+</html>
