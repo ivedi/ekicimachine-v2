@@ -19,9 +19,17 @@ app.get('/', (req, res) => {
 
 app.get('/home', (req, res) => sendHtmlPage(req, res, 'index'));
 app.get('/machines', (req, res) => sendHtmlPage(req, res, 'machines'));
+app.get('/automation', (req, res) => sendHtmlPage(req, res, 'automation'));
+app.get('/references', (req, res) => sendHtmlPage(req, res, 'references'));
+app.get('/news', (req, res) => sendHtmlPage(req, res, 'news'));
+app.get('/contact', (req, res) => sendHtmlPage(req, res, 'contact'));
 
 app.get('/anasayfa', (_, res) => res.sendFile(getHtmlPageFilePath('index', 'tr')));
 app.get('/makineler', (_, res) => res.sendFile(getHtmlPageFilePath('machines', 'tr')));
+app.get('/otomasyon', (_, res) => res.sendFile(getHtmlPageFilePath('automation', 'tr')));
+app.get('/referanslar', (_, res) => res.sendFile(getHtmlPageFilePath('references', 'tr')));
+app.get('/haberler', (_, res) => res.sendFile(getHtmlPageFilePath('news', 'tr')));
+app.get('/iletisim', (_, res) => res.sendFile(getHtmlPageFilePath('contact', 'tr')));
 
 app.listen(port, () => {
   console.log(`The party is at http://localhost:${port}`);
