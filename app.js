@@ -40,9 +40,8 @@ app.get('/iletisim', (req, res) => renderHtmlPage(req, res, 'contact', {
   GOOGLE_MAP_API_KEY: process.env.GOOGLE_MAP_API_KEY
 }));
 
-app.listen(port, () => {
-  console.log(`The party is at http://localhost:${port}`);
-});
+app.listen(port, () =>
+  console.log(`The party is at http://localhost:${port}`));
 
 const sendHtmlPage = (req, res, pageName) => {
   const client = new Client(req);
@@ -58,8 +57,8 @@ const renderHtmlPage = (req, res, pageName, variables) => {
   res.render(viewPath, variables);
 };
 
-const getHtmlPageFilePath = (pageName, language) => {
-  return `${__dirname}/views/pages/${pageName}.${language}.html`;
-};
+const getHtmlPageFilePath = (pageName, language) =>
+  `${__dirname}/views/pages/${pageName}.${language}.html`;
 
-const getViewPath = (pageName, language) => `pages/${pageName}-${language}`;
+const getViewPath = (pageName, language) =>
+  `pages/${pageName}-${language}`;
