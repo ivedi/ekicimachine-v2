@@ -62,3 +62,4 @@ const getHtmlPageFilePath = (pageName, language) =>
 
 const getViewPath = (pageName, language) =>
   `pages/${pageName}-${language}`;
+  
