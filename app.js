@@ -16,7 +16,7 @@ if (process.env.NODE_ENV === 'production') {
       return;
     }
     next();
-  })
+  });
 }
 
 app.set('view engine', 'ejs');
