@@ -49,6 +49,8 @@ app.get('/iletisim', (req, res) => renderHtmlPage(req, res, 'contact', {
   GOOGLE_MAP_API_KEY: process.env.GOOGLE_MAP_API_KEY
 }));
 
+app.get('/ping', (req, res) => res.send('pong@v2.0.0'));
+
 app.listen(process.env.PORT || port, () =>
   console.log(`The party is at http://localhost:${port}`));
 
